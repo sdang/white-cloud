@@ -10,34 +10,47 @@ body {
 	background-image: url('/assets/bg.gif');
 	background-color: #6b6b6b;
 	background-repeat: repeat-x;
-    font-family: "Georgia", times, serif;
+    font-family: arial;
     font-size: 14px;
     line-height: 16px;
     color: #000000;
     margin: 0;
 }
 
-.field_with_errors {color: red;; display: inline}
-#errorMsgDiv {width: 230px; border: 1px solid #999; background: #bbb; padding: 7px; margin-left: auto; margin-right: auto; margin-bottom: 30px; line-height: 20px; color: #444}
+/* Main Content Styles */
+h1 { font-size: 20px; font-family: verdana, arial, sans-serif; color: black}
+#grayText {font-size: 12px; line-height: 16px; padding-top: 25px; 
+		color: gray; font-family: arial; text-align: justify;}
+#contentCard {background-color: #ccc; border: 1px solid #777777; padding: 10px}
+				
+/* Generic Form Styles */
+.field_with_errors {color: red; display: inline}
+#errorMsgDiv {width: 230px; border: 1px solid #999; background: #bbb; padding: 7px; 
+				margin-left: auto; margin-right: auto; margin-bottom: 30px; 
+				line-height: 20px; color: #444}
 #errorMsgDiv li {margin-left: 20px }
+.error {color: #d00; text-align: left; font-size: 16px; text-align: center; margin-bottom: 30px;}
+.notice {color: #0b0; text-align: left; font-size: 16px; text-align: center; margin-left: 35px; margin-bottom: 30px}
+
+
+/* Header Navigation Area */
 #headerDiv a:link {text-decoration:none; color: white; background-color: navy; padding: 5px; margin-right: 5px; line-height: 30px}
 #headerDiv a:visited {text-decoration:none; color: white; padding: 5px; margin-right: 5px; background-color:navy; line-height: 30px}
 #headerDiv a:hover {text-decoration:none; background-color: blue; padding: 5px; margin-right: 5px;line-height: 30px}
 #headerDiv a:active {text-decoration:underline; padding: 5px; margin-right: 5px; line-height: 30px}
+
+/* Links */
 .active {background-color: black; padding: 5px; margin-right: 5px;}
-#mainContentDiv a:link {text-decoration:none; color: navy}
-#mainContentDiv a:visited {text-decoration:none; color: navy}
-#mainContentDiv a:hover {text-decoration:underline;}
-#mainContentDiv a:active {text-decoration:underline;}
+#mainContentDiv a:visited a:link {text-decoration:none; color: navy}
+#mainContentDiv a:hover a:active {text-decoration:underline;}
 
-
-h1 { font-size: 20px; font-family: verdana, arial, sans-serif; color: black}
-
-.error {color: #d00; text-align: left; font-size: 16px; text-align: center; margin-bottom: 30px;}
-.notice {color: #0b0; text-align: left; font-size: 16px; text-align: center; margin-left: 35px; margin-bottom: 30px}
-
-#headerDiv {background-image: url('/assets/logo-small.png'); background-repeat:no-repeat; height: 50px; padding-top: 20px; width: 850px; border: 2px solid #777; background-color: #6a8de4; margin-left: auto; margin-right: auto; margin-top: 40px; text-align: center; font-size: 16px;}
-#mainContentDiv {padding-top: 20px; width: 810px; border: 2px solid #777; background-color: #ddd; margin-left: auto; margin-right: auto; margin-top: 20px; padding-left: 20px; padding-right: 20px}
+#headerDiv {background-image: url('/assets/logo-small.png'); background-repeat:no-repeat; 
+			height: 50px; padding-top: 20px; width: 850px; border: 2px solid #777; 
+			background-color: #6a8de4; margin-left: auto; margin-right: auto; 
+			margin-top: 40px; text-align: center; font-size: 16px;}
+			
+#mainContentDiv {padding-top: 20px; width: 810px; border: 2px solid #777; 
+				background-color: #ddd; margin-left: auto; margin-right: auto; margin-top: 20px; 
+				padding-left: 20px; padding-right: 20px; padding-bottom: 20px}
 #footerDiv {width: 650px; text-align: right; margin-left:auto; margin-right: auto; color: #444; margin-top: 8px;}
 #footerDiv a {color: #444;}
-#grayText {width: 250px; font-size: 12px; line-height: 16px; padding-top: 25px; color: gray; font-family: arial; text-align: justify;}

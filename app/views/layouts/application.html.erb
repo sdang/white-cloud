@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ePageMD</title>
+  <title>olive-view-tools</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,7 +11,7 @@
 <div id="headerDiv">
 	<div style="text-align: right; margin-right: 20px; margin-top: 20px;">
 	<% if user_signed_in? %>
-		Signed In
+		<%= link_to "Log Out", destroy_user_session_path, :method => "DELETE" %>
 	<% else %>
 		Not Signed In
 	<% end %></div>
