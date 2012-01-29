@@ -9,7 +9,7 @@
 				<table>
 					<tr>
 						<td><%= f.label :email, "Email:" %></td>
-						<td><%= f.email_field :email %></td>
+						<td><%= f.email_field :email, :title => "name@domain.com", :class => "auto-hint" %></td>
 					</tr>
 					<tr>
 						<td><%= f.label :password, "Password:" %></td>
