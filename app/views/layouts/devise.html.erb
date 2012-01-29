@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>olive-view-tools</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div id="mainContainer" class="shadow">
+	<div id="headerDiv">
+		<div style="float: left">
+			<div style="font-size: 10px">Olive View-UCLA Dept. of Internal Medicine</div>
+			<div style="font-size: 16px; margin-top: 3px; font-family: 'Arial Black'">Sunday, January 29, 2012</div>
+		</div>
+		<div style="float: right">
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+		</div>
+	</div>
+	<div id="mainContent">
+		<%= yield %>
+	</div>
+</div>
+<div id="footerDiv">
+	&copy; <%= Time.now.year %> - Olive View-UCLA Internal Medicine Dept.
+</div>
+
+</body>
+</html>

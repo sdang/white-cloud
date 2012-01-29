@@ -1,17 +1,18 @@
+<div style="margin: 20px">
 <table>
 	<tr valign="top">
 		<td>
 			<div id="contentCard" style="width: 300px; margin-top: 30px">
 			<h2>Sign in</h2>
-			<%= flash[:notice] %> <%= flash[:error] %>
+			<%= flash[:notice] %> <%= flash[:alert] %>
 			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 				<table>
 					<tr>
-						<td><%= f.label :email %></td>
+						<td><%= f.label :email, "Email:" %></td>
 						<td><%= f.email_field :email %></td>
 					</tr>
 					<tr>
-						<td><%= f.label :password %></td>
+						<td><%= f.label :password, "Password:" %></td>
 						<td><%= f.password_field :password %></td>
 					</tr>
 					<tr>
@@ -38,3 +39,4 @@
 		</td>
 	</tr>
 </table>
+</div>

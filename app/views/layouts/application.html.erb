@@ -5,24 +5,58 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script>
+	$(document).ready(function() {
+		$("#mainContent").equalHeights;
+	});
+  </script>
 </head>
 <body>
 
-<div id="headerDiv">
-	<div style="text-align: right; margin-right: 20px; margin-top: 20px;">
-	<% if user_signed_in? %>
-		<%= link_to "Log Out", destroy_user_session_path, :method => "DELETE" %>
-	<% else %>
-		Not Signed In
-	<% end %></div>
+
+<div id="mainContainer" class="shadow">
+	<div id="headerDiv">
+		<div style="float: left">
+			<div style="font-size: 10px">Olive View-UCLA Dept. of Internal Medicine</div>
+			<div style="font-size: 16px; margin-top: 3px; font-family: 'Arial Black'">Sunday, January 29, 2012</div>
+		</div>
+		<div style="float: right">
+			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+		</div>
+	</div>
+	<div id="mainContent">
+		<div style="width: 550px; float: left; border: 0px solid black;background-color: white" class="columns">
+			<div style="margin: 20px"><%=yield %></div>
+		</div>
+		<div id="sideBar" class="columns">
+			<div style="margin: 20px">
+				<h2>Recent Activity</h2>
+				<div>
+					Logged in<br/>
+					Created d/c summary for Smith<br/>
+					Created lab check for Davis<br/>
+					Edited d/c summary for Bella<br/>
+				</div>
+				<br/>
+				<h2>Create Lab Check Reminder</h2>
+				<div>
+					Logged in<br/>
+					Created d/c summary for Smith<br/>
+					Created lab check for Davis<br/>
+					Edited d/c summary for Bella<br/>
+				</div>
+				<br/>
+				<h2>Search for d/c Summary</h2>
+				<input type="textfield"><input type="submit" value="Search">
+
+			</div>
+		</div>
+		<div style="clear: both"></div>
+	</div>
 </div>
-<div id="mainContentDiv">
-	<%= yield %>
-</div>
-<div id="footerDiv">&copy; <%= Time.now.year %> - Olive View-UCLA Internal Medicine Dept.
-	<% if user_signed_in? %>
-		Signed In
-	<% end %>
+
+<div id="footerDiv">
+	&copy; <%= Time.now.year %> - Olive View-UCLA Internal Medicine Dept.
 </div>
 
 </body>

@@ -18,39 +18,30 @@ body {
 }
 
 /* Main Content Styles */
-h1 { font-size: 20px; font-family: verdana, arial, sans-serif; color: black}
-#grayText {font-size: 12px; line-height: 16px; padding-top: 25px; 
-		color: gray; font-family: arial; text-align: justify;}
-#contentCard {background-color: #ccc; border: 1px solid #777777; padding: 10px}
-				
+h1 { font-family: verdana, arial, sans-serif; color: black; text-transform:uppercase; font-size: 14px; letter-spacing: 2px  }
+h2 { font-family: verdana, arial, sans-serif; color: #0052CC; text-transform:uppercase; font-size: 11px; letter-spacing: 1px  }
+#grayText {font-size: 12px; line-height: 16px; padding-top: 25px; color: gray; font-family: arial; text-align: justify;}
+#contentCard {background-color: #f3f3f3; border: 1px solid #777777; padding: 10px}
+.shadow { -moz-box-shadow: 0 0 30px 5px #222; -webkit-box-shadow: 0 0 30px 5px #222;}
+
+/* Side Bar Styles */
+#sideBar {width: 259px; height: 100%; float: left; background-color: #ddd; border-left: 1px solid #777;
+			font-size: 12px; line-height: 16px; color: gray; font-family: arial; }
+#sideBar input {border: 1px solid #777}
+#sideBar submit {border: 1px solid #777; background-color: #0052cc; color: white}
+	
 /* Generic Form Styles */
 .field_with_errors {color: red; display: inline}
-#errorMsgDiv {width: 230px; border: 1px solid #999; background: #bbb; padding: 7px; 
-				margin-left: auto; margin-right: auto; margin-bottom: 30px; 
-				line-height: 20px; color: #444}
+#errorMsgDiv {width: 230px; border: 1px solid #999; background: #bbb; padding: 7px; margin-left: auto; margin-right: auto; margin-bottom: 30px; line-height: 20px; color: #444}
 #errorMsgDiv li {margin-left: 20px }
 .error {color: #d00; text-align: left; font-size: 16px; text-align: center; margin-bottom: 30px;}
 .notice {color: #0b0; text-align: left; font-size: 16px; text-align: center; margin-left: 35px; margin-bottom: 30px}
 
 
-/* Header Navigation Area */
-#headerDiv a:link {text-decoration:none; color: white; background-color: navy; padding: 5px; margin-right: 5px; line-height: 30px}
-#headerDiv a:visited {text-decoration:none; color: white; padding: 5px; margin-right: 5px; background-color:navy; line-height: 30px}
-#headerDiv a:hover {text-decoration:none; background-color: blue; padding: 5px; margin-right: 5px;line-height: 30px}
-#headerDiv a:active {text-decoration:underline; padding: 5px; margin-right: 5px; line-height: 30px}
+#headerDiv {height: 50px; width: 790px; border: 0px solid #777;background-color: #0052CC; color: white; font-family: helvetica; text-align: left; font-size: 16px; padding-top: 10px; padding-left: 20px; border-bottom: 1px solid #777}			
 
-/* Links */
-.active {background-color: black; padding: 5px; margin-right: 5px;}
-#mainContentDiv a:visited a:link {text-decoration:none; color: navy}
-#mainContentDiv a:hover a:active {text-decoration:underline;}
+#mainContainer {width: 810px; border: 0px solid #777; background-color: #fff; margin-left: auto; margin-right: auto; margin-top: 40px; }
 
-#headerDiv {background-image: url('/assets/logo-small.png'); background-repeat:no-repeat; 
-			height: 50px; padding-top: 20px; width: 850px; border: 2px solid #777; 
-			background-color: #6a8de4; margin-left: auto; margin-right: auto; 
-			margin-top: 40px; text-align: center; font-size: 16px;}
-			
-#mainContentDiv {padding-top: 20px; width: 810px; border: 2px solid #777; 
-				background-color: #ddd; margin-left: auto; margin-right: auto; margin-top: 20px; 
-				padding-left: 20px; padding-right: 20px; padding-bottom: 20px}
-#footerDiv {width: 650px; text-align: right; margin-left:auto; margin-right: auto; color: #444; margin-top: 8px;}
+#mainContent {}
+#footerDiv {width: 810px; text-align: right; margin-left:auto; margin-right: auto; color: #444; margin-top: 8px;}
 #footerDiv a {color: #444;}
