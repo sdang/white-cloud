@@ -23,9 +23,10 @@ h2 { font-family: verdana, arial, sans-serif; color: #0052CC; text-transform:upp
 #grayText {font-size: 12px; line-height: 16px; padding-top: 25px; color: gray; font-family: arial; text-align: justify;}
 #contentCard {background-color: #f3f3f3; border: 1px solid #777777; padding: 10px}
 .shadow { -moz-box-shadow: 0 0 30px 5px #222; -webkit-box-shadow: 0 0 30px 5px #222;}
+#main {width: 550px; float: left; border: 0px solid black;background-color: white}
 
 /* Side Bar Styles */
-#sideBar {width: 259px; height: 100%; float: left; background-color: #ddd; border-left: 1px solid #777;
+#sideBar {width: 259px; height: 100%; float: right; background-color: #ddd; border-left: 1px solid #777;
 			font-size: 12px; line-height: 16px; color: gray; font-family: arial; }
 #sideBar input {border: 1px solid #777}
 #sideBar submit {border: 1px solid #777; background-color: #0052cc; color: white}
@@ -43,5 +44,5 @@ h2 { font-family: verdana, arial, sans-serif; color: #0052CC; text-transform:upp
 #mainContainer {width: 810px; border: 0px solid #777; background-color: #fff; margin-left: auto; margin-right: auto; margin-top: 40px; }
 
 #mainContent {}
-#footerDiv {width: 810px; text-align: right; margin-left:auto; margin-right: auto; color: #444; margin-top: 8px;}
+#footerDiv {width: 810px; text-align: right; margin-left:auto; margin-right: auto; color: #444; margin-top: 8px; clear: both}
 #footerDiv a {color: #444;}
