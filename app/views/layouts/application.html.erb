@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OliveViewTools</title>
+  <title>ePageMD</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div id="headerDiv">
+	<div style="text-align: right; margin-right: 20px; margin-top: 20px;">
+	<% if user_signed_in? %>
+		Signed In
+	<% else %>
+		Not Signed In
+	<% end %></div>
+</div>
+<div id="mainContentDiv">
+	<%= yield %>
+</div>
+<div id="footerDiv">&copy; <%= Time.now.year %> - Olive View-UCLA Internal Medicine Dept.
+	<% if user_signed_in? %>
+		Signed In
+	<% end %>
+</div>
 
 </body>
 </html>
