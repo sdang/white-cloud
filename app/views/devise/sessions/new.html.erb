@@ -1,0 +1,42 @@
+<div style="margin: 20px">
+<table>
+	<tr valign="top">
+		<td>
+			<div id="contentCard" style="width: 300px; margin-top: 30px">
+			<h2>Sign in</h2>
+			<%= flash[:notice] %> <%= flash[:alert] %>
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+				<table>
+					<tr>
+						<td><%= f.label :email, "Email:" %></td>
+						<td><%= f.email_field :email, :title => "name@domain.com", :class => "auto-hint" %></td>
+					</tr>
+					<tr>
+						<td><%= f.label :password, "Password:" %></td>
+						<td><%= f.password_field :password %></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+						  <% if devise_mapping.rememberable? -%>
+						    <%= f.submit "Sign in" %> <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+						  <% end -%>
+						</td>
+					</tr>
+				</table>
+
+			<% end %>
+			<br/>
+			<%= render :partial => "devise/shared/links" %>
+			</div>
+		</td>
+		<td style="width: 50px">&nbsp;</td>
+		<td style="width: 450px">
+			<h1>Olive View-UCLA Internal Medicine</h1>
+			<div id="grayText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada consectetur urna. Donec erat quam, bibendum nec sollicitudin nec, ultricies nec metus. Praesent et elit vitae lectus mollis consequat at a massa. Praesent volutpat dapibus arcu, id faucibus libero rhoncus quis. Donec mi eros, porta non iaculis at, volutpat ut urna. Cras interdum fermentum luctus. Nulla vitae odio et orci venenatis blandit. Suspendisse nec augue purus, eu rutrum justo. Morbi imperdiet sem et justo lobortis sit amet malesuada elit interdum. Donec non nunc lacus, at bibendum lectus. Etiam ut justo a dui mollis rutrum quis in eros.</div>
+
+			<div id="grayText">Proin eu augue metus. Mauris nec arcu eget metus lobortis aliquet. Donec ultrices nunc vitae nunc mollis porta. Nulla convallis nulla eu ante lobortis vitae mattis lectus tempor. Aenean pharetra ipsum ac odio luctus bibendum. Suspendisse magna massa, luctus condimentum vulputate eget, facilisis accumsan enim. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed in eros nisl. Suspendisse at tincidunt odio. Cras et urna nunc, sit amet pellentesque turpis. Praesent sit amet mi mi, dictum lacinia purus.</div>
+		</td>
+	</tr>
+</table>
+</div>
