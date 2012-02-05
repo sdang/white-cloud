@@ -1,4 +1,6 @@
 <h1>Upcoming Lab Check Reminders</h1>
-
+<% Reminder.find(:all).each do |r| %>
+	<%= r.mrn %>, <%= r.reminder %>, <%= time_ago_in_words(r.remind_time) if r.remind_time %><br/>
+<% end %>
 
 <h1>Your Open D/C Packets</h1>
