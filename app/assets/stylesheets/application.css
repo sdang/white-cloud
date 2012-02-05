@@ -21,8 +21,11 @@ body {
 h1 { font-family: verdana, arial, sans-serif; color: black; text-transform:uppercase; font-size: 14px; letter-spacing: 2px  }
 h2 { font-family: verdana, arial, sans-serif; color: #0052CC; text-transform:uppercase; font-size: 11px; letter-spacing: 1px  }
 #grayText {font-size: 12px; line-height: 16px; padding-top: 8px; padding-bottom: 10px; color: gray; font-family: arial; text-align: justify;}
-#contentCard {background-color: #f3f3f3; border: 1px solid #777777; padding: 10px}
+#contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
 .shadow { -moz-box-shadow: 0 0 30px 5px #222; -webkit-box-shadow: 0 0 30px 5px #222;}
+.reminder:hover { background-color: #ffff99}
+.reminder img {vertical-align: top}
+.reminder {margin-bottom: 5px}
 #main {width: 550px; float: left; border: 0px solid black;background-color: white}
 
 /* Side Bar Styles */

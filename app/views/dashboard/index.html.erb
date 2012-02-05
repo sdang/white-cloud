@@ -1,4 +1,8 @@
+<div id="contentCard">
 <h1>Upcoming Lab Check Reminders</h1>
-<%= render :partial => '/reminders/table', :object => Reminder.find(:all) %>
+<%= render :partial => '/reminders/table', :object => Reminder.find_all_by_user_id(current_user.id, :order => 'remind_time') %>
+</div>
 
+<div id="contentCard">
 <h1>Your Open D/C Packets</h1>
+</div>
