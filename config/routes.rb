@@ -1,4 +1,7 @@
 OliveViewTools::Application.routes.draw do
+  resources :reminder_lists
+  resources :reminders
+
   devise_for :users
 
   root :to => 'dashboard#index'

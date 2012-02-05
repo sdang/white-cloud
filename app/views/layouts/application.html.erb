@@ -7,12 +7,18 @@
   <%= csrf_meta_tags %>
   <script type="text/javascript">
 	$(function(){ $('.columns').equalHeights(); });
-	
+
+	$(document).on('mouseenter','.reminder', function() {
+        $(this).find('div:first').show()
+    });
+	$(document).on('mouseleave','.reminder', function() {
+        $(this).find('div:first').hide()
+    });
+
 	$(document).ready(function() {
 	    $('input[title]').inputHints();
-	});
-	
 
+	});
   </script>
 </head>
 <body>
@@ -25,18 +31,15 @@
 			<div style="font-size: 10px">Olive View-UCLA Dept. of Internal Medicine</div>
 			<div style="font-size: 16px; margin-top: 3px; font-family: 'Arial Black'"><%= Time.now.strftime('%A %B %e, %Y') %></div>
 		</div>
-		<div style="float: right">
-			<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-		</div>
 	</div>
 	<div id="equalize">
 	<div id="main" class="columns">
-		<div style="margin: 20px"><%=yield %>
-		</div>
+		<div style="margin: 20px"><%=yield %></div>
 	</div>
 	
 	<div id="sideBar" class="columns">
 		<div style="margin: 20px">
+			Sabin Dang (<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>)<br/>
 			<h2>Recent Activity</h2>
 			<div>
 				Logged in<br/>
@@ -45,12 +48,9 @@
 				Edited d/c summary for Bella<br/>
 			</div>
 			<br/>
-			<h2>Create Lab Check Reminder</h2>
+			<h2>Create Reminder</h2>
 			<div>
-				Logged in<br/>
-				Created d/c summary for Smith<br/>
-				Created lab check for Davis<br/>
-				Edited d/c summary for Bella<br/>
+				<%= render :partial => '/reminders/form' %>
 			</div>
 			<br/>
 			<h2>Search for d/c Summary</h2>
@@ -61,7 +61,7 @@
 	</div>
 	</div>
 
-	
+	<div style="clear: both"></div>
 </div>
 <div id="footerDiv">
 	&copy; <%= Time.now.year %> - Olive View-UCLA Internal Medicine Dept.

@@ -1,0 +1,4 @@
+
+$("#reminder-table").html("<%= escape_javascript(render :partial => '/reminders/table', :object => Reminder.find_all_by_user_id(current_user.id, :order => 'remind_time')) %>");
+$("#reminder-<%= @reminder.id %>").effect("highlight", {}, 3000);
+$("#new_reminder")[0].reset();
