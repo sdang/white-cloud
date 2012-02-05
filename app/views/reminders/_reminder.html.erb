@@ -1,0 +1,4 @@
+<div id="reminder-<%= reminder.id -%>">
+	<span style="color: #777">#<%= reminder.mrn %></span>: 
+	<%= reminder.reminder %> <span style="color: green; font-size: 10px">in <%= time_ago_in_words(reminder.remind_time) if reminder.remind_time %></span>
+</div>

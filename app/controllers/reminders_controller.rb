@@ -3,7 +3,10 @@ class RemindersController < ApplicationController
   def create
     @reminder = Reminder.new(params[:reminder])
     @reminder.save
-    redirect_to '/'
+    respond_to do |format|
+      format.html { redirect_to '/' }
+      format.js
+    end
   end
   
 end

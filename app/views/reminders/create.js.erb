@@ -1,0 +1,8 @@
+// add new reminder to bottom of list
+$("#reminder-table").append("<%= escape_javascript(render(@reminder)) %>");
+
+/* Highlight the new comment */
+$("#reminder-<%= @reminder.id %>").effect("highlight", {}, 3000);
+
+/* Reset the comment form */
+$("#new_reminder")[0].reset();

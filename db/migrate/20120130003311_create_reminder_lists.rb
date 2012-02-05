@@ -6,5 +6,8 @@ class CreateReminderLists < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    # create a default reminder list
+    ReminderList.new(:name => "Miscellaneous")
   end
 end
