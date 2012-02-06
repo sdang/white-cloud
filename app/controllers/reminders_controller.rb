@@ -1,5 +1,8 @@
 class RemindersController < ApplicationController
   
+  def index
+  end
+  
   def create
     @reminder = Reminder.new(params[:reminder])
     @reminder.user_id = current_user.id

@@ -1,4 +1,4 @@
-$accent-color: #0052CC;
+$accent-color: navy;
 $border-color: #777;
 $highlight-color: #ffff99;
 $application-width: 850px;
@@ -37,7 +37,7 @@ html, body {
 
 #header {
 	background: {
-		image: url('/assets/Olive-View-Logo.gif'); 
+		// image: url('/assets/Olive-View-Logo.gif'); 
 		repeat:no-repeat;
 		color: $accent-color;
 	}
@@ -66,15 +66,19 @@ html, body {
 	
 	#selected {
 		background: white;
+		a {
+			&:visited, &:hover { color: $accent-color }
+		}
 	}
 	
 	li {
 		display: inline;
-		margin: 0 5px 0 0;
-		padding: 10px 0 7px 0;
-		background: gray;
+		margin: 0 3px 0 0;
+		padding: 8px 0 7px 0;
+		background: $border-color;
 		line-height: 30px;
 		a {
+			&:visited, &:hover { color: #bbb }
 			text-decoration: none;
 			padding: 0 1em;
 		}
