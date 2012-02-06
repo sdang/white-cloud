@@ -1,0 +1,170 @@
+$accent-color: navy;
+$border-color: #777;
+$highlight-color: #ffff99;
+$application-width: 850px;
+$sidebar-width: 250px;
+
+@mixin shadow { 
+	-moz-box-shadow: 0 0 30px 5px #222;
+	-webkit-box-shadow: 0 0 30px 5px #222;
+}
+
+html, body {
+	background: {
+		image: url('/assets/bg.gif');
+		color: #6b6b6b;
+		repeat: repeat-x;
+	}
+    font-family: arial;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    margin: 0;
+	padding: 0;
+}
+
+#wrap {
+	width: $application-width;
+	margin: 0 auto;
+	background: #ddd;
+	background: {
+		image: url('/assets/sidebar-bg.gif');
+		repeat:y-repeat;
+	}
+	clear: both;
+	@include shadow;
+}
+
+#header {
+	background: {
+		// image: url('/assets/Olive-View-Logo.gif'); 
+		repeat:no-repeat;
+		color: $accent-color;
+	}
+	height: 58px;
+	color: white;
+	font-family: helvetica;
+	text-align: left;
+	font-size: 16px;
+	padding: {
+		top: 10px;
+		left: 20px;	
+	}
+	
+}
+
+#nav {
+	background: $accent-color;
+	padding-left: 30px;
+	padding-top: 10px;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	#selected {
+		background: white;
+		a {
+			&:visited, &:hover { color: $accent-color }
+		}
+	}
+	
+	li {
+		display: inline;
+		margin: 0 3px 0 0;
+		padding: 8px 0 7px 0;
+		background: $border-color;
+		line-height: 30px;
+		a {
+			&:visited, &:hover { color: #bbb }
+			text-decoration: none;
+			padding: 0 1em;
+		}
+	}
+}
+
+#main {
+	float:left;
+	width:$application-width - $sidebar-width;
+	background-color: white;
+	border-right: 1px solid $border-color;
+
+	h1 { 
+		font-family: verdana, arial, sans-serif;
+		color: black;
+		text-transform:uppercase;
+		font-size: 14px;
+		letter-spacing: 2px
+	}
+	
+}
+
+#sidebar {
+	float:right;
+	width:$sidebar-width - 1px;
+	// background-color: #ddd; 
+	background: {
+		// image: url('/assets/sidebar-bg.gif');
+		repeat:y-repeat;
+	}
+	font-size: 12px; 
+	line-height: 16px;
+	color: gray;
+	font-family: arial;
+	
+	input {
+		border: 1px solid $border-color;
+		height: 18px;
+	}
+	
+	h1 { 
+		font-family: verdana, arial, sans-serif;
+		color: $accent-color;
+		text-transform:uppercase;
+		font-size: 11px;
+		letter-spacing: 1px
+	}
+}
+
+#footer {
+	clear:both;
+	border-top: 1px solid $border-color;
+	background-color: black;
+	color: white;
+	padding: 5px;
+	margin: {
+		top: 14px;
+	}
+}
+
+
+
+.reminder {
+	&:hover { background-color: $highlight-color }
+	img { vertical-align: top }
+	margin-bottom: 5px
+}
+
+
+#grayText {
+	font-size: 12px;
+	line-height: 16px;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	color: gray;
+	font-family: arial;
+	text-align: justify;
+}
+
+#contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
+.auto-hint { color: #AAAAAA; }
+
+
+
+// fix IE 6 footer bug
+* html #footer {
+height:1px;
+}
+

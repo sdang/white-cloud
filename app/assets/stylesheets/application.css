@@ -3,52 +3,9 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree . 
+ *= require common
 */
 
-body {
-	background-image: url('/assets/bg.gif');
-	background-color: #6b6b6b;
-	background-repeat: repeat-x;
-    font-family: arial;
-    font-size: 14px;
-    line-height: 16px;
-    color: #000000;
-    margin: 0;
-}
 
-/* Main Content Styles */
-h1 { font-family: verdana, arial, sans-serif; color: black; text-transform:uppercase; font-size: 14px; letter-spacing: 2px  }
-h2 { font-family: verdana, arial, sans-serif; color: #0052CC; text-transform:uppercase; font-size: 11px; letter-spacing: 1px  }
-#grayText {font-size: 12px; line-height: 16px; padding-top: 8px; padding-bottom: 10px; color: gray; font-family: arial; text-align: justify;}
-#contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
-.shadow { -moz-box-shadow: 0 0 30px 5px #222; -webkit-box-shadow: 0 0 30px 5px #222;}
-.reminder:hover { background-color: #ffff99}
-.reminder img {vertical-align: top}
-.reminder {margin-bottom: 5px}
-#main {width: 550px; float: left; border: 0px solid black;background-color: white}
-
-/* Side Bar Styles */
-#sideBar {width: 259px; height: 100%; float: right; background-color: #ddd; border-left: 1px solid #777;
-			font-size: 12px; line-height: 16px; color: gray; font-family: arial;
-			background-image: url('/assets/sidebar-bg.gif'); background-repeat:y-repeat;  }
-#sideBar input {border: 1px solid #777; height: 18px}
-#sideBar submit {border: 1px solid #777; background-color: #0052cc; color: white}
-
-/* Generic Form Styles */
-.field_with_errors {color: red; display: inline}
-#errorMsgDiv {width: 230px; border: 1px solid #999; background: #bbb; padding: 7px; margin-left: auto; margin-right: auto; margin-bottom: 30px; line-height: 20px; color: #444}
-#errorMsgDiv li {margin-left: 20px }
-.error {color: #d00; text-align: left; font-size: 16px; text-align: center; margin-bottom: 30px;}
-.notice {color: #0b0; text-align: left; font-size: 16px; text-align: center; margin-left: 35px; margin-bottom: 30px}
-.auto-hint { color: #AAAAAA; }
-
-#headerDiv {background-image: url('/assets/Olive-View-Logo.gif'); background-repeat:no-repeat; height: 58px; width: 790px; border: 0px solid #777;background-color: #0052CC; color: white; font-family: helvetica; text-align: left; font-size: 16px; padding-top: 10px; padding-left: 20px; border-bottom: 1px solid #777}			
-
-#mainContainer {width: 810px; border: 0px solid #777; background-color: #fff; margin-left: auto; margin-right: auto; margin-top: 40px; }
-
-#mainContent {}
-#footerDiv {width: 810px; text-align: right; margin-left:auto; margin-right: auto; color: #444; padding-top: 5px; margin-top: 14px; clear: both}
-#footerDiv a {color: #444;}
 
 

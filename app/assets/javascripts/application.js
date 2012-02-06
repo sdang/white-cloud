@@ -7,3 +7,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).on('mouseenter','.reminder', function() {
+    $(this).find('div:first').show()
+});
+$(document).on('mouseleave','.reminder', function() {
+    $(this).find('div:first').hide()
+});
+
+$(document).ready(function() {
+    $('input[title]').inputHints();
+
+});
