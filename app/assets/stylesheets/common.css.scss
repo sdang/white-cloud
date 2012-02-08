@@ -51,6 +51,20 @@ html, body {
 		left: 20px;	
 	}
 	
+	#logo {
+		float: left; margin-left: 80px;
+	}
+	
+	#login {
+		margin: {
+			right: 30px;
+			top: 5px;
+		}
+		float: right;
+		font-size: 12px;
+		a, a:hover, a:visited { color: gray;}
+	}
+	
 }
 
 #nav {
@@ -79,7 +93,7 @@ html, body {
 		margin: 0 3px 0 0;
 		padding: 8px 0 7px 0;
 		background: $border-color;
-		&:hover {background: blue}
+		&:hover {background: #444 }
 		line-height: 30px;
 		a {
 			color: white;
