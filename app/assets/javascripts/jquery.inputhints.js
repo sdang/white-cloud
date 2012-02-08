@@ -22,4 +22,5 @@ jQuery.fn.inputHints=function() {
 			$(this).addClass('auto-hint');
 		}
     });
+
 };
