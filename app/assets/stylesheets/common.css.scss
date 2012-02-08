@@ -37,7 +37,7 @@ html, body {
 
 #header {
 	background: {
-		// image: url('/assets/Olive-View-Logo.gif'); 
+		image: url('/assets/Olive-View-Logo.gif'); 
 		repeat:no-repeat;
 		color: $accent-color;
 	}
@@ -51,12 +51,27 @@ html, body {
 		left: 20px;	
 	}
 	
+	#logo {
+		float: left; margin-left: 80px;
+	}
+	
+	#login {
+		margin: {
+			right: 30px;
+			top: 5px;
+		}
+		float: right;
+		font-size: 12px;
+		a, a:hover, a:visited { color: gray;}
+	}
+	
 }
 
 #nav {
 	background: $accent-color;
 	padding-left: 30px;
 	padding-top: 10px;
+	border-bottom: 1px solid $border-color;
 
 	ul {
 		margin: 0;
@@ -66,6 +81,8 @@ html, body {
 	
 	#selected {
 		background: white;
+		padding: 8px 0 10px 0;
+		
 		a {
 			&:visited, &:hover { color: $accent-color }
 		}
@@ -76,11 +93,12 @@ html, body {
 		margin: 0 3px 0 0;
 		padding: 8px 0 7px 0;
 		background: $border-color;
+		&:hover {background: #444 }
 		line-height: 30px;
 		a {
-			&:visited, &:hover { color: #bbb }
+			color: white;
 			text-decoration: none;
-			padding: 0 1em;
+			padding: 0 5px;
 		}
 	}
 }
