@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
     return self.authorized rescue false
   end
   
+  def admin?
+    return self.admin rescue false
+  end
+  
 end
