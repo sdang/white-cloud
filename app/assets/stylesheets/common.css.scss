@@ -9,6 +9,10 @@ $sidebar-width: 250px;
 	-webkit-box-shadow: 0 0 30px 5px #222;
 }
 
+input.blur {
+	color: #999;
+}
+			
 html, body {
 	background: {
 		image: url('/assets/bg.gif');
@@ -62,7 +66,8 @@ html, body {
 		}
 		float: right;
 		font-size: 12px;
-		a, a:hover, a:visited { color: gray;}
+		color: $border-color;
+		a, a:hover, a:visited, #email-address { color: white}
 	}
 	
 }
@@ -177,7 +182,7 @@ html, body {
 }
 
 #contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
-.auto-hint { color: #AAAAAA; }
+// .auto-hint { color: #AAAAAA; }
 
 
 

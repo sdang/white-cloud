@@ -3,11 +3,13 @@ $border-color: #777;
 $highlight-color: #ffff99;
 $application-width: 300px;
 
-.auto-hint { color: #AAAAAA; }
-
 @mixin shadow { 
 	-moz-box-shadow: 0 0 30px 5px #222;
 	-webkit-box-shadow: 0 0 30px 5px #222;
+}
+
+input.blur {
+	color: #999;
 }
 
 body {

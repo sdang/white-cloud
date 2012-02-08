@@ -1,6 +1,6 @@
 <ul>
-	<li id="<%= 'selected' if controller.class == DashboardController %>"><%= link_to "Dashboard", :controller => "dashboard" %></li>
-	<li id="<%= 'selected' if controller.class == RemindersController %>"><%= link_to "Reminders", :controller => "reminders" %></li>
-	<li><%= link_to "D/C Summaries", :controller => "reminders" %></li>
-	<li><%= link_to "Patient Sign-Out", :controller => "reminders" %></li>
+	<li id="<%= 'selected' if controller.class == DashboardController %>"><%= link_to "Dashboard", :controller => "/dashboard" %></li>
+	<li id="<%= 'selected' if controller.class == RemindersController %>"><%= link_to "Reminders", :controller => "/reminders" %></li>
+	<li><%= link_to "D/C Summaries", :controller => "/reminders" %></li>
+	<li><%= link_to "Patient Sign-Out", :controller => "/reminders" %></li>
 </ul>

@@ -2,9 +2,9 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 	<%= f.label :email, "Email Address" %><br/>
-	<%= f.email_field :email, :title => "name@domain.com", :class => "auto-hint" %><br/>
+	<%= f.email_field :email, :title => "name@domain.com" %><br/>
 	<%= f.label :password, "Password" %><br/>
-	<%= f.password_field :password, :title => "**********", :class => "auto-hint" %><br/>
+	<%= f.password_field :password, :title => "**********" %><br/>
 	<%= f.submit "Log In", :disable_with => "Please Wait ..." %>
 <% end %>
 <br/>

@@ -6,7 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.inputhints.js
+//= require jquery.hint.js
 //= require jquery-ui.min.js
 
 $(document).on('mouseenter','.reminder', function() {
@@ -17,5 +17,6 @@ $(document).on('mouseleave','.reminder', function() {
 });
 
 $(document).ready(function() {
-    $('input[title]').inputHints();
+    // $('input[title]').inputHints();
+	$('input[title!=""]').hint();
 });
