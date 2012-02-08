@@ -6,7 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.inputhints.js
+//= require jquery-ui.min.js
 
 $(document).on('mouseenter','.reminder', function() {
     $(this).find('div:first').show()
