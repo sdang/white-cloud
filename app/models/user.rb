@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
     self.reminders.find(:all, :order => "remind_time DESC")
   end
   
+  def authorized?
+    return self.authorized rescue false
+  end
+  
 end
