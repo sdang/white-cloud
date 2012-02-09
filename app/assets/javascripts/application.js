@@ -17,6 +17,5 @@ $(document).on('mouseleave','.reminder', function() {
 });
 
 $(document).ready(function() {
-    // $('input[title]').inputHints();
 	$('input[title!=""]').hint();
 });
