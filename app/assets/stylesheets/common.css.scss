@@ -157,13 +157,30 @@ html, body {
 	background-color: black;
 	color: white;
 	padding: 5px;
+	font-size: 10px;
 	margin: {
 		top: 14px;
+	}
+	
+	#left {
+		float: left;
+	}
+	
+	#right {
+		float: right;
+	}
+	
+	.clear {
+		clear: both;
 	}
 }
 
 #help-text {
-	background-color: $highlight-color;
+	background: {
+		color: $highlight-color;
+		image: url('/assets/help-bg.gif');
+		repeat: none;
+	};
 	border: 1px solid $border-color;
 	font-family: arial;
 	font-size: 12px;
