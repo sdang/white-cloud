@@ -9,7 +9,7 @@
 <body>
 
 
-<div id="login-window">
+<div id="login-window" class="vcenter">
 	<div id="logo">
 		<%= image_tag "Olive-View-Logo-Login.gif" %>
 	</div>
@@ -21,7 +21,7 @@
 	<% end %>
 	<%= yield %>
 	<div id="footer">
-		olive-view-tools (build <%= APP_VERSION %>)
+		olive-view-tools : build <%= APP_VERSION -%>
 	</div>
 </div>
 

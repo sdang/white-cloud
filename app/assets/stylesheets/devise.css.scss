@@ -26,15 +26,19 @@ body {
 }
 
 #login-window {
+	
+	
+	
 	@include shadow;
 	background-color: white;
 	border: 1px solid $border-color;
 	width: $application-width;
 	padding: 30px;
+
 	margin: {
 		left: auto;
 		right: auto;
-		top: 200px;
+		top: 100px;
 	}
 	
 	label {
