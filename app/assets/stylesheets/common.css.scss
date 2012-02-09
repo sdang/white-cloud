@@ -87,6 +87,10 @@ html, body {
 	#selected {
 		background: white;
 		padding: 8px 0 10px 0;
+		background: {
+			image: url('/assets/selected-tab-bg.gif');
+			repeat: repeat-x;
+		}
 		
 		a {
 			&:visited, &:hover { color: $accent-color }
@@ -98,6 +102,11 @@ html, body {
 		margin: 0 3px 0 0;
 		padding: 8px 0 7px 0;
 		background: $border-color;
+		background: {
+			image: url('/assets/unselected-tab-bg.gif');
+			repeat: repeat-x;
+		}
+		
 		&:hover {background: #444 }
 		line-height: 30px;
 		a {
