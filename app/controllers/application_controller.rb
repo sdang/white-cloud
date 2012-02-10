@@ -25,6 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin!
+    unless current_user.admin?
+      flash[:alert] = "You are not authorized in this area"
+      redirect_to session[:last_uri]
+    end
+  end
+      
   # set the last uri session
   def set_last_uri
     session[:last_uri] = request.fullpath

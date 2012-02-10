@@ -1,1 +1,6 @@
 <%= render :partial => '/shared/unlock_phi' -%>
+
+<div id="contentCard">
+<h1>Your Open D/C Packets</h1>
+<%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
+</div>
