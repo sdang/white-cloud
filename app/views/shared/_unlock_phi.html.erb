@@ -1,0 +1,18 @@
+<% unless session[:group_password] -%>
+<div id="contentCard">
+<h1>Unlock Protected Health Information</h1>
+<%= form_tag :action => "unlock_phi", :controller => "/phi" do %>
+	<table id="unlock-phi-table">
+		<tr>
+			<td width="125"><%= label_tag "Group Password" -%></td>
+			<td><%= password_field_tag "group_password", nil, :size => 30, :title => "*************" %></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><%= submit_tag "Unlock PHI", :diable_with => "Please Wait ..." -%></td>
+		</tr>
+	</table>
+
+<% end %>
+</div>
+<% end %>

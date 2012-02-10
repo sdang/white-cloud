@@ -87,6 +87,10 @@ html, body {
 	#selected {
 		background: white;
 		padding: 8px 0 10px 0;
+		background: {
+			image: url('/assets/selected-tab-bg.gif');
+			repeat: repeat-x;
+		}
 		
 		a {
 			&:visited, &:hover { color: $accent-color }
@@ -98,6 +102,11 @@ html, body {
 		margin: 0 3px 0 0;
 		padding: 8px 0 7px 0;
 		background: $border-color;
+		background: {
+			image: url('/assets/unselected-tab-bg.gif');
+			repeat: repeat-x;
+		}
+		
 		&:hover {background: #444 }
 		line-height: 30px;
 		a {
@@ -122,6 +131,14 @@ html, body {
 		letter-spacing: 2px
 	}
 	
+	input, label {
+		font-size: 16px;
+	}
+	
+	#unlock-phi-table {
+		width: 500px;
+	}
+		
 }
 
 #sidebar {
@@ -149,6 +166,10 @@ html, body {
 		font-size: 11px;
 		letter-spacing: 1px
 	}
+	
+	a {
+		color: #444;
+	}
 }
 
 #footer {
@@ -157,13 +178,30 @@ html, body {
 	background-color: black;
 	color: white;
 	padding: 5px;
+	font-size: 10px;
 	margin: {
 		top: 14px;
+	}
+	
+	#left {
+		float: left;
+	}
+	
+	#right {
+		float: right;
+	}
+	
+	.clear {
+		clear: both;
 	}
 }
 
 #help-text {
-	background-color: $highlight-color;
+	background: {
+		color: $highlight-color;
+		image: url('/assets/help-bg.gif');
+		repeat: none;
+	};
 	border: 1px solid $border-color;
 	font-family: arial;
 	font-size: 12px;
@@ -213,6 +251,7 @@ html, body {
 #contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
 // .auto-hint { color: #AAAAAA; }
 
+@import "alert_notice";
 
 
 // fix IE 6 footer bug

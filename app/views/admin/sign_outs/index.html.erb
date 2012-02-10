@@ -1,0 +1,27 @@
+<h1>Listing admin_sign_outs</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Resident user</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_sign_outs.each do |admin_sign_out| %>
+  <tr>
+    <td><%= admin_sign_out.user_id %></td>
+    <td><%= admin_sign_out.resident_user_id %></td>
+    <td><%= admin_sign_out.name %></td>
+    <td><%= link_to 'Show', admin_sign_out %></td>
+    <td><%= link_to 'Edit', edit_admin_sign_out_path(admin_sign_out) %></td>
+    <td><%= link_to 'Destroy', admin_sign_out, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sign out', new_admin_sign_out_path %>
