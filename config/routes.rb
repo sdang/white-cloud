@@ -3,6 +3,8 @@ OliveViewTools::Application.routes.draw do
   resources :reminders
   resources :dc_summaries
   
+  match 'phi(/:action)' => 'phi'
+  
   devise_for :users
 
   root :to => 'dashboard#index'
