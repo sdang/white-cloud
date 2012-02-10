@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery.hint.js
 //= require jquery-ui.min.js
+//= require common.js
 
 $(document).on('mouseenter','.reminder', function() {
 	$(this).find('div:first').fadeTo('fast', 1);
@@ -21,9 +22,7 @@ $(document).on('click', '#fade', function() {
 	$(this).parent().slideUp("fast");
 });
 
-
-$(document).ready(function() {
-	$('input[title!=""]').hint();
-	$(".reminder").find('div:first').fadeTo(0,0.5);
-});
+$(document).on('click', '#phi-explanation-link', function() {
+	$('#phi-explanation').fadeToggle('fast');
+})
 

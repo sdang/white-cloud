@@ -25,6 +25,10 @@ html, body {
     color: #000000;
     margin: 0;
 	padding: 0;
+	
+	a, a:hover, a:visited {
+		color: blue;
+	}
 }
 
 #wrap {
@@ -255,6 +259,10 @@ html, body {
 		top: 4px;
 		right: 4px;
 	}
+}
+
+#phi-explanation {
+	display: none;
 }
 
 #contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
