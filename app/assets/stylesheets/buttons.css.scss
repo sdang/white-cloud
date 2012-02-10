@@ -1,0 +1,21 @@
+.submit {
+	color: black;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+#create-reminder-button {
+	background-image: url("/assets/create-reminder-button-small.png");
+	background-repeat: no-repeat;
+	width: 154px;
+	height: 24px;
+}
+
+#unlock-phi-button {
+	background-image: url("/assets/unlock-phi-button.png");
+	background-repeat: no-repeat;
+	width: 108px;
+	height: 29px;
+	padding-left: 10px;
+}

@@ -27,8 +27,6 @@ body {
 
 #login-window {
 	
-	
-	
 	@include shadow;
 	background-color: white;
 	border: 1px solid $border-color;
@@ -49,6 +47,9 @@ body {
 	input {
 		font-size: 18px;
 		margin-bottom: 15px;
+	}
+	
+	#text-field-input {
 		width: 100%;
 	}
 }

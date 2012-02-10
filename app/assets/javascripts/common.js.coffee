@@ -1,3 +1,4 @@
+
 $ ->
 	$('input[title!=""]').hint();
 	$(".reminder").find('div:first').fadeTo(0,0.5);
@@ -5,3 +6,7 @@ $ ->
 		window.location = "/"
 	$(".navigation-tab").click -> 
 		window.location = $(this).find("a:first")[0].href
+	$(".submit").mousedown -> 
+		form = $(this).parents('form:first')
+		form.submit()
+		$(this).fadeTo(0.3,0.5)
