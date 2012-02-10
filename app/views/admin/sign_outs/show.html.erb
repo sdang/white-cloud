@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @admin_sign_out.user_id %>
+</p>
+
+<p>
+  <b>Resident user:</b>
+  <%= @admin_sign_out.resident_user_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @admin_sign_out.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_sign_out_path(@admin_sign_out) %> |
+<%= link_to 'Back', admin_sign_outs_path %>

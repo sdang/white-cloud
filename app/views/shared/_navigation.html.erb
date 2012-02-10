@@ -2,7 +2,8 @@
 	<li id="<%= 'selected' if controller.class == DashboardController %>"><%= link_to "Dashboard", :controller => "/dashboard" %></li>
 	<li id="<%= 'selected' if controller.class == RemindersController %>"><%= link_to "Reminders", :controller => "/reminders" %></li>
 	<li id="<%= 'selected' if controller.class == DcSummariesController %>"><%= link_to "D/C Summaries", :controller => "/dc_summaries" %></li>
-	<li><%= link_to "Patient Sign-Out", :controller => "/reminders" %></li>
+	<li id="<%= 'selected' if controller.class == SignOutController %>"><%= link_to "Patient Sign-Out", :controller => "/sign_out" %></li>
+	
 	<% if current_user.admin? %>
 		<li id="<%= 'selected' if controller.class == Admin::DashboardController %>"><%= link_to "Admin", :controller => "/admin/dashboard" %></li>
 	<% end %>
