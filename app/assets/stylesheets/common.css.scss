@@ -88,7 +88,7 @@ html, body {
 		list-style: none;
 	}
 	
-	#selected {
+	#selected, #selected:hover {
 		background: white;
 		padding: 8px 0 10px 0;
 		background: {
@@ -110,7 +110,7 @@ html, body {
 			image: url('/assets/unselected-tab-bg.gif');
 			repeat: repeat-x;
 		}
-		
+		cursor: pointer;
 		&:hover {background: #444 }
 		line-height: 30px;
 		a {
