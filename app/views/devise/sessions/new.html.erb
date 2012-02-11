@@ -5,7 +5,7 @@
 	<%= f.email_field :email, :title => "name@domain.com", :autocomplete => "off", :id => "text-field-input" %><br/>
 	<%= f.label :password, "Password" %><br/>
 	<%= f.password_field :password, :title => "**********", :id => "text-field-input" %><br/>
-	<div id="login-button" class="submit">Login</div>
+	<%= f.submit "Login", :class => "button white max_width medium" -%>
 <% end %>
 <br/>
 <%= render :partial => "devise/shared/links" %>
