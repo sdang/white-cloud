@@ -8,14 +8,21 @@
 //= require jquery_ujs
 //= require jquery.hint.js
 //= require jquery-ui.min.js
+//= require common.js
 
 $(document).on('mouseenter','.reminder', function() {
-    $(this).find('div:first').show()
-});
-$(document).on('mouseleave','.reminder', function() {
-    $(this).find('div:first').hide()
+	$(this).find('div:first').fadeTo('fast', 1);
 });
 
-$(document).ready(function() {
-	$('input[title!=""]').hint();
+$(document).on('mouseleave','.reminder', function() {
+	$(this).find('div:first').fadeTo('fast',0.5);
 });
+
+$(document).on('click', '#fade', function() {
+	$(this).parent().slideUp("fast");
+});
+
+$(document).on('click', '#phi-explanation-link', function() {
+	$('#phi-explanation').fadeToggle('fast');
+})
+

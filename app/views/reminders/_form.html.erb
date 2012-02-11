@@ -21,7 +21,9 @@
 		<td><%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name)%>
 	<tr>
 		<td>&nbsp;</td>
-		<td><%= f.submit %></td>
+		<td>
+			<%= f.submit "Create Reminder" %>
+		</td>
 	</tr>
 </table>
 <% end %>

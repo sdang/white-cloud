@@ -9,10 +9,25 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><%= submit_tag "Unlock PHI", :diable_with => "Please Wait ..." -%></td>
+			<td><%= submit_tag "Unlock PHI" %>
+			<%= link_to "Why do I have to do this?", "#", :id => "phi-explanation-link" -%></td>
 		</tr>
 	</table>
-
+	<div id="phi-explanation">
+		<div id="help-text">
+			<div id="fade">hide</div>
+			<div id="help-content">
+				<h2>Group Passwords Secure Health Information</h2>
+				OV Tools contains a significant amount of protected health information (PHI). In order to maximally
+				protect PHI, it is encrypted on multiple levels using the group password as a key. Only users
+				with a login and the group password are able to view PHI.<br/>
+				<br/>
+				In order to obtain the group password, please contact the department of medicine. Without the
+				group password you will be able to create d/c summaries and signouts, however you will not be
+				able to retrieve this information.
+			</div>
+		</div>	
+	</div>
 <% end %>
 </div>
 <% end %>

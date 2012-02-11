@@ -25,6 +25,10 @@ html, body {
     color: #000000;
     margin: 0;
 	padding: 0;
+	
+	a, a:hover, a:visited {
+		color: blue;
+	}
 }
 
 #wrap {
@@ -84,7 +88,7 @@ html, body {
 		list-style: none;
 	}
 	
-	#selected {
+	#selected, #selected:hover {
 		background: white;
 		padding: 8px 0 10px 0;
 		background: {
@@ -106,7 +110,7 @@ html, body {
 			image: url('/assets/unselected-tab-bg.gif');
 			repeat: repeat-x;
 		}
-		
+		cursor: pointer;
 		&:hover {background: #444 }
 		line-height: 30px;
 		a {
@@ -155,8 +159,8 @@ html, body {
 	font-family: arial;
 	
 	input {
-		border: 1px solid $border-color;
-		height: 18px;
+		// border: 1px solid $border-color;
+		// height: 18px;
 	}
 	
 	h1 { 
@@ -248,11 +252,28 @@ html, body {
 	text-align: justify;
 }
 
+#fade {
+	float: right;
+	color: $border-color;
+	margin: {
+		top: 4px;
+		right: 4px;
+	}
+}
+
+#phi-explanation {
+	display: none;
+}
+
+#custom-button {
+	display:inline-block
+}
+
 #contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
 // .auto-hint { color: #AAAAAA; }
 
 @import "alert_notice";
-
+@import "buttons";
 
 // fix IE 6 footer bug
 * html #footer {
