@@ -20,8 +20,10 @@
 		<td width="60"><%= f.label :List %>:</td>
 		<td><%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name)%>
 	<tr>
-		<td colspan="2">
-		<div id="create-reminder-button" class="submit">Create Reminder</div></td>
+		<td>&nbsp;</td>
+		<td>
+			<%= f.submit "Create Reminder" %>
+		</td>
 	</tr>
 </table>
 <% end %>

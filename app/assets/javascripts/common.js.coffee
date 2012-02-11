@@ -10,3 +10,7 @@ $ ->
 		form = $(this).parents('form:first')
 		form.submit()
 		$(this).fadeTo(0.3,0.5)
+	$(".submit").mouseup -> 
+		$(this).fadeTo(0.3,1)
+	$("input").keydown ->
+		$(this).parents('form:first').submit() if event.keyCode == 13
