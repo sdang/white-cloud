@@ -9,12 +9,15 @@ OliveViewTools::Application.routes.draw do
   match 'sign_out(/:action)' => 'sign_out'
   
   devise_for :users
-  root :to => 'dashboard#index'
   
   # admin area
   namespace :admin do |admin|
       resources :dashboard
       resource :sign_outs
   end
+  
+  # twilio receive sms
+  match 'sms' => 'sms#index'
 
+  root :to => 'dashboard#index'
 end
