@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   def reminder_list
-    self.reminders.find(:all, :order => "remind_time DESC")
+    self.reminders.find(:all, :order => "remind_time ASC")
   end
   
   def dc_summaries_list
