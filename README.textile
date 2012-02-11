@@ -2,11 +2,11 @@ h1. olive-view-tools
 
 A suite of tools designed for Olive View-UCLA residents with a goal of improving efficiency, and eliminating the need for repetition of patient information. Included in the suite are:
 
-*Reminders: Allows residents and attendings to schedule reminders for checking on studies for patients who have been recently discharged or seen in clinic. Reminders are capable of being delivered to email and/or WCTP compliant pagers.
+* Reminders: Allows residents and attendings to schedule reminders for checking on studies for patients who have been recently discharged or seen in clinic. Reminders are capable of being delivered to email and/or WCTP compliant pagers.
 
-*Discharge Summaries: Creates a central repository for patient discharge summaries that can be worked on over time. From data collected, the suite is capable of generating prescriptions, referrals, and patient instruction sheets.
+* Discharge Summaries: Creates a central repository for patient discharge summaries that can be worked on over time. From data collected, the suite is capable of generating prescriptions, referrals, and patient instruction sheets.
 
-*Sign-Out: An easy to update patient information system, designed to assist in patient hand-offs.
+* Sign-Out: An easy to update patient information system, designed to assist in patient hand-offs.
 
 h2. Installation
 
