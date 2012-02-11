@@ -1,0 +1,108 @@
+$accent-color: navy;
+$border-color: #777;
+$highlight-color: #ffff99;
+$application-width: 300px;
+
+@mixin shadow { 
+	-moz-box-shadow: 0 0 30px 5px #222;
+	-webkit-box-shadow: 0 0 30px 5px #222;
+}
+
+input.blur {
+	color: #999;
+}
+
+body {
+	background: {
+		image: url('/assets/bg.gif');
+		color: #6b6b6b;
+		repeat: repeat-x;
+	}
+    font-family: arial;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0;
+	padding: 0;
+}
+
+#login-window {
+	
+	@include shadow;
+	background-color: white;
+	border: 1px solid $border-color;
+	width: $application-width;
+	padding: 30px;
+
+	margin: {
+		left: auto;
+		right: auto;
+		top: 100px;
+	}
+	
+	label {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	
+	input {
+		font-size: 18px;
+		margin-bottom: 15px;
+	}
+	
+	#text-field-input {
+		width: 100%;
+	}
+}
+
+#alert {
+	border: 1px solid red;
+	background-color: pink;
+	padding: 5px;
+	color: red;
+	width: $application-width * 0.8;
+	margin: {
+		left: auto;
+		right: auto;
+		bottom: 15px;
+	}
+	
+	h2 {
+		font-size: 15px;
+	}
+}
+
+#logo {
+	width: 150px;
+	margin: {
+		left: auto;
+		right: auto;
+		bottom: 30px;
+	}
+}
+
+#links {
+//	border-top: 1px solid $border-color;
+	padding-top: 10px;
+	color: gray;
+	font-size: 14px;
+	text-align: center;
+	a, a:visited, a:hover {
+		color: $accent-color;
+	}
+}
+
+#footer {
+	width: $application-width;
+	font-size: 10px;
+	margin: {
+		top: 5px;
+		left: auto;
+		right: auto;
+	}
+	color: #222;
+	text-align: center;
+}
+
+.field_with_errors { display: inline;}
+
+@import "buttons"

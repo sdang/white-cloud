@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>olive-view-tools</title>
+  <%= stylesheet_link_tag    "devise" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div id="login-window" class="vcenter">
+	<div id="logo">
+		<%= image_tag "Olive-View-Logo-Login.gif" %>
+	</div>
+	<% if flash[:notice]%>
+		<div id="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<% if flash[:alert] %>
+		<div id="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<%= yield %>
+	<div id="footer">
+		olive-view-tools : build <%= APP_VERSION -%>
+	</div>
+</div>
+
+
+</body>
+</html>

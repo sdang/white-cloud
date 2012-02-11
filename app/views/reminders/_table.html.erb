@@ -1,0 +1,9 @@
+<div id="reminder-table">
+<% table.each do |reminder| %>
+	<%= render reminder %>
+<% end %>
+
+<% if table.size == 0 %>
+	<%= render :partial => "/reminders/reminder_help" -%>
+<% end%>
+</div>

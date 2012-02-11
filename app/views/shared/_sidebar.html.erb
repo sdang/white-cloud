@@ -1,0 +1,36 @@
+<div style="margin: 20px">
+	<h1>Patient Sign-Out</h1>
+	<div>
+		<table>
+			<tr>
+				<td><%= image_tag("pdficon_large.png") %></td>
+				<td width="8">&nbsp;</td>
+				<td>Download / print a copy of your sign-out</td>
+			</tr>
+		</table>
+	</div>
+	<br/>
+	<h1>Recent Activity</h1>
+	<div>
+		Logged in<br/>
+		Created d/c summary for Smith<br/>
+		Created lab check for Davis<br/>
+		Edited d/c summary for Bella<br/>
+	</div>
+	<br/>
+	<h1>Create Reminder</h1>
+	<div>
+		<%= render :partial => '/reminders/form' %>
+	</div>
+	<br/>
+	<h1>Search for d/c Summary</h1>
+	<form action="#">
+	<input type="textfield" title="Enter MRN or Name"><input type="submit" value="Search">
+	</form>
+	<br/>
+	<h1>Links</h1>
+	<ul id="links">
+		<li><a href="#">Clinical Workstation</a></li>
+		<li><a href="#">PADI</a></li>
+	</ul>
+</div>

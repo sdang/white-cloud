@@ -1,0 +1,44 @@
+h1. olive-view-tools
+
+A suite of tools designed for Olive View-UCLA residents with a goal of improving efficiency, and eliminating the need for repetition of patient information. Included in the suite are:
+
+* Reminders: Allows residents and attendings to schedule reminders for checking on studies for patients who have been recently discharged or seen in clinic. Reminders are capable of being delivered to email and/or WCTP compliant pagers.
+
+* Discharge Summaries: Creates a central repository for patient discharge summaries that can be worked on over time. From data collected, the suite is capable of generating prescriptions, referrals, and patient instruction sheets.
+
+* Sign-Out: An easy to update patient information system, designed to assist in patient hand-offs.
+
+h2. Installation
+
+h3. Encrypting Sensitive Patient Information
+
+Olive-view-tools by nature holds a significant amount of protected health information (PHI). To maintain compliance with HIPAA, all fields containing PHI are encrypted using the Strongbox gem. For strongbox to work effectively a key must be generated:
+
+bc. openssl genrsa -des3 -out config/private.pem 2048
+Generating RSA private key, 2048 bit long modulus
+......+++
+.+++
+e is 65537 (0x10001)
+Enter pass phrase for config/private.pem:
+Verifying - Enter pass phrase for config/private.pem:
+
+Be sure to enter a strong pass phrase, this phrase will be used by residents to decrypt PHI. After a private key is generated, extract the public key:
+
+bc. openssl rsa -in config/private.pem -out config/public.pem -outform PEM -pubout
+Enter pass phrase for config/private.pem:
+writing RSA key
+
+Then combine the public and private keys and store the pair in config/keypair.pem:
+
+bc. cat config/private.pem  config/public.pem >> config/keypair.pem
+
+h3. Setup the database
+
+This suite has been tested against Postgres, but should work with any standard sql based server. To create the database run:
+
+bc. rake db:create
+rake db:migrate
+
+h2. Authors
+
+Suite written by Sabin Dang, MD (sabin@sabindang.com)

@@ -1,0 +1,30 @@
+<%= form_for (@reminder || Reminder.new), :remote => true, :id => "new_reminder" do |f| %>
+<table>
+	<tr>
+		<td width="60"><%= f.label :Patient_ID %>:</td>
+		<td><%= f.text_field :mrn, :title => "MRN", :style => "width: 150px" %></td>
+	</tr>
+	<tr>
+		<td width="60"><%= f.label :Reminder %>:</td>
+		<td><%= f.text_field :reminder, :title => "e.g. Follow up blood Cx", :style => "width: 150px" %></td>
+	</tr>
+	<tr>
+		<td width="60"><%= f.label :Phone %>:</td>
+		<td><%= f.text_field :contact_number, :title => "e.g. (818) 555-1212", :style => "width: 150px" %></td>
+	</tr>
+	<tr>
+		<td width="60"><%= f.label :When%>:</td>
+		<td><%= f.text_field :time_value, :style => "width: 50px"%> <%= select(:reminder, :time_units, [['Hours', 1], ['Days', 24], ['Weeks', 168]]) %></td>
+	</tr>
+	<tr>
+		<td width="60"><%= f.label :List %>:</td>
+		<td><%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name)%>
+	<tr>
+		<td>&nbsp;</td>
+		<td>
+			<%= f.submit "Create Reminder" %>
+		</td>
+	</tr>
+</table>
+<% end %>
+	

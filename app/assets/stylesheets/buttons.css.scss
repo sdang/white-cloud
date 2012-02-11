@@ -1,0 +1,28 @@
+.submit {
+	color: black;
+	text-align: center;
+	vertical-align: middle;
+	display: table-cell;
+	background-repeat: no-repeat;
+}
+
+#create-reminder-button {
+	background-image: url("/assets/create-reminder-button-small.png");
+	width: 154px;
+	height: 24px;
+}
+
+#unlock-phi-button {
+	background-image: url("/assets/unlock-phi-button.png");
+	width: 108px;
+	height: 29px;
+	padding-left: 10px;
+	float: left;
+	padding-top: 6px;
+}
+
+#login-button {
+	width: 296px;
+	height: 28px;
+	background-image: url("/assets/login-button.png");
+}
