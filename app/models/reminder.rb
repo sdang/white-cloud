@@ -52,7 +52,7 @@ class Reminder < ActiveRecord::Base
     msg = msg.gsub(time_match, '')
     
     # create the reminder
-    reminder = Reminder.new(:mrn => mrn, :reminder => msg, :user_id => 1, :time_value => time_val, :time_units => time_unit_multiplier, :user_id => 1)
+    reminder = Reminder.new(:mrn => mrn, :reminder => msg, :user_id => 1, :time_value => time_val, :time_units => time_unit_multiplier, :user_id => user_id)
   
     # return error if we can't save the reminder
     if reminder.save
