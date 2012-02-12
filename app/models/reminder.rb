@@ -1,13 +1,18 @@
 class Reminder < ActiveRecord::Base
   belongs_to :user
+  before_create :set_last_notification
 
   attr_accessor :time_value, :time_units
   before_validation :convert_relative_to_absolute_time
   
-  validates_presence_of :reminder, :mrn, :remind_time
+  validates_presence_of :reminder, :mrn, :remind_time, :user_id
   validates_numericality_of :mrn
   
   def convert_relative_to_absolute_time
+    # don't do anything if a remind time has already been set
+    return false if self.remind_time
+    
+    # make sure we have valid remind time data
     if self.time_value.to_i > 0 and self.time_units.to_i > 0
       self.remind_time = Time.now + (self.time_value.to_i*self.time_units.to_i).hour
     else
@@ -58,5 +63,24 @@ class Reminder < ActiveRecord::Base
     
   end
   
+  def send_reminder
+    puts "#{self.remind_time}"
+  end
+  
+  def self.send_reminders
+    puts "Sending reminders..."
+    # find all reminders, not completed, who are due for a reminder, and who haven't been notified in 24 hours
+    reminders = Reminder.where("completed = ? AND remind_time < ? AND last_notification < ?", false, Time.now, Time.now-24.hours)
+    
+    reminders.each do |r|
+      r.send_reminder
+    end
+    
+  end
+  
+  private
+  def set_last_notification
+    self.last_notification = Time.now - 1.year
+  end
   
 end

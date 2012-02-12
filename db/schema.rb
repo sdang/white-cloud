@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210021820) do
+ActiveRecord::Schema.define(:version => 20120212011100) do
 
   create_table "admin_sign_outs", :force => true do |t|
     t.integer  "user_id"
@@ -88,8 +88,9 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.datetime "remind_time"
     t.integer  "reminder_list_id"
     t.integer  "user_id"
-    t.boolean  "completed"
+    t.boolean  "completed",         :default => false
     t.string   "contact_number"
+    t.datetime "last_notification"
   end
 
   create_table "users", :force => true do |t|
@@ -110,6 +111,8 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.string   "last_name"
     t.boolean  "authorized",                            :default => false
     t.boolean  "admin",                                 :default => false
+    t.integer  "sms_number"
+    t.string   "preferences"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
