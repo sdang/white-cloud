@@ -33,18 +33,24 @@ class User < ActiveRecord::Base
   end
   
   def pager_number=(num)
-    write_attribute(:pager_number, num.gsub(/[^0-9]/,''))
+    write_attribute(:pager_number, User.phone_str_to_num(num))
   end
   
   def sms_number=(num)
-    write_attribute(:sms_number, num.gsub(/[^0-9]/,''))
+    write_attribute(:sms_number, User.phone_str_to_num(num))
   end
   
   def self.find_by_pager_number(num)
-    User.where("pager_number = ?", num.gsub(/[^0-9]/,''))
+    User.where("pager_number = ?", phone_str_to_num(num))
   end
   
   def self.find_by_sms_number(num)
-    User.where("sms_number = ?", num.gsub(/[^0-9]/,''))
+    User.where("sms_number = ?", phone_str_to_num(num))
+  end
+
+  private
+  def self.phone_str_to_num(str)
+    str = str.gsub(/[^0-9]/,'')
+    return str.match(/[2-9][0-9]{9}/).to_s
   end
 end
