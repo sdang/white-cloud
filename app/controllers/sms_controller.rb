@@ -22,7 +22,7 @@ class SmsController < ApplicationController
         txt = "I couldn't understand your message. Please include a 7 digit MRN and tell me when to remind you (eg: in 5 days)"
       end
     else
-      txt = "I'm sorry, I couldn't recognize you by your phone number. Please update your profile to include this cell phone number in order to use this feature"
+      txt = "I'm sorry, I couldn't recognize you by your phone number. Please update your profile to include this number to use this feature"
     end
     
     # send the txt message using twilio

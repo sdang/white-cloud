@@ -41,11 +41,11 @@ class User < ActiveRecord::Base
   end
   
   def self.find_by_pager_number(num)
-    User.where("pager_number = ?", phone_str_to_num(num))
+    User.where("pager_number = ?", phone_str_to_num(num)).limit(1).first
   end
   
   def self.find_by_sms_number(num)
-    User.where("sms_number = ?", phone_str_to_num(num))
+    User.where("sms_number = ?", phone_str_to_num(num)).limit(1).first
   end
 
   private
