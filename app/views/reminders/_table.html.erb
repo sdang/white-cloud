@@ -1,9 +1,13 @@
 <div id="reminder-table">
-<% table.each do |reminder| %>
-	<%= render reminder %>
-<% end %>
+<% unless session[:pager_number] %>
+	<%= render :partial => "/shared/get_pager_number"%>
+<% else %>
+	<% table.each do |reminder| %>
+		<%= render reminder %>
+	<% end %>
 
-<% if table.size == 0 %>
-	<%= render :partial => "/reminders/reminder_help" -%>
-<% end%>
+	<% if table.size == 0 %>
+		<%= render :partial => "/reminders/reminder_help" -%>
+	<% end%>
+<% end %>
 </div>
