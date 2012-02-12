@@ -1,9 +1,18 @@
 class Reminder < ActiveRecord::Base
+  belongs_to :user
+
   attr_accessor :time_value, :time_units
-  before_save :convert_relative_to_absolute_time
+  before_validation :convert_relative_to_absolute_time
+  
+  validates_presence_of :reminder, :mrn, :remind_time
+  validates_numericality_of :mrn
   
   def convert_relative_to_absolute_time
-    self.remind_time = Time.now + (self.time_value.to_i*self.time_units.to_i).hour
+    if self.time_value.to_i > 0 and self.time_units.to_i > 0
+      self.remind_time = Time.now + (self.time_value.to_i*self.time_units.to_i).hour
+    else
+      self.remind_time = nil
+    end
   end
   
   def self.create_from_string(str, user_id)

@@ -1,10 +1,10 @@
-#alert {
+#alert, .alert {
 	border: 1px solid red;
 	background-color: pink;
 	padding: 5px;
 	color: red;
 	text-align: center;
-	width: ($application-width - $sidebar-width) * 0.8;
+	width: 80%;
 	margin: {
 		left: auto;
 		right: auto;
@@ -16,7 +16,7 @@
 	}
 }
 
-#notice {
+#notice, .notice {
 	border: 1px solid green;
 	background-color: lightgreen;
 	padding: 5px;

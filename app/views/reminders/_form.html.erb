@@ -1,3 +1,4 @@
+<div id="reminder-form-error" class="hidden alert"></div>
 <%= form_for (@reminder || Reminder.new), :remote => true, :id => "new_reminder" do |f| %>
 <table>
 	<tr>
