@@ -32,20 +32,19 @@ class User < ActiveRecord::Base
     return self.admin rescue false
   end
   
-  def pager_number
-    if read_attribute(:pager_number)
-      return ("1" + read_attribute(:pager_number).gsub(/[^0-9]/,'')).to_i
-    else
-      return nil
-    end
+  def pager_number=(num)
+    write_attribute(:pager_number, num.gsub(/[^0-9]/,''))
   end
   
-  def sms_number
-    if read_attribute(:sms_number)
-      return ("1" + read_attribute(:sms_number).gsub(/[^0-9]/,'')).to_i
-    else
-      return nil
-    end
+  def sms_number=(num)
+    write_attribute(:sms_number, num.gsub(/[^0-9]/,''))
   end
   
+  def self.find_by_pager_number(num)
+    User.where("pager_number = ?", num.gsub(/[^0-9]/,''))
+  end
+  
+  def self.find_by_sms_number(num)
+    User.where("sms_number = ?", num.gsub(/[^0-9]/,''))
+  end
 end

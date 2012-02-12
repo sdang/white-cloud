@@ -15,7 +15,7 @@ class FixReminderTable < ActiveRecord::Migration
     end
     
     # users need a way to be notified
-    add_column :users, :sms_number, :string
+    add_column :users, :sms_number, :text
     add_column :users, :preferences, :string
     
   end
@@ -24,6 +24,6 @@ class FixReminderTable < ActiveRecord::Migration
     remove_column :reminders, :last_notification
     remove_column :users, :sms_number
     remove_column :users, :preferences
-    
   end
+  
 end
