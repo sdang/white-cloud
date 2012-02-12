@@ -1,5 +1,5 @@
 class SmsController < ApplicationController
-  
+    
   def index
     message_body = params["Body"] || ""
     from_number = params["From"] || ""
