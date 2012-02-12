@@ -4,15 +4,14 @@
   <% end %>
 
 	<%= f.label :email, "Email Address" %><br />
-	<%= f.email_field :email, :title => "name@domain.com" %>
+	<%= f.email_field :email, :id => "text-field-input", :title => "name@domain.com" %>
 
   	<%= f.label :password %><br />
-	<%= f.password_field :password, :title => "**********" %>
+	<%= f.password_field :password, :id => "text-field-input", :title => "**********" %>
 
 	<%= f.label :password_confirmation %><br />
-  	<%= f.password_field :password_confirmation, :title => "**********", :class => "auto-hint" %>
-
-  <div><%= f.submit "Sign up", :disable_with => "Please Wait ..." %></div>
+  	<%= f.password_field :password_confirmation, :id => "text-field-input", :title => "**********", :class => "auto-hint" %>
+  <div><%= f.submit "Sign up", :class => "button white max_width medium", :disable_with => "Please Wait ..." %></div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

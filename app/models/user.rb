@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :reminders
   has_many :dc_summaries, :foreign_key => :created_user_id
-  
+      
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

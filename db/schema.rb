@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20120212011100) do
     t.string   "last_name"
     t.boolean  "authorized",                            :default => false
     t.boolean  "admin",                                 :default => false
-    t.integer  "sms_number"
+    t.string   "sms_number"
     t.string   "preferences"
   end
 
