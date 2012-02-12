@@ -12,21 +12,23 @@ class ApplicationController < ActionController::Base
   
   private
 
-  # check if user is both authenticated and authorized
-  def authenticate_user!
-    if user_signed_in?
-      unless current_user.authorized?
-        reset_session
-        flash[:alert] = "You have not been authorized to use this site, please contact the department of medicine for approval"
-        redirect_to(:action=>"new", :controller=>"/devise/sessions")
-      end
-    else
-      redirect_to(:action=>"new", :controller=>"/devise/sessions") unless user_signed_in?
+  # check if user is authorized
+  def authorized_user!
+    # cache in memory so we don't keep hitting the db
+    session[:authorized] = current_user.authorized? if session[:authorized] == nil
+      
+    unless session[:authorized]
+      reset_session
+      flash[:alert] = "You have not been authorized to use this site, please contact the department of medicine for approval"
+      redirect_to(:action=>"new", :controller=>"/devise/sessions")
     end
   end
 
   def authenticate_admin!
-    unless current_user.admin?
+    # cache in memory so we don't keep hitting the db
+    session[:admin] = current_user.admin? if session[:admin] == nil
+    
+    unless session[:admin]
       flash[:alert] = "You are not authorized in this area"
       redirect_to session[:last_uri]
     end
