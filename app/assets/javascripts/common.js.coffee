@@ -6,3 +6,5 @@ $ ->
 		window.location = "/"
 	$(".navigation-tab").click -> 
 		window.location = $(this).find("a:first")[0].href
+	$('#hide-show-change-password').click =>
+		$('#change-password').slideToggle('fast')

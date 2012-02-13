@@ -3,7 +3,7 @@
 	background-color: pink;
 	padding: 5px;
 	color: red;
-	text-align: center;
+	text-align: left;
 	width: 80%;
 	margin: {
 		left: auto;
@@ -12,7 +12,11 @@
 	}
 	
 	h2 {
-		font-size: 15px;
+		font-size: 14px;
+	}
+	
+	ul {
+		font-size: 12px;
 	}
 }
 
@@ -21,7 +25,7 @@
 	background-color: lightgreen;
 	padding: 5px;
 	color: green;
-	text-align: center;
+	text-align: left;
 	width: ($application-width - $sidebar-width) * 0.8;
 	margin: {
 		left: auto;

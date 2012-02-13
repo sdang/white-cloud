@@ -1,8 +1,8 @@
 #edit-user {
-	font-size: 18px;	
+	font-size: 13px;	
 	width: 340px;
 	
-	input {
+	input, select {
 		margin-bottom: 15px;
 		font-size: 18px;
 	}
@@ -22,7 +22,7 @@
 		margin-right: 3px;
 	}
 	
-	#text-field-input {
+	input[type="text"], input[type="email"], input[type="password"], select {
 		width: 100%;
 	}
 	
