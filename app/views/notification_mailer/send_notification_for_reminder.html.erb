@@ -1,1 +1,29 @@
-<%= @reminder.user.email rescue "" %>
+<table border="0">
+	<tr>
+		<td><b>MRN:</b></td>
+		<td><%= @reminder.mrn %></td>
+	</tr>
+	<tr>
+		<td><b>Reminder:</b></td>
+		<td><%= @reminder.reminder %></td>
+	</tr>
+	<tr>
+		<td><b>Due:</b></td>
+		<td><%= @reminder.remind_time.strftime('%m-%d-%Y @ %I:%M%P') %></td>
+	</tr>
+	<% if @reminder.contact_number %>
+	<tr>
+		<td><b>Contact Info:</b></td>
+		<td><i>Protected Health Information, Please Visit Site to Retrieve</i></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td><b>List:</b></td>
+		<td><%= @reminder.reminder_list.name rescue "Not on a list" %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><%= link_to "View Your Reminders", url_for(:controller => "reminders", :action => "index", :only_path => false) %></td>
+	</tr>
+</table>
+
