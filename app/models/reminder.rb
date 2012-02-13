@@ -64,7 +64,12 @@ class Reminder < ActiveRecord::Base
   end
   
   def send_reminder
-    puts "#{self.remind_time}"
+    puts "id: #{self.id} #{self.remind_time} #{ENV['DEFAULT_FROM_EMAIL']}"
+    
+    # TODO: Identify user reminder method, for now just send email
+    
+    NotificationMailer.send_notification_for_reminder(self).deliver
+    self.update_attribute(:last_notification, Time.now)
   end
   
   def self.send_reminders
@@ -73,7 +78,11 @@ class Reminder < ActiveRecord::Base
     reminders = Reminder.where("completed = ? AND remind_time < ? AND last_notification < ?", false, Time.now, Time.now-24.hours)
     
     reminders.each do |r|
-      r.send_reminder
+      if r.user
+        r.send_reminder 
+      else
+        logger.info "Unable to send email reminder for #{r.id}"
+      end
     end
     
   end

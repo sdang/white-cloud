@@ -6,5 +6,6 @@ ENV['SEND_GRID_USER'] ||= "UserName"
 ENV['SEND_GRID_PW'] ||= "Password"
 ENV['SEND_GRID_DOMAIN'] ||= "domain.com"
 ENV['DEVISE_FROM_EMAIL'] ||= "noreply@domain.com"
+ENV['DEFAULT_FROM_EMAIL'] ||= "noreply@domain.com"
 
 ENV['DEFAULT_HOST'] ||= "olive-view-tools.dev"
