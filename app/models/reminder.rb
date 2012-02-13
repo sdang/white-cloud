@@ -65,21 +65,30 @@ class Reminder < ActiveRecord::Base
   end
   
   def send_reminder
-    puts "id: #{self.id} #{self.remind_time} #{ENV['DEFAULT_FROM_EMAIL']}"
+    log_str = "sending reminder #{self.id} to #{self.user.email}"
     
-    # TODO: Send Page
+    # send the page
+    log_str +=  ", page to #{self.user.pager_number}"
+    reminder_string_short = "Reminder: #{self.reminder}, pt: #{self.mrn} sent by #{ENV['APPLICATION_NAME']}"
+    Pager.send_page(reminder_string_short, self.user.pager_number)
     
+    # send the text message
     if self.user.remind_by_sms
+      log_str +=  ", txt to #{self.user.sms_number}"
       @twilio_client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_ACCOUNT_TOKEN']
       @twilio_client.account.sms.messages.create(
         :from => "+1#{ENV['TWILIO_PHONE_NUMBER']}",
         :to => self.user.sms_number,
-        :body => "Reminder: #{self.reminder}, pt: #{self.mrn} sent by #{ENV['APPLICATION_NAME']}"
-      )
+        :body => reminder_string_short)
     end
     
     # send the email reminder
-    NotificationMailer.send_notification_for_reminder(self).deliver if self.user.remind_by_email
+    if self.user.remind_by_email
+      NotificationMailer.send_notification_for_reminder(self).deliver
+      log_str +=  ", email to #{self.user.email}"
+    end
+    
+    logger.info log_str
     self.update_attribute(:last_notification, Time.now)
   end
   

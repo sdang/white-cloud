@@ -15,4 +15,14 @@ ENV['TWILIO_ACCOUNT_SID'] ||= "**************************"
 ENV['TWILIO_ACCOUNT_TOKEN'] ||= "************************"
 ENV['TWILIO_PHONE_NUMBER'] ||= "8185551212"
 
+# Paging Settings
+ENV['use_proxy'] ||= "yes" # comment out line if you do not require proxy
+ENV['proxy_url'] ||= "http://someproxy.com"
+ENV['proxy_port'] ||= "8080"
+ENV['proxy_username'] ||= "username"
+ENV['proxy_password'] ||= "password"
+ENV['WCTP_URL'] ||= 'http://wctp.amsmsg.net/wctp'
+ENV['WCTP_USERNAME'] ||= 'username'
+ENV['WCTP_PASSWORD'] ||= 'password'
+
 ENV['DEFAULT_HOST'] ||= "olive-view-tools.dev"
