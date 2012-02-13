@@ -66,9 +66,19 @@ class Reminder < ActiveRecord::Base
   def send_reminder
     puts "id: #{self.id} #{self.remind_time} #{ENV['DEFAULT_FROM_EMAIL']}"
     
-    # TODO: Identify user reminder method, for now just send email
+    # TODO: Send Page
     
-    NotificationMailer.send_notification_for_reminder(self).deliver
+    if self.user.remind_by_sms
+      @twilio_client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_ACCOUNT_TOKEN']
+      @twilio_client.account.sms.messages.create(
+        :from => "+1#{ENV['TWILIO_PHONE_NUMBER']}",
+        :to => self.user.sms_number,
+        :body => "Reminder: #{self.reminder}, pt: #{self.mrn} sent by ovtools"
+      )
+    end
+    
+    # send the email reminder
+    NotificationMailer.send_notification_for_reminder(self).deliver if self.user.remind_by_email
     self.update_attribute(:last_notification, Time.now)
   end
   

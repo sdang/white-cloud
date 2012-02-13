@@ -39,8 +39,8 @@
 	<div id="reminder-preferences">
 		<h3>Receive Reminders Via:</h3>
 		<%= check_box_tag(:remind_by_page, 1, true, :disabled => true) %> <%= label_tag :pager %><br/>
-		<%= f.check_box(:remind_by_email, {}, "1", "0") %> <%= label_tag :email %><br/>
-		<%= f.check_box(:remind_by_sms, {}, "1", "0") %> <%= label_tag :text_message %><br/>
+		<%= f.check_box(:remind_by_email, {}, "1", nil) %> <%= label_tag :email %><br/>
+		<%= f.check_box(:remind_by_sms, {}, "1", nil) %> <%= label_tag :text_message %><br/>
 	</div>
 	
 	<div id="change-password">

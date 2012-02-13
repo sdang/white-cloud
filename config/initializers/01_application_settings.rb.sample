@@ -8,4 +8,9 @@ ENV['SEND_GRID_DOMAIN'] ||= "domain.com"
 ENV['DEVISE_FROM_EMAIL'] ||= "noreply@domain.com"
 ENV['DEFAULT_FROM_EMAIL'] ||= "noreply@domain.com"
 
+# SMS Settings
+ENV['TWILIO_ACCOUNT_SID'] ||= "**************************"
+ENV['TWILIO_ACCOUNT_TOKEN'] ||= "************************"
+ENV['TWILIO_PHONE_NUMBER'] ||= "8185551212"
+
 ENV['DEFAULT_HOST'] ||= "olive-view-tools.dev"

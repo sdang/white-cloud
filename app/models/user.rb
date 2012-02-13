@@ -53,10 +53,12 @@ class User < ActiveRecord::Base
 
   # preferences quick functions
   def remind_by_email
+    return false if self.read_attribute("preferences")[:remind_by_email] == ""
     return self.read_attribute("preferences")[:remind_by_email] || false
   end
   
   def remind_by_sms
+    return false if self.read_attribute("preferences")[:remind_by_sms] == ""
     return self.read_attribute("preferences")[:remind_by_sms] || false
   end
   
@@ -82,6 +84,10 @@ class User < ActiveRecord::Base
     else
       raise "Tried to set a default reminder list to one that doesn't exist"
     end
+  end
+  
+  def default_reminder_list
+    return ReminderList.find_by_id(self.default_reminder_list_id)
   end
     
   private
