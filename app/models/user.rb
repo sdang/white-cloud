@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :reminders
   has_many :dc_summaries, :foreign_key => :created_user_id
+  before_create :set_blank_preferences
   
   validates_presence_of :first_name, :last_name
   
@@ -14,7 +15,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :pager_number, 
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :pager_number, :sms_number,
         :first_name, :last_name, :remind_by_sms, :remind_by_email
 
   serialize :preferences  
@@ -53,11 +54,13 @@ class User < ActiveRecord::Base
 
   # preferences quick functions
   def remind_by_email
+    set_blank_preferences
     return false if self.read_attribute("preferences")[:remind_by_email] == ""
     return self.read_attribute("preferences")[:remind_by_email] || false
   end
   
   def remind_by_sms
+    set_blank_preferences
     return false if self.read_attribute("preferences")[:remind_by_sms] == ""
     return self.read_attribute("preferences")[:remind_by_sms] || false
   end
@@ -94,5 +97,9 @@ class User < ActiveRecord::Base
   def self.phone_str_to_num(str)
     str = str.gsub(/[^0-9]/,'')
     return str.match(/[2-9][0-9]{9}/).to_s
+  end
+  
+  def set_blank_preferences
+    self.preferences = {} unless self.preferences
   end
 end
