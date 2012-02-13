@@ -1,5 +1,7 @@
 # Reasonable defaults for the application for local development
-# Designed to be overwritten by heroku
+# Designed to be overwritten by heroku's config env
+
+ENV['APPLICATION_NAME'] ||= "OVTools"
 
 # Email Settings
 ENV['SEND_GRID_USER'] ||= "UserName"

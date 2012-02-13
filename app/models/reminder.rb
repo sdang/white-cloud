@@ -1,5 +1,6 @@
 class Reminder < ActiveRecord::Base
   belongs_to :user
+  belongs_to :reminder_list
   before_create :set_last_notification
 
   attr_accessor :time_value, :time_units
@@ -73,7 +74,7 @@ class Reminder < ActiveRecord::Base
       @twilio_client.account.sms.messages.create(
         :from => "+1#{ENV['TWILIO_PHONE_NUMBER']}",
         :to => self.user.sms_number,
-        :body => "Reminder: #{self.reminder}, pt: #{self.mrn} sent by ovtools"
+        :body => "Reminder: #{self.reminder}, pt: #{self.mrn} sent by #{ENV['APPLICATION_NAME']}"
       )
     end
     
