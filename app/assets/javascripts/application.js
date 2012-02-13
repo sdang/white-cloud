@@ -8,6 +8,7 @@
 //= require jquery_ujs
 //= require jquery.hint.js
 //= require jquery-ui.min.js
+//= require jquery.idTabs.min.js
 //= require common.js
 
 $(document).on('mouseenter','.reminder', function() {
