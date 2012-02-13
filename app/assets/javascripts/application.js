@@ -11,11 +11,11 @@
 //= require common.js
 
 $(document).on('mouseenter','.reminder', function() {
-	$(this).find('div:first').fadeTo('fast', 1);
+	$(this).find('#links').fadeTo('fast', 1);
 });
 
 $(document).on('mouseleave','.reminder', function() {
-	$(this).find('div:first').fadeTo('fast',0.5);
+	$(this).find('#links').fadeTo('fast',0.5);
 });
 
 $(document).on('click', '#fade', function() {

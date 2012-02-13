@@ -25,6 +25,14 @@ class RemindersController < ApplicationController
     end
   end
   
+  def cancel_edit
+    @reminder = Reminder.find_by_id(params[:id])
+    respond_to do |format|
+      # format.html { redirect_to :controller => "/reminders", :action => "index" }
+      format.js
+    end
+  end
+  
   def edit
     @reminder = Reminder.find_by_id(params[:id])
     
