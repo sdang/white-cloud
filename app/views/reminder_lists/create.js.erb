@@ -1,0 +1,9 @@
+<% if @reminder_list.new_record? %>
+	$("#reminder-list-form-error").html("<%= escape_javascript(@reminder_list.errors.full_messages.join(', '))%>")
+	$("#reminder-list-form-error").effect("highlight", {}, 3000)
+<% else %>
+	$("#reminder-list-table").html("<%= escape_javascript(render :partial => '/reminder_lists/table', :object => ReminderList.find(:all)) %>");
+	$("#new_reminder_list")[0].reset();
+	$("#reminder-list-<%= @reminder_list.id %>").effect("highlight", {}, 3000);
+	$(".reminder").find('div:first').fadeTo(0,0.5);
+<% end %>

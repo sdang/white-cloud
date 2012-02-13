@@ -1,0 +1,13 @@
+<div id="page-navigation-tabs">
+	<div class="idTabs">
+		<%= link_to "Reminder Lists", "#reminder_list", :class => "button medium white" -%>
+		<%= link_to "Users", "#user_list", :class => "button medium white" -%>
+		<%= link_to "Site Settings", "#settings", :class => "button medium white" -%>
+		<%= link_to "Review Logs", "#review_logs", :class => "button medium white" -%>
+	</div>
+</div>
+<br/>
+<div id="reminder_list"><%= render :partial => "reminder_lists"%></div>
+<div id="user_list"><%= render :partial => "users"%></div>
+<div id="settings"><%= render :partial => "settings"%></div>
+<div id="review_logs"><%= render :partial => "logs"%></div>

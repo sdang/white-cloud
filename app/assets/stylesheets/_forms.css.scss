@@ -1,0 +1,61 @@
+.large-form {
+	font-size: 13px;	
+	width: 340px;
+	
+	label {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	
+	#change-password {
+		display: none;
+	}
+	
+	.required { 
+		color: red;
+		vertical-align: super;
+		margin-right: 3px;
+	}
+	
+	input[type="text"], input[type="email"], input[type="password"], select {
+		margin-bottom: 15px;
+		font-size: 18px;
+		width: 100%;
+	}
+	
+	.field_with_errors { display: inline;}
+	
+}
+
+.small-form {
+	font-size: 10px;	
+	width: 240px;
+	
+	label {
+		font-size: 12px;
+		line-height: 14px;
+	}
+	
+	#change-password {
+		display: none;
+	}
+	
+	.required { 
+		color: red;
+		vertical-align: super;
+		margin-right: 3px;
+	}
+	
+	input[type="text"], input[type="email"], input[type="password"], select {
+		margin-bottom: 10px;
+		font-size: 12px;
+		width: 100%;
+	}
+	
+	.field_with_errors { display: inline;}
+	
+}
+
+#add-form {
+	display: none;
+}

@@ -1,0 +1,7 @@
+<% unless @reminder_list.valid? %>
+	$("#reminder-list-form-error").html("<%= escape_javascript(@reminder_list.errors.full_messages.join(', '))%>")
+	$("#reminder-list-form-error").effect("highlight", {}, 3000)
+<% else %>
+	$("#reminder-list-<%= @reminder_list.id %>").html("<%= escape_javascript(render @reminder_list) %>");
+	$("#reminder-list-<%= @reminder_list.id %>").effect("highlight", {}, 3000);
+<% end %>
