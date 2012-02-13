@@ -3,5 +3,5 @@
 	<div style="font-size: 16px; margin-top: 3px; font-family: 'Arial Black'"><%= Time.now.strftime('%A %B %e, %Y') %></div>
 </div>
 <div id="login">
-	<span id="email-address"><%= current_user.email %></span> | <%= link_to('Edit Profile', edit_user_registration_path)%> | <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+	<span id="email-address"><%= current_user.email %></span> | <%= link_to('Logout', destroy_user_session_path, :class => "button red small", :method => :delete) %>
 </div>

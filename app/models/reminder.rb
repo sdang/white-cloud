@@ -1,9 +1,23 @@
 class Reminder < ActiveRecord::Base
+  belongs_to :user
+  before_create :set_last_notification
+
   attr_accessor :time_value, :time_units
-  before_save :convert_relative_to_absolute_time
+  before_validation :convert_relative_to_absolute_time
+  
+  validates_presence_of :reminder, :mrn, :remind_time, :user_id
+  validates_numericality_of :mrn
   
   def convert_relative_to_absolute_time
-    self.remind_time = Time.now + (self.time_value.to_i*self.time_units.to_i).hour
+    # don't do anything if a remind time has already been set
+    return true if self.remind_time
+    
+    # make sure we have valid remind time data
+    if self.time_value.to_i > 0 and self.time_units.to_i > 0
+      self.remind_time = Time.now + (self.time_value.to_i*self.time_units.to_i).hour
+    else
+      self.remind_time = nil
+    end
   end
   
   def self.create_from_string(str, user_id)
@@ -38,7 +52,7 @@ class Reminder < ActiveRecord::Base
     msg = msg.gsub(time_match, '')
     
     # create the reminder
-    reminder = Reminder.new(:mrn => mrn, :reminder => msg, :user_id => 1, :time_value => time_val, :time_units => time_unit_multiplier, :user_id => 1)
+    reminder = Reminder.new(:mrn => mrn, :reminder => msg, :user_id => 1, :time_value => time_val, :time_units => time_unit_multiplier, :user_id => user_id)
   
     # return error if we can't save the reminder
     if reminder.save
@@ -49,5 +63,33 @@ class Reminder < ActiveRecord::Base
     
   end
   
+  def send_reminder
+    puts "id: #{self.id} #{self.remind_time} #{ENV['DEFAULT_FROM_EMAIL']}"
+    
+    # TODO: Identify user reminder method, for now just send email
+    
+    NotificationMailer.send_notification_for_reminder(self).deliver
+    self.update_attribute(:last_notification, Time.now)
+  end
+  
+  def self.send_reminders
+    puts "Sending reminders..."
+    # find all reminders, not completed, who are due for a reminder, and who haven't been notified in 24 hours
+    reminders = Reminder.where("completed = ? AND remind_time < ? AND last_notification < ?", false, Time.now, Time.now-24.hours)
+    
+    reminders.each do |r|
+      if r.user
+        r.send_reminder 
+      else
+        logger.info "Unable to send email reminder for #{r.id}"
+      end
+    end
+    
+  end
+  
+  private
+  def set_last_notification
+    self.last_notification = Time.now - 1.year
+  end
   
 end

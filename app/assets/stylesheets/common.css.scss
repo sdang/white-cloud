@@ -230,14 +230,6 @@ html, body {
 
 }
 
-
-.reminder {
-	&:hover { background-color: $highlight-color }
-	img { vertical-align: top }
-	margin-bottom: 5px
-}
-
-
 #grayText {
 	font-size: 12px;
 	line-height: 16px;
@@ -264,8 +256,27 @@ html, body {
 	display:inline-block
 }
 
-#contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
-// .auto-hint { color: #AAAAAA; }
+#contentCard {
+	background-color: #fff;
+	border-top: 1px solid #ddd;
+	margin-bottom: 30px
+}
+
+.reminder {
+	#links { float: left }
+	#content { margin-left: 60px }
+	#mrn {color: $border-color }
+	#overdue {color: red; font-size: 10px;}
+	#due {color: green; font-size: 10px;}
+	&:hover { background-color: $highlight-color }
+	img { vertical-align: top }
+	margin-bottom: 5px
+}
+
+.hidden {
+	display: none;
+}
+
 
 @import "alert_notice";
 @import "buttons";

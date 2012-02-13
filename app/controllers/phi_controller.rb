@@ -1,5 +1,5 @@
 class PhiController < ApplicationController
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, :authorized_user!
     
     
     def unlock_phi
