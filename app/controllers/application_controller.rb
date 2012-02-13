@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     
     unless session[:admin]
       flash[:alert] = "You are not authorized in this area"
-      redirect_to session[:last_uri]
+      redirect_to session[:last_uri] || "/"
     end
   end
       

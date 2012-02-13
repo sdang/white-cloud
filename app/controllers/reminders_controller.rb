@@ -17,7 +17,7 @@ class RemindersController < ApplicationController
   
   def destroy
     @reminder = Reminder.find_by_id(params[:id])
-    @reminder.destroy
+    @reminder.update_attribute(:completed, true)
     
     respond_to do |format|
       format.html { redirect_to '/' }
