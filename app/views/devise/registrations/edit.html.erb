@@ -1,5 +1,5 @@
 <div id="contentCard">
-	<h1>My Contact Info</h1>
+	<h1>My Profile</h1>
 
 	<div id="edit-user">
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -36,6 +36,13 @@
 	</table>
 	<div id="grayText">Cell phone number is required if you would like to create and/or receive reminders via text messages</div>
 	
+	<div id="reminder-preferences">
+		<h3>Receive Reminders Via:</h3>
+		<%= check_box_tag(:remind_by_page, 1, true, :disabled => true) %> <%= label_tag :pager %><br/>
+		<%= f.check_box(:remind_by_email, {}, "1", "0") %> <%= label_tag :email %><br/>
+		<%= f.check_box(:remind_by_sms, {}, "1", "0") %> <%= label_tag :text_message %><br/>
+	</div>
+	
 	<div id="change-password">
 		<div class="field"><%= f.label :password %><br/><span id="grayText">(leave blank if you don't want to change it)</span><br />
 		<%= f.password_field :password %></div>
@@ -49,15 +56,5 @@
 	
 	<div><%= f.submit "Update Profile", :class => "button white large" %></div>
 	<% end %>
-	</div>
-</div>
-
-<div id="contentCard">
-	<h1>My Preferences</h1>
-	<div id="reminder-preferences">
-	<h3>Receive Reminders Via:</h3>
-		<%= check_box_tag(:reminder_by_page, 1, true, :disabled => true) %> <%= label_tag :pager %><br/>
-		<%= check_box_tag(:reminder_by_text_message, 1) %> <%= label_tag :text_message %><br/>
-		<%= check_box_tag(:reminder_by_email, 1) %> <%= label_tag :email %><br/>
 	</div>
 </div>
