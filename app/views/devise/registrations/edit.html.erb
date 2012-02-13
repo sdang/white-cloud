@@ -1,25 +1,60 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="contentCard">
+	<h1>My Profile</h1>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+	<div id="edit-user">
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	<% if devise_error_messages!.size > 0 %>
+		<div class="alert"><%= devise_error_messages! %></div>
+	<% end %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+	<span class="required">*</span><%= f.label :email, "Email Address" %><br />
+	<%= f.email_field :email, :id => "text-field-input", :title => "name@domain.com" %>
+	
+	<table>
+		<tr>
+			<td>
+				<span class="required">*</span><%= f.label :first_name %><br/>
+				<%= f.text_field :first_name, :id => "text-field-input", :title => "John" %>
+			</td>
+			<td width="5">&nbsp;</td>
+			<td>
+				<span class="required">*</span><%= f.label :last_name %><br/>
+				<%= f.text_field :last_name, :id => "text-field-input", :title => "Doe" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span class="required">*</span><%= f.label :pager_number %><br/>
+				<%= f.text_field :pager_number, :id => "text-field-input", :title => "818-313-1212" %>
+			</td>
+			<td width="5">&nbsp;</td>
+			<td>
+				<%= f.label :sms_number, "Cell Phone" %><br/>
+				<%= f.text_field :sms_number, :id => "text-field-input", :title => "818-313-1212" %>
+			</td>
+		</tr>
+	</table>
+	<div id="grayText">Cell phone number is required if you would like to create and/or receive reminders via text messages</div>
+	
+	<div id="reminder-preferences">
+	<h3>Receive Reminders Via:</h3>
+		<%= check_box_tag(:reminder_by_page, 1, true, :disabled => true) %> <%= f.label :pager %><br/>
+		<%= check_box_tag(:reminder_by_text_message, 1) %> <%= f.label :text_message %><br/>
+		<%= check_box_tag(:reminder_by_email, 1) %> <%= f.label :email %><br/>
+	</div>
+	
+	<div id="change-password">
+		<div class="field"><%= f.label :password %><br/><span id="grayText">(leave blank if you don't want to change it)</span><br />
+		<%= f.password_field :password %></div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
+		<div class="field"><%= f.label :password_confirmation %><br />
+		<%= f.password_field :password_confirmation %></div>
+	</div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-
-  <div><%= f.submit "Update" %></div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+	<div class="field"><%= f.label :current_password %><br/><span id="grayText">(required to update your profile)</span><br />
+	<%= f.password_field :current_password, :id => "text-field-input" %></div>
+	
+	<div><%= f.submit "Update Profile", :class => "button white large" %></div>
+	<% end %>
+	</div>
+</div>
