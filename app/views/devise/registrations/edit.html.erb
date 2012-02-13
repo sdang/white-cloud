@@ -8,40 +8,47 @@
 	<% end %>
 
 	<span class="required">*</span><%= f.label :email, "Email Address" %><br />
-	<%= f.email_field :email, :id => "text-field-input", :title => "name@domain.com" %>
+	<%= f.email_field :email, :title => "name@domain.com" %>
 	
 	<table>
 		<tr>
 			<td>
 				<span class="required">*</span><%= f.label :first_name %><br/>
-				<%= f.text_field :first_name, :id => "text-field-input", :title => "John" %>
+				<%= f.text_field :first_name, :title => "John" %>
 			</td>
 			<td width="5">&nbsp;</td>
 			<td>
 				<span class="required">*</span><%= f.label :last_name %><br/>
-				<%= f.text_field :last_name, :id => "text-field-input", :title => "Doe" %>
+				<%= f.text_field :last_name, :title => "Doe" %>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<span class="required">*</span><%= f.label :pager_number %><br/>
-				<%= f.text_field :pager_number, :id => "text-field-input", :title => "818-313-1212" %>
+				<%= f.text_field :pager_number, :value =>  number_to_phone(f.object.pager_number, :area_code => true), :title => "(818) 313-1212" %>
 			</td>
 			<td width="5">&nbsp;</td>
 			<td>
 				<%= f.label :sms_number, "Cell Phone" %><br/>
-				<%= f.text_field :sms_number, :id => "text-field-input", :title => "818-313-1212" %>
+				<%= f.text_field :sms_number, :value =>  number_to_phone(f.object.sms_number, :area_code => true), :title => "(818) 313-1212" %>
 			</td>
 		</tr>
 	</table>
+	
 	<div id="grayText">Cell phone number is required if you would like to create and/or receive reminders via text messages</div>
 	
 	<div id="reminder-preferences">
-		<h3>Receive Reminders Via:</h3>
+		<h3>Receive Reminders Via</h3>
 		<%= check_box_tag(:remind_by_page, 1, true, :disabled => true) %> <%= label_tag :pager %><br/>
 		<%= f.check_box(:remind_by_email, {}, "1", nil) %> <%= label_tag :email %><br/>
 		<%= f.check_box(:remind_by_sms, {}, "1", nil) %> <%= label_tag :text_message %><br/>
 	</div>
+	
+	<%= f.label "Default Reminder List" %><br/>
+	<%= collection_select(:user, :default_reminder_list_id, ReminderList.all(:order => "Name ASC"), :id, :name ) %>
+
+	<div class="field"><%= f.label :current_password %> <%= link_to "Change Password", "#", :id => "hide-show-change-password" %> <br/><span id="grayText">(required to update your profile)</span><br />
+	<%= f.password_field :current_password, :title => "*************" %></div>
 	
 	<div id="change-password">
 		<div class="field"><%= f.label :password %><br/><span id="grayText">(leave blank if you don't want to change it)</span><br />
@@ -50,9 +57,6 @@
 		<div class="field"><%= f.label :password_confirmation %><br />
 		<%= f.password_field :password_confirmation %></div>
 	</div>
-
-	<div class="field"><%= f.label :current_password %><br/><span id="grayText">(required to update your profile)</span><br />
-	<%= f.password_field :current_password, :id => "text-field-input" %></div>
 	
 	<div><%= f.submit "Update Profile", :class => "button white large" %></div>
 	<% end %>

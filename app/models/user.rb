@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :pager_number, :sms_number,
-        :first_name, :last_name, :remind_by_sms, :remind_by_email
+        :first_name, :last_name, :remind_by_sms, :remind_by_email, :default_reminder_list_id
 
   serialize :preferences  
   
