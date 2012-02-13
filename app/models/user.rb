@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :pager_number, :first_name, :last_name
+
+  serialize :preferences  
   
   def reminder_list
     self.reminders.find_all_by_completed(false, :order => "remind_time ASC")
@@ -48,6 +50,39 @@ class User < ActiveRecord::Base
     User.where("sms_number = ?", phone_str_to_num(num)).limit(1).first
   end
 
+  # preferences quick functions
+  def remind_by_email
+    return self.read_attribute("preferences")[:remind_by_email] || false
+  end
+  
+  def remind_by_sms
+    return self.read_attribute("preferences")[:remind_by_sms] || false
+  end
+  
+  def default_reminder_list_id
+    return self.read_attribute("preferences")[:default_reminder_list_id] || ReminderList.find(:first).id
+  end
+  
+  def remind_by_email=(val)
+    self.preferences ||= {}
+    self.preferences[:remind_by_email] = val
+  end
+  
+  def remind_by_sms=(val)
+    self.preferences ||= {}
+    self.preferences[:remind_by_sms] = val
+  end
+  
+  def default_reminder_list_id=(val)
+    self.preferences ||= {}
+    rl = ReminderList.find_by_id(val)
+    if rl
+      self.preferences[:default_reminder_list_id] = val
+    else
+      raise "Tried to set a default reminder list to one that doesn't exist"
+    end
+  end
+    
   private
   def self.phone_str_to_num(str)
     str = str.gsub(/[^0-9]/,'')

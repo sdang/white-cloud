@@ -1,0 +1,53 @@
+#edit-user {
+	font-size: 18px;	
+	width: 340px;
+	
+	input {
+		margin-bottom: 15px;
+		font-size: 18px;
+	}
+	
+	label {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	
+	#change-password {
+		display: none;
+	}
+	
+	.required { 
+		color: red;
+		vertical-align: super;
+		margin-right: 3px;
+	}
+	
+	#text-field-input {
+		width: 100%;
+	}
+	
+	.field_with_errors { display: inline;}
+	
+}
+
+
+#reminder-preferences {
+	font-size: 14px;
+	margin-bottom: 15px;
+	
+	h3 {
+		font-size: 18px;
+		font-weight: normal;
+		margin-bottom: 6px;
+	}
+	
+	label {
+		font-size: 14px;
+		line-height: 16px;
+	}
+	
+	input {
+		margin-left: 20px;
+		margin-bottom: 5px;
+	}
+}
