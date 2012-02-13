@@ -259,7 +259,20 @@ html, body {
 #contentCard {
 	background-color: #fff;
 	border-top: 1px solid #ddd;
-	margin-bottom: 30px
+	margin-bottom: 30px;
+	
+	#title {
+		float: left;
+	}
+	
+	#add-button {
+		margin-top: 10px;
+		float: right;
+	}
+	
+	#add-form {
+		margin-bottom: 20px;
+	}
 }
 
 .reminder {
@@ -284,6 +297,7 @@ html, body {
 @import "alert_notice";
 @import "buttons";
 @import "edit-user";
+@import "forms";
 
 // fix IE 6 footer bug
 * html #footer {

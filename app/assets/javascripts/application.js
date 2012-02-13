@@ -11,6 +11,10 @@
 //= require jquery.idTabs.min.js
 //= require common.js
 
+$(document).on('click', '#add-button', function() {
+	$('#add-form').slideToggle('fast');
+});
+
 $(document).on('mouseenter','.reminder', function() {
 	$(this).find('#links').fadeTo('fast', 1);
 });
