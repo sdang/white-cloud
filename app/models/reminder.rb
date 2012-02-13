@@ -10,7 +10,7 @@ class Reminder < ActiveRecord::Base
   
   def convert_relative_to_absolute_time
     # don't do anything if a remind time has already been set
-    return false if self.remind_time
+    return true if self.remind_time
     
     # make sure we have valid remind time data
     if self.time_value.to_i > 0 and self.time_units.to_i > 0

@@ -4,6 +4,16 @@ class RemindersController < ApplicationController
   def index
   end
   
+  def update
+    @error = false
+    @reminder = Reminder.find_by_id(params[:id])
+    @reminder.update_attributes(params[:reminder])
+    respond_to do |format|
+      format.html { redirect_to '/' }
+      format.js
+    end
+  end
+  
   def create
     @reminder = Reminder.new(params[:reminder])
     @reminder.user_id = current_user.id

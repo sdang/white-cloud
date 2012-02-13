@@ -1,5 +1,5 @@
 <div id="reminder-form-error" class="hidden alert"></div>
-<%= form_for (@reminder || Reminder.new), :remote => true, :id => "new_reminder" do |f| %>
+<%= form_for @reminder, :remote => true, :id => @reminder.id do |f| %>
 <table>
 	<tr>
 		<td width="60"><%= f.label :Patient_ID %>:</td>
@@ -22,7 +22,7 @@
 	<% else %>
 		<tr>
 			<td width="60">When:</td>
-			<td><%= f.datetime_select :remind_time %></td>
+			<td><%= f.datetime_select :remind_time, :ampm => false, :order => [:month, :day, :year], :include_seconds => false %></td>
 		</tr>
 	<% end %>
 	<tr>
