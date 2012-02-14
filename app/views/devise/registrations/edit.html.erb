@@ -1,36 +1,36 @@
 <div id="contentCard">
 	<h1>My Profile</h1>
 
-	<div id="edit-user">
+	<div class="large-form">
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 	<% if devise_error_messages!.size > 0 %>
 		<div class="alert"><%= devise_error_messages! %></div>
 	<% end %>
 
-	<span class="required">*</span><%= f.label :email, "Email Address" %><br />
+	<%= req_field -%><%= f.label :email, "Email Address" %><br />
 	<%= f.email_field :email, :title => "name@domain.com" %>
 	
 	<table>
 		<tr>
 			<td>
-				<span class="required">*</span><%= f.label :first_name %><br/>
-				<%= f.text_field :first_name, :title => "John" %>
+				<%= req_field -%><%= f.label :first_name %><br/>
+				<%= f.text_field :first_name, :title => "John", :size => 15 %>
 			</td>
 			<td width="5">&nbsp;</td>
 			<td>
-				<span class="required">*</span><%= f.label :last_name %><br/>
-				<%= f.text_field :last_name, :title => "Doe" %>
+				<%= req_field -%><%= f.label :last_name %><br/>
+				<%= f.text_field :last_name, :title => "Doe", :size => 15 %>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<span class="required">*</span><%= f.label :pager_number %><br/>
-				<%= f.text_field :pager_number, :value =>  number_to_phone(f.object.pager_number, :area_code => true), :title => "(818) 313-1212" %>
+				<%= req_field -%><%= f.label :pager_number %><br/>
+				<%= f.text_field :pager_number, :value =>  number_to_phone(f.object.pager_number, :area_code => true), :title => "(818) 313-1212", :size => 15 %>
 			</td>
 			<td width="5">&nbsp;</td>
 			<td>
 				<%= f.label :sms_number, "Cell Phone" %><br/>
-				<%= f.text_field :sms_number, :value =>  number_to_phone(f.object.sms_number, :area_code => true), :title => "(818) 313-1212" %>
+				<%= f.text_field :sms_number, :value =>  number_to_phone(f.object.sms_number, :area_code => true), :title => "(818) 313-1212", :size => 15 %>
 			</td>
 		</tr>
 	</table>

@@ -21,8 +21,10 @@
 	
 	.required { 
 		color: red;
-		vertical-align: super;
 		margin-right: 3px;
+		line-height: 10px;
+		display: inline-block;
+		margin-bottom: 3px;
 	}
 	
 	input[type="text"], input[type="email"], input[type="password"], select {
@@ -44,7 +46,7 @@
 
 
 .large-form {
-	font-size: 13px;	
+	font-size: 13px;
 	width: 340px;
 	
 	label {
@@ -58,13 +60,18 @@
 	
 	.required { 
 		color: red;
-		vertical-align: super;
 		margin-right: 3px;
+		line-height: 10px;
+		display: inline-block;
+		margin-bottom: 3px;
 	}
 	
 	input[type="text"], input[type="email"], input[type="password"], select {
 		margin-bottom: 15px;
 		font-size: 18px;
+	}
+	
+	.fullwidth {
 		width: 100%;
 	}
 	
@@ -87,8 +94,10 @@
 	
 	.required { 
 		color: red;
-		vertical-align: super;
 		margin-right: 3px;
+		line-height: 10px;
+		display: inline-block;
+		margin-bottom: 3px;
 	}
 	
 	input[type="text"], input[type="email"], input[type="password"], select {
@@ -100,6 +109,7 @@
 	.field_with_errors { display: inline;}
 	
 }
+
 
 #add-form {
 	display: none;

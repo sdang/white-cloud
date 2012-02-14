@@ -7,8 +7,4 @@ module DcSummariesHelper
     html += "<div id='#{prefix}-import-error' class='hidden alert'></div><div id='#{prefix}-import-notice' class='hidden notice'></div>"
     return html.html_safe
   end
-  
-  def req_field
-    return "<span class='required'>*</span> ".html_safe
-  end
 end
