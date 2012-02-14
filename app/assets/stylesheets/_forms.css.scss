@@ -7,6 +7,14 @@
 		line-height: 20px;
 	}
 	
+	h3, .header-3 {
+		font-size: 14px;
+		text-align: left;
+		padding-top: 5px;
+		color: #ddd;
+		border-top: 1px solid #ddd;
+	}
+	
 	#change-password {
 		display: none;
 	}
@@ -20,6 +28,13 @@
 	input[type="text"], input[type="email"], input[type="password"], select {
 		margin-bottom: 15px;
 		font-size: 18px;
+	}
+	
+	textarea {
+		margin-bottom: 15px;
+	}
+	
+	.fullwidth {
 		width: 100%;
 	}
 	

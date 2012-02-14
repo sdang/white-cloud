@@ -1,0 +1,76 @@
+<%= form_for @dc_summary, :id => @dc_summary.id do |f| %>
+	<%= req_field %>Field required to finalize discharge<br/><br/>
+	
+	<h3>Patient Identification</h3>
+		<%= req_field %><%= f.label "Name" %><br/>
+		<%= f.text_field :first_name, :title => "First Name", :style => "fullwidth", :value => f.object.first_name.decrypt(session[:group_password]) %><br/>
+		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth" %><br/>
+	
+		<%= req_field %><%= f.label "Medical Record Number (MRN)"%><br/>
+		<%= f.text_field :mrn, :style => "fullwidth" %><br/>
+		<%= req_field %><%= f.label "Date of Birth"%><br/>
+		<%= f.text_field :dob, :title => "mm/dd/yyyy", :style => "fullwidth" %><br/>
+	
+	<% unless @dc_summary.new_record? %>
+	<h3>General Info</h3>
+		<table class="fullwidth">
+			<tr valign="top">
+				<td width="250">				
+					<%= req_field %><%= f.label "Admission Date" %><br/>
+					<%= f.date_select :admit_date, :order => [:month, :day, :year] %><br/>
+				
+					<%= req_field %><%= f.label "Discharge Date" %><br/>
+					<%= f.date_select :discharge_date, :order => [:month, :day, :year] %>
+				</td>
+				<td width="30">&nbsp;</td>
+				<td>
+					<%= req_field %><%= f.label "Attending" %><br/>
+					<%= f.text_field :attending, :class => "fullwidth" %><br/>
+
+					<%= req_field %><%= f.label "Resident" %><br/>
+					<%= f.text_field :resident, :class => "fullwidth"  %><br/>
+
+					<%= f.label "Intern" %><br/>
+					<%= f.text_field :intern, :class => "fullwidth"  %><br/>
+				
+					<%= f.label "Medical Student" %><br/>
+					<%= f.text_field :medical_student, :class => "fullwidth"  %>
+				</td>
+			</tr>
+		</table>
+	
+	<h3>Medical Information</h3>
+		<%= req_field %><%= f.label "Discharge Diagnoses" %> <%= import_buttons("diagnoses") -%> <br/>
+		<%= f.text_area :diagnoses, :rows => 10, :class => "fullwidth", :title => "You can import discharge diagnoses from the last discharge summary or from the sign out using the buttons above. If you would like to manually enter diagnoses, please only have one diagnosis per line, for example: \n\nCHF\nDM\nHTN\n\n"%>
+		
+		<%= req_field %><%= f.label "History of Present Illness" %> <%= import_buttons("hpi") -%><br/>
+		<%= f.text_area :hpi, :rows => 10, :class => "fullwidth", :title => "e.g. See H&P for full details. 53 yo M h/o CHF presents with worsening SOB, DOE, orthopnea x 1 week" %>
+	
+		<%= req_field %><%= f.label "Hospital Course" %> <%= import_buttons("hospital-course") -%><br/>
+		<%= f.text_area :hospital_course, :rows => 10, :class => "fullwidth", :title => "Be brief, organize by problem list for longer admissions" %>
+		
+	<h3>Outpatient Plan</h3>
+		<%= req_field %><%= f.label "Medications" %> <%= import_buttons("rx") -%><br/>
+		<br/>
+		<table>
+			<tr>
+				<td>Rx Name</td>
+				<td>Qty</td>
+				<td>Sig</td>
+			</tr>
+		<% (1..10).each do |x| %>
+			<tr>
+				<td><%= text_field_tag "rx-name-#{x}" %></td>
+				<td><%= text_field_tag "rx-qty-#{x}", "", :size => 2%></td>
+				<td><%= text_field_tag "rx-sig-#{x}" %></td>
+			</tr>
+		<% end %>
+		</table>
+	
+	<% end # end unless new_record?%>
+	<% if @dc_summary.new_record? %>
+		<%= f.submit "Start D/C Summary", :class => "button green large "%>
+	<% else %>
+		<%= f.submit "Save Discharge Summary", :class => "button green large fullwidth" %>
+	<% end %>
+<% end %>
