@@ -15,6 +15,15 @@ class RemindersController < ApplicationController
     end
   end
   
+  def create_by_string
+    @reminder = Reminder.create_from_string(params[:string], current_user.id)
+    
+    respond_to do |format|
+      format.html { redirect_to :controller => "/reminders" }
+      format.js
+    end
+  end
+  
   def create
     @reminder = Reminder.new(params[:reminder])
     @reminder.user_id = current_user.id

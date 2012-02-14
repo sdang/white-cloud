@@ -7,15 +7,7 @@
 </div>
 <br/>
 
-<div id="contentCard">
-	<h1>Quick Add Reminder</h1>
-	<div id="add-by-language" class="x-large-form">
-		<%= form_tag "#" do %>
-			<%= text_field_tag "quick-add-reminder", "", :title => "eg Check Cultures in 2 days 1231234", :style => "width: 375px" %>
-			<%= submit_tag "Add Reminder", :class => "button green large"%>
-		<% end %>
-	</div>
-</div>
+<%= render :partial => "quick_add_reminder" %>
 
 <div id="upcoming_reminders"><%= render :partial => "upcoming_reminders" %></div>
 <div id="completed_reminders"><%= render :partial => "completed_reminders" %></div>

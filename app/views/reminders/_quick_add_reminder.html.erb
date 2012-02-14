@@ -1,0 +1,11 @@
+<div id="contentCard">
+	<h1>Quick Add Reminder</h1>
+	<div id="reminder-quick-form-error" class="hidden alert"></div>
+	<div id="reminder-quick-form-notice" class="hidden notice"></div>
+	<div id="add-by-language" class="x-large-form">
+		<%= form_tag url_for(:controller => "/reminders", :action => "create_by_string"), :remote => true, :id => "quick-form-string" do %>
+			<%= text_field_tag :string, "", :id => "quick-form-string", :title => "eg Check Cultures in 2 days 1231234", :style => "width: 375px" %>
+			<%= submit_tag "Add Reminder", :class => "button green large"%>
+		<% end %>
+	</div>
+</div>
