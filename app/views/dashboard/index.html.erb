@@ -1,5 +1,7 @@
 <%= render :partial => '/shared/unlock_phi' -%>
 
+<%= render :partial => "/reminders/quick_add_reminder" %>
+
 <div id="contentCard">
 <h1>Your Upcoming Reminders</h1>
 <%= render :partial => '/reminders/table', :object => current_user.reminder_list %>

@@ -6,6 +6,8 @@ OliveViewTools::Application.routes.draw do
 
   resources :reminders
   match 'reminders/cancel_edit/:id' => 'reminders#cancel_edit'
+  match 'reminders/create_by_string' => 'reminders#create_by_string'
+  
   resources :dc_summaries
   
   match 'phi(/:action)' => 'phi'
