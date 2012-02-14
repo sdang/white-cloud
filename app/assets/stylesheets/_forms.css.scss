@@ -1,3 +1,33 @@
+.x-large-form {
+	font-size: 13px;	
+	width: 100%;
+	
+	label {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	
+	#change-password {
+		display: none;
+	}
+	
+	.required { 
+		color: red;
+		vertical-align: super;
+		margin-right: 3px;
+	}
+	
+	input[type="text"], input[type="email"], input[type="password"], select {
+		margin-bottom: 15px;
+		font-size: 18px;
+		width: 100%;
+	}
+	
+	.field_with_errors { display: inline;}
+	
+}
+
+
 .large-form {
 	font-size: 13px;	
 	width: 340px;

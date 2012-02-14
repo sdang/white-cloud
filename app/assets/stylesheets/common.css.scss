@@ -154,9 +154,14 @@ html, body {
 	color: gray;
 	font-family: arial;
 	
-	input {
+	input[type="text"] {
 		// border: 1px solid $border-color;
 		// height: 18px;
+		width: 150px;
+	}
+	
+	#reminder_time_value {
+		width: 50px;
 	}
 	
 	h1 { 

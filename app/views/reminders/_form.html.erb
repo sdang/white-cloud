@@ -1,22 +1,23 @@
 <div id="reminder-form-error" class="hidden alert"></div>
+<div id="reminder-form-notice" class="hidden notice"></div>
 <%= form_for @reminder, :remote => true, :id => @reminder.id do |f| %>
 <table>
 	<tr>
 		<td width="60"><%= f.label :Patient_ID %>:</td>
-		<td><%= f.text_field :mrn, :title => "MRN", :style => "width: 150px" %></td>
+		<td><%= f.text_field :mrn, :title => "MRN" %></td>
 	</tr>
 	<tr>
 		<td width="60"><%= f.label :Reminder %>:</td>
-		<td><%= f.text_field :reminder, :title => "e.g. Follow up blood Cx", :style => "width: 150px" %></td>
+		<td><%= f.text_field :reminder, :title => "e.g. Follow up blood Cx" %></td>
 	</tr>
 	<tr>
 		<td width="60"><%= f.label :Phone %>:</td>
-		<td><%= f.text_field :contact_number, :title => "e.g. (818) 555-1212", :style => "width: 150px" %></td>
+		<td><%= f.text_field :contact_number, :title => "e.g. (818) 555-1212" %></td>
 	</tr>
 	<% if @reminder.new_record? %>
 		<tr>
 			<td width="60"><%= f.label :When%>:</td>
-			<td><%= f.text_field :time_value, :style => "width: 50px"%> <%= select(:reminder, :time_units, [['Hours', 1], ['Days', 24], ['Weeks', 168]]) %></td>
+			<td><%= f.text_field :time_value, :style => "width: 50px" %> <%= select(:reminder, :time_units, [['Hours', 1], ['Days', 24], ['Weeks', 168]]) %></td>
 		</tr>
 		
 	<% else %>
@@ -27,7 +28,7 @@
 	<% end %>
 	<tr>
 		<td width="60"><%= f.label :List %>:</td>
-		<td><%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name)%>
+		<td><%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name, :style => "width: 110px")%>
 	<tr>
 		<td>&nbsp;</td>
 		<td>
