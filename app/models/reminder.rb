@@ -88,7 +88,7 @@ class Reminder < ActiveRecord::Base
       log_str +=  ", email to #{self.user.email}"
     end
     
-    logger.info log_str
+    puts log_str
     self.update_attribute(:last_notification, Time.now)
   end
   

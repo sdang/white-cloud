@@ -31,12 +31,12 @@ class Pager
       else
         status_code = doc.root.elements["wctp-Confirmation"].elements["wctp-Failure"].attributes["errorCode"]
         status_message = doc.root.elements["wctp-Confirmation"].elements["wctp-Failure"].attributes["errorText"]
-        logger.warn "unable to page #{pn}, error: #{status_message} (#{status_code})"
+        puts "unable to page #{pn}, error: #{status_message} (#{status_code})"
       end
     
       return succeeded
     rescue
-      logger.fatal "crash when attempting to page #{pn}"
+      puts "crash when attempting to page #{pn}"
       return false
     end
   end
