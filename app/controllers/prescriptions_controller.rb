@@ -1,6 +1,9 @@
 class PrescriptionsController < ApplicationController
+  before_filter :get_dc_summary, :except => ["destroy", "edit"]
+  
   def create
     @prescription = @dc_summary.prescriptions.new(params[:prescription])
+    @prescription.save
     respond_to do |format|
       format.html { redirect_to :controller => "/dc_summaries", :action => "edit", :id => params[:dc_summary_id] }
       format.js
@@ -8,6 +11,7 @@ class PrescriptionsController < ApplicationController
   end
 
   def edit
+    @prescription = Prescription.find(params[:id])
   end
   
   def update
@@ -32,12 +36,12 @@ class PrescriptionsController < ApplicationController
   
   private
   def get_dc_summary
-    unless params[:dc_summary_id]
+    unless params[:prescription][:dc_summary_id]
       flash[:alert] = "Critical error, could not attach prescription to d/c summary."
       redirect_to :controller => "/dc_summaries", :action => "index"
     end
     
-    @dc_summary = DcSummary.find(params[:dc_summary_id])
+    @dc_summary = DcSummary.find(params[:prescription][:dc_summary_id])
   end
 
 end

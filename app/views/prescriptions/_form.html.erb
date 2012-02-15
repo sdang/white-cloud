@@ -1,0 +1,16 @@
+<div id="prescription-form-errors" class="alert hidden"></div>
+<%= form_for @prescription, :remote => true do |f|%>
+	<%= f.hidden_field :dc_summary_id, :value => dc_summary_id -%>
+	<table>
+		<tr>
+			<td><%= f.text_field :drug, :title => "Medication", :size => 15 -%></td>
+			<td><%= f.text_field :quantity, :title => "3 mo", :size => 2%></td>
+			<td><%= f.text_field :sig, :title => "1 tab PO BID", :size => 15 %></td>
+			<% if @prescription.new_record? %>
+				<td><%= f.submit "+ Add Prescription", :class => "button green medium" %></td>
+			<% else %>
+				<td><%= f.submit "Update", :class => "button white small" %></td>
+			<% end %>
+		</tr>
+	</table>
+<% end %>

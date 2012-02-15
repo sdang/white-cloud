@@ -17,6 +17,7 @@ class DcSummariesController < ApplicationController
   
   def edit
     @dc_summary = DcSummary.find_by_id(params[:id])
+    @prescription = Prescription.new
   end
   
   def update

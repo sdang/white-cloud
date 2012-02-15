@@ -1,2 +1,10 @@
-<h1>Prescriptions#create</h1>
-<p>Find me in app/views/prescriptions/create.html.erb</p>
+<% if @prescription.new_record? %>
+	$('#prescription-form-errors').html("<%= escape_javascript(errors_for(@prescription, 'Cannot add prescription'))%>")
+	$('#prescription-form-errors').effect("highlight", {}, 3000)
+<% else %>
+	$("#prescription-form-errors").css("display", "none");
+	$("#prescription-table").html("<%= escape_javascript(render :partial => '/prescriptions/table', :object => @dc_summary.prescriptions) %>");
+	$("#prescription-<%= @prescription.id %>").effect("highlight", {}, 3000);
+	$("#new_prescription")[0].reset();
+	$(".reminder").find('div:first').fadeTo(0,0.5);
+<% end %>
