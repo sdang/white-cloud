@@ -1,17 +1,24 @@
-<%= form_for @dc_summary, :id => @dc_summary.id do |f| %>
+<h3>Patient Identification</h3>
+	<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %><br/>
+	<%= @dc_summary.mrn %>
+	</br><br/>
 	<%= req_field %>Field required to finalize discharge<br/><br/>
 	
-	<h3>Patient Identification</h3>
-		<%= req_field %><%= f.label "Name" %><br/>
-		<%= f.text_field :first_name, :title => "First Name", :style => "fullwidth", :value => f.object.first_name.decrypt(session[:group_password]) %><br/>
-		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth", :value => f.object.last_name.decrypt(session[:group_password]) %><br/>
-	
-		<%= req_field %><%= f.label "Medical Record Number (MRN)"%><br/>
-		<%= f.text_field :mrn, :style => "fullwidth" %><br/>
-		<%= req_field %><%= f.label "Date of Birth"%><br/>
-		<%= f.text_field :dob, :title => "mm/dd/yyyy", :style => "fullwidth", :value => f.object.dob.decrypt(session[:group_password]) %><br/>
+<h3>Medications</h3>
+	<%= import_buttons("rx") -%><br/>
+	<br/>
+	<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
+	<br/>
+	<%= button_tag "+ Add Prescription", :id => "add-button", :class => "button green small" %>
+	<div id="add-form">
+		<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+	</div>
+	<br/><br/>
+<h3>Consultation Requests</h3>
 
-		
+	
+<%= form_for @dc_summary, :id => @dc_summary.id do |f| %>
+	
 	<h3>General Info</h3>
 		<table class="fullwidth">
 			<tr valign="top">
@@ -58,10 +65,3 @@
 		<% end %>
 		</div>
 <% end %>
-
-<h3>Outpatient Plan</h3>
-	<%= req_field %><%= label_tag "Medications" %> <br/><%= import_buttons("rx") -%><br/>
-	<br/>
-	<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
-	<br/>
-	<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
