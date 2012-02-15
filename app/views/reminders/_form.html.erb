@@ -2,14 +2,11 @@
 <div id="reminder-form-notice" class="hidden notice"></div>
 <%= form_for @reminder, :remote => true, :id => @reminder.id do |f| %>
 
-	<%= f.label :Patient_ID %><br/>
-	<%= f.text_field :mrn, :title => "MRN" %><br/>
+	<%= f.label :mrn %><br/>
+	<%= f.text_field :mrn, :title => "0000000" %><br/>
 
 	<%= f.label :Reminder %><br/>
 	<%= f.text_field :reminder, :title => "e.g. Follow up blood Cx" %><br/>
-
-	<%= f.label :Phone %><br/>
-	<%= f.text_field :contact_number, :title => "e.g. (818) 555-1212" %><br/>
 
 	<%= f.label :When%><br/>
 	<% if @reminder.new_record? %>

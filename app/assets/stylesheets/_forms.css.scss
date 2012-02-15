@@ -110,6 +110,40 @@
 	
 }
 
+.side-bar-form {
+	font-size: 10px;	
+	width: 240px;
+	
+	label {
+		font-size: 12px;
+		line-height: 12px;
+	}
+	
+	#change-password {
+		display: none;
+	}
+	
+	.required { 
+		color: red;
+		margin-right: 3px;
+		line-height: 10px;
+		display: inline-block;
+		margin-bottom: 3px;
+	}
+	
+	input[type="text"], input[type="email"], input[type="password"], select {
+		margin-bottom: 5px;
+		font-size: 12px;
+	}
+	
+	.fullwidth {
+		width: 100%;
+	}
+	
+	.field_with_errors { display: inline;}
+	
+}
+
 
 #add-form {
 	display: none;

@@ -24,10 +24,10 @@ $(document).on('mouseleave','.reminder', function() {
 });
 
 $(document).on('click', '#fade', function() {
-	$(this).parent().slideUp("fast");
+	$(this).parent().slideToggle("fast");
 });
 
 $(document).on('click', '#phi-explanation-link', function() {
-	$('#phi-explanation').fadeToggle('fast');
+	$('#phi-explanation').slideToggle('fast');
 })
 

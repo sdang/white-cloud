@@ -1,5 +1,5 @@
 <% if @reminder.new_record? %>
-	$("#reminder-form-error").html("<%= escape_javascript(@reminder.errors.full_messages.join(', '))%>")
+	$("#reminder-form-error").html("<%= escape_javascript(errors_for(@reminder, 'Cannot create reminder').html_safe)%>")
 	$("#reminder-form-error").effect("highlight", {}, 3000)
 <% else %>
 	$("#reminder-form-notice").html("Reminder Created")
