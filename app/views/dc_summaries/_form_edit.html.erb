@@ -62,7 +62,6 @@
 <h3>Outpatient Plan</h3>
 	<%= req_field %><%= label_tag "Medications" %> <br/><%= import_buttons("rx") -%><br/>
 	<br/>
-	<div class="large-form">
-		<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
-	</div>
 	<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
+	<br/>
+	<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>

@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20120215084041) do
     t.string   "drug"
     t.string   "quantity"
     t.string   "sig"
+    t.integer  "refills",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

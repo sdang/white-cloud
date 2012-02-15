@@ -4,9 +4,10 @@
 		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => prescription.id, :controller => "prescriptions"}, :remote => true %>
 	</div>
 	<div id="content">
-		<span id="drug"><%= prescription.drug %></span>
-		<span id="qty">#<%= prescription.quantity %></span>
-		<span id="sig"><%= prescription.sig %></span>
+		<%= prescription.in_english %>
+		<% if prescription.quantity.empty? %>
+			<span id="grayText">Please add quantity to have this Rx printed</span>
+		<% end %>
 	</div>
 	<div style="clear: both"></div>
 </div>

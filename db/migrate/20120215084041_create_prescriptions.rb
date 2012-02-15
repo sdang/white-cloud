@@ -5,7 +5,7 @@ class CreatePrescriptions < ActiveRecord::Migration
       t.string :drug
       t.string :quantity
       t.string :sig
-
+      t.integer :refills, :default => 0
       t.timestamps
     end
   end
