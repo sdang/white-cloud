@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
 
   serialize :preferences  
   
+  def name
+    return self.first_name + " " + self.last_name
+  end
+  
   def reminder_list
     self.reminders.find_all_by_completed(false, :order => "remind_time ASC")
   end

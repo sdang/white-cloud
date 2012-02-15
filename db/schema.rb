@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120212011100) do
+ActiveRecord::Schema.define(:version => 20120214103730) do
 
   create_table "admin_sign_outs", :force => true do |t|
     t.integer  "user_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120212011100) do
     t.integer  "created_user_id"
     t.integer  "last_update_user_id"
     t.datetime "finalized_at"
-    t.boolean  "finalized"
+    t.boolean  "finalized",            :default => false
     t.string   "mrn"
     t.date     "admit_date"
     t.date     "discharge_date"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120212011100) do
     t.binary   "dob_iv"
     t.binary   "diagnoses"
     t.binary   "diagnoses_key"
-    t.binary   "diagnosis_iv"
+    t.binary   "diagnoses_iv"
     t.binary   "condition"
     t.binary   "condition_key"
     t.binary   "condition_iv"

@@ -4,12 +4,12 @@
 	<h3>Patient Identification</h3>
 		<%= req_field %><%= f.label "Name" %><br/>
 		<%= f.text_field :first_name, :title => "First Name", :style => "fullwidth", :value => f.object.first_name.decrypt(session[:group_password]) %><br/>
-		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth" %><br/>
+		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth", :value => f.object.last_name.decrypt(session[:group_password]) %><br/>
 	
 		<%= req_field %><%= f.label "Medical Record Number (MRN)"%><br/>
 		<%= f.text_field :mrn, :style => "fullwidth" %><br/>
 		<%= req_field %><%= f.label "Date of Birth"%><br/>
-		<%= f.text_field :dob, :title => "mm/dd/yyyy", :style => "fullwidth" %><br/>
+		<%= f.text_field :dob, :title => "mm/dd/yyyy", :style => "fullwidth", :value => f.object.dob.decrypt(session[:group_password]) %><br/>
 	
 	<% unless @dc_summary.new_record? %>
 	<h3>General Info</h3>
@@ -41,13 +41,13 @@
 	
 	<h3>Medical Information</h3>
 		<%= req_field %><%= f.label "Discharge Diagnoses" %> <br/><%= import_buttons("diagnoses") -%> <br/>
-		<%= f.text_area :diagnoses, :rows => 10, :class => "fullwidth", :title => "You can import discharge diagnoses from the last discharge summary or from the sign out using the buttons above. If you would like to manually enter diagnoses, please only have one diagnosis per line, for example: \n\nCHF\nDM\nHTN\n\n"%>
+		<%= f.text_area :diagnoses, :rows => 10, :class => "fullwidth", :title => "You can import discharge diagnoses from the last discharge summary or from the sign out using the buttons above. If you would like to manually enter diagnoses, please only have one diagnosis per line, for example: \n\nCHF\nDM\nHTN\n\n", :value => f.object.diagnoses.decrypt(session[:group_password])%>
 		
 		<%= req_field %><%= f.label "History of Present Illness" %> <br/><%= import_buttons("hpi") -%><br/>
-		<%= f.text_area :hpi, :rows => 10, :class => "fullwidth", :title => "e.g. See H&P for full details. 53 yo M h/o CHF presents with worsening SOB, DOE, orthopnea x 1 week" %>
+		<%= f.text_area :hpi, :rows => 10, :class => "fullwidth", :title => "e.g. See H&P for full details. 53 yo M h/o CHF presents with worsening SOB, DOE, orthopnea x 1 week", :value => f.object.hpi.decrypt(session[:group_password]) %>
 	
 		<%= req_field %><%= f.label "Hospital Course" %> <br/><%= import_buttons("hospital-course") -%><br/>
-		<%= f.text_area :hospital_course, :rows => 10, :class => "fullwidth", :title => "Be brief, organize by problem list for longer admissions" %>
+		<%= f.text_area :hospital_course, :rows => 10, :class => "fullwidth", :title => "Be brief, organize by problem list for longer admissions", :value => f.object.hospital_course.decrypt(session[:group_password]) %>
 		
 	<h3>Outpatient Plan</h3>
 		<%= req_field %><%= f.label "Medications" %> <br/><%= import_buttons("rx") -%><br/>
