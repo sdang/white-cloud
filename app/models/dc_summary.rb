@@ -4,6 +4,7 @@ class DcSummary < ActiveRecord::Base
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
         
   validates_presence_of :first_name, :last_name, :mrn
+  has_many :prescriptions
   
   def finalize!
     # validate everything is complete for a final discharge, if valid set the finalized_at and finalized (bool) parameters

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214103730) do
+ActiveRecord::Schema.define(:version => 20120215084041) do
 
   create_table "admin_sign_outs", :force => true do |t|
     t.integer  "user_id"
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(:version => 20120214103730) do
     t.binary   "dc_instructions"
     t.binary   "dc_instructions_key"
     t.binary   "dc_instructions_iv"
+  end
+
+  create_table "prescriptions", :force => true do |t|
+    t.integer  "dc_summary_id"
+    t.string   "drug"
+    t.string   "quantity"
+    t.string   "sig"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reminder_lists", :force => true do |t|
