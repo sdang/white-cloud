@@ -1,5 +1,5 @@
 # how many scripts do we need?
-num_scripts = (@dc_summary.prescriptions.size/6.0).ceil
+num_scripts = (@dc_summary.prescriptions_to_print.size/6.0).ceil
 
 (1..num_scripts).each do |i|
   # decide if this is the first or second prescription

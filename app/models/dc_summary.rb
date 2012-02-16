@@ -27,4 +27,8 @@ class DcSummary < ActiveRecord::Base
     self.prescriptions.where("sig <> ? and quantity <> ?", "", "")
   end
   
+  def primary_diagnosis(pw)
+    return self.diagnoses.decrypt(pw).match(/^(.*)$/).to_s || ""
+  end
+  
 end
