@@ -17,5 +17,5 @@ num_scripts = (@dc_summary.prescriptions.size/6.0).ceil
   end
   
   render :partial => "prescription",
-      :locals => { :p_pdf => pdf, :h_displace => h_displace, :prescriptions => @dc_summary.prescriptions[(i-1)*6..(i-1)*6+5] }
+      :locals => { :p_pdf => pdf, :h_displace => h_displace, :prescriptions => @dc_summary.prescriptions_to_print[(i-1)*6..(i-1)*6+5] }
 end
