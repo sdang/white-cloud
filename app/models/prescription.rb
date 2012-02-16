@@ -45,4 +45,9 @@ class Prescription < ActiveRecord::Base
     
     return str
   end
+  
+  def print?
+    true if self.drug and self.sig and self.quantity
+  end
+  
 end

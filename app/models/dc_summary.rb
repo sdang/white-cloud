@@ -22,6 +22,13 @@ class DcSummary < ActiveRecord::Base
   def patient_name(pw)
     return self.first_name.decrypt(pw) + " " + self.last_name.decrypt(pw)
   end
-    
+  
+  def prescriptions_to_print
+    self.prescriptions.where("sig <> ? and quantity <> ?", "", "")
+  end
+  
+  def primary_diagnosis(pw)
+    return self.diagnoses.decrypt(pw).match(/^(.*)$/).to_s || ""
+  end
   
 end
