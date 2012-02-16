@@ -1,7 +1,7 @@
 class DcSummariesController < ApplicationController
   before_filter :authenticate_user!, :authorized_user!
   before_filter :set_last_uri, :only => ["index", "edit"]
-  
+            
   def index
   end
   
@@ -33,6 +33,19 @@ class DcSummariesController < ApplicationController
   end
   
   def destroy
+  end
+  
+  def prescriptions
+    require "prawn/measurement_extensions"
+    
+    prawnto :prawn => {
+              :left_margin => 0.5.send(:in), 
+              :right_margin => 0.5.send(:in),
+              :top_margin => 0.5.send(:in),
+              :bottom_margin => 0.5.send(:in),
+              :page_layout => :landscape}
+              
+    @dc_summary = DcSummary.find_by_id(params[:id])
   end
   
   
