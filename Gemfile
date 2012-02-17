@@ -26,6 +26,8 @@ gem 'jquery-rails'
 
 gem 'prawn'
 
+gem "airbrake"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

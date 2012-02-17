@@ -3,7 +3,9 @@ class DcSummary < ActiveRecord::Base
         :diet, :activity, :discharge_orders, :hospital_course, :hpi, :follow_up, :dc_instructions,
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
         
-  validates_presence_of :first_name, :last_name, :mrn
+  validates_presence_of :first_name, :last_name
+  validates_numericality_of :mrn, :message => "must be numbers only"
+  
   has_many :prescriptions
   
   def finalize!
@@ -28,7 +30,11 @@ class DcSummary < ActiveRecord::Base
   end
   
   def primary_diagnosis(pw)
-    return self.diagnoses.decrypt(pw).match(/^(.*)$/).to_s || ""
+    if self.diagnoses.decrypt(pw)
+      return self.diagnoses.decrypt(pw).match(/^(.*)$/).to_s
+    else
+      return ""
+    end
   end
   
 end

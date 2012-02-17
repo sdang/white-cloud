@@ -37,7 +37,7 @@ class DcSummariesController < ApplicationController
   
   def prescriptions
     require "prawn/measurement_extensions"
-    
+    redirect_to :action => "edit", :id => params[:id] unless session[:group_password]
     prawnto :prawn => {
               :left_margin => 0.5.send(:in), 
               :right_margin => 0.5.send(:in),
