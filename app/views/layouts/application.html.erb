@@ -17,7 +17,7 @@
 		<%= render :partial => "/shared/navigation" %>
 	</div>
 	<div id="main">
-		<div style="margin: 20px">
+		<div style="margin: 30px">
 			<% if flash[:notice]%>
 				<div id="notice">
 				<%= flash[:notice] %>
@@ -32,7 +32,9 @@
 		</div>
 	</div>
 	<div id="sidebar">
-		<%= render :partial => "/shared/sidebar" %>
+		<div style="margin: 10px">
+			<%= yield :sidebar %>
+		</div>
 	</div>
 	<div id="footer"><%= render :partial => "/shared/footer" %></div>
 </div>

@@ -14,3 +14,20 @@
 		</div>
 	<% end %>
 </div>
+
+<% content_for :sidebar do %>
+	<% unless @dc_summary.can_be_finalized? %>
+		<h1>Missing Fields</h1>
+		You are still missing the following fields before
+		you can finalize this d/c summary:<br/>
+		
+		<ol>
+		<% @dc_summary.missing_fields.each do |f| %>
+			<li><%= f%></li>
+		<% end %>
+		</ol>
+	
+	
+	<% end %>
+
+<% end %>

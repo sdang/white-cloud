@@ -37,11 +37,7 @@ html, body {
 #wrap {
 	width: $application-width;
 	margin: 0 auto;
-	background: #ddd;
-	background: {
-		image: url('/assets/sidebar-bg.gif');
-		repeat:y-repeat;
-	}
+	background: #fff;
 	clear: both;
 	@include shadow;
 }
@@ -139,7 +135,6 @@ html, body {
 	float:left;
 	width:$application-width - $sidebar-width;
 	background-color: white;
-	border-right: 1px solid $border-color;
 
 	h1 { 
 		font-family: verdana, arial, sans-serif;
@@ -152,25 +147,20 @@ html, body {
 	#unlock-phi-table {
 		width: 500px;
 	}
+	
+	min-height: 500px;
 		
 }
 
 #sidebar {
 	float:right;
 	width:$sidebar-width - 1px;
-	// background-color: #ddd; 
-	background: {
-		// image: url('/assets/sidebar-bg.gif');
-		repeat:y-repeat;
-	}
 	font-size: 12px; 
 	line-height: 16px;
 	color: gray;
 	font-family: arial;
 	
 	input[type="text"] {
-		// border: 1px solid $border-color;
-		// height: 18px;
 		width: 150px;
 	}
 	
@@ -183,7 +173,7 @@ html, body {
 		color: $accent-color;
 		text-transform:uppercase;
 		font-size: 11px;
-		letter-spacing: 1px
+		letter-spacing: 1px;
 	}
 	
 	a {
