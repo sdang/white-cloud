@@ -1,4 +1,5 @@
-$accent-color: navy;
+// $accent-color: navy;
+$accent-color: #005080;
 $border-color: #777;
 $highlight-color: #ffff99;
 $application-width: 850px;
@@ -45,7 +46,7 @@ html, body {
 
 #header {
 	background: {
-		image: url('/assets/Olive-View-Logo.gif'); 
+		// image: url('/assets/Olive-View-Logo.gif'); 
 		repeat:no-repeat;
 		color: $accent-color;
 	}
@@ -60,7 +61,18 @@ html, body {
 	}
 	
 	#logo {
-		float: left; margin-left: 80px;
+		float: left; 
+		margin-left: 16px;
+		
+		#small-text {
+			font-size: 12px;
+		}
+		
+		#large-text {
+			font-size: 16px;
+			margin-top: 3px;
+			font-family: 'Arial Black'
+		}
 	}
 	
 	#login {
