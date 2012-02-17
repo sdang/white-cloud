@@ -1,4 +1,7 @@
-$accent-color: navy;
+// $accent-color: navy;
+// $accent-color: #005080;
+// $accent-color: #0065B8;
+$accent-color: #004090;
 $border-color: #777;
 $highlight-color: #ffff99;
 $application-width: 850px;
@@ -45,7 +48,7 @@ html, body {
 
 #header {
 	background: {
-		image: url('/assets/Olive-View-Logo.gif'); 
+		// image: url('/assets/Olive-View-Logo.gif'); 
 		repeat:no-repeat;
 		color: $accent-color;
 	}
@@ -60,7 +63,18 @@ html, body {
 	}
 	
 	#logo {
-		float: left; margin-left: 80px;
+		float: left; 
+		margin-left: 16px;
+		
+		#small-text {
+			font-size: 12px;
+		}
+		
+		#large-text {
+			font-size: 16px;
+			margin-top: 3px;
+			font-family: 'Arial Black'
+		}
 	}
 	
 	#login {
@@ -278,6 +292,13 @@ html, body {
 	#add-form {
 		margin-bottom: 20px;
 	}
+}
+
+#dc-summary-content, #patient-instructions-content {
+	display: none;
+	font-size: 12px;
+	line-height: 14px;
+	font-family: monospace;
 }
 
 .reminder {

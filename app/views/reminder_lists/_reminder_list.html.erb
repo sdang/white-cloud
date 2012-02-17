@@ -1,6 +1,6 @@
 <div id="reminder-list-<%= reminder_list.id -%>" class="reminder">
 	<div id="links">
-		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => reminder_list.id, :controller => "/reminder_lists"}, :method => :delete, :remote => true, :confirm => "Delete this reminder list?" %>
+		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => reminder_list.id, :controller => "/reminder_lists"}, :method => :delete, :remote => true, :confirm => "Delete this reminder list?" %><span style="width: 10px">&nbsp;</span>
 		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => reminder_list.id, :controller => "/reminder_lists"}, :remote => true %>
 	</div>
 	<div id="content">

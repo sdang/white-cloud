@@ -1,3 +1,6 @@
+<% if @dc_summary.errors.any? %>
+	<div id="alert"><%= errors_for(@dc_summary, "Could not update d/c summary") %></div>
+<% end %>
 <h3>Patient Identification</h3>
 	<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %><br/>
 	<%= @dc_summary.mrn %>
@@ -60,7 +63,7 @@
 		<% if @dc_summary.new_record? %>
 			<%= f.submit "Start D/C Summary", :class => "button green large "%>
 		<% else %>
-			<%= f.submit "Save Discharge Summary", :class => "button green large" %> <%= link_to "Cancel", :action => "show", :id => @dc_summary.id %>
+			<%= f.submit "Save Discharge Summary", :class => "button white large" %> <%= link_to "Cancel", :action => "show", :id => @dc_summary.id %>
 		<% end %>
 		</div>
 <% end %>

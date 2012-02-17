@@ -25,14 +25,21 @@ class DcSummariesController < ApplicationController
     @dc_summary.last_update_user_id = current_user.id
     if @dc_summary.update_attributes(params[:dc_summary])
       flash[:notice] = 'Successfully Saved Changes'
-      redirect_to :action => "edit", :id => @dc_summary.id
+      redirect_to :controller => "dc_summaries", :action => "show", :id => @dc_summary.id
     else 
-      flash.now[:alert] = 'Error saving d/c summary'
-      render :action => edit
+      # flash.now[:alert] = 'Error saving d/c summary'
+      @prescription = Prescription.new
+      render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
     end
   end
   
   def destroy
+    # only destroy if no real data is saved in it
+  end
+  
+  def show
+    @dc_summary = DcSummary.find_by_id(params[:id])
+    redirect_to :controller => "DcSummary", :action => "index" unless @dc_summary
   end
   
   def prescriptions
@@ -46,6 +53,11 @@ class DcSummariesController < ApplicationController
               :page_layout => :landscape}
               
     @dc_summary = DcSummary.find_by_id(params[:id])
+    
+    respond_to do |format|
+      format.html { redirect_to :action => "prescriptions", :id => @dc_summary.id, :format => :pdf }
+      format.pdf
+    end
   end
   
   

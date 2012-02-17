@@ -1,0 +1,13 @@
+<div id="page-navigation-tabs">
+		<%= link_to "Edit this Discharge", url_for(:action => "edit", :id => @dc_summary.id), :class => "button medium white" -%>
+		<%= link_to "Finalize this Discharge", "#", :class => "button medium white" -%>
+</div>
+<br/>
+
+<%= render :partial => "/dc_summaries/show_partials/dc_summary" %>
+<%= render :partial => "/dc_summaries/show_partials/patient_instructions" %>
+<%= render :partial => "/dc_summaries/show_partials/prescriptions" %>
+	
+<div id="contentCard">
+	<h1>Consultation Requests</h1>
+</div>

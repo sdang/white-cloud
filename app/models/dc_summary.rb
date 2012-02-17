@@ -1,9 +1,9 @@
 class DcSummary < ActiveRecord::Base
-  encrypt_with_public_key :first_name, :last_name, :dob, :diagnoses, :condition, 
+  encrypt_with_public_key :first_name, :last_name, :diagnoses, :condition, 
         :diet, :activity, :discharge_orders, :hospital_course, :hpi, :follow_up, :dc_instructions,
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
         
-  validates_presence_of :first_name, :last_name
+  validates_presence_of :first_name, :last_name, :dob
   validates_numericality_of :mrn, :message => "must be numbers only"
   
   has_many :prescriptions
@@ -35,6 +35,14 @@ class DcSummary < ActiveRecord::Base
     else
       return ""
     end
+  end
+  
+  def prescriptions_in_medlish(pw)
+    self.prescriptions.collect { |x| x.in_medlish }.join("\n") 
+  end
+  
+  def prescriptions_in_english(pw)
+    self.prescriptions.collect { |x| x.in_english }.join("\n")
   end
   
 end
