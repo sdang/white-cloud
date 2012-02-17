@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :reminders
   has_many :dc_summaries, :foreign_key => :created_user_id
-  before_create :set_blank_preferences
+  after_initialize :set_blank_preferences
   
   validates_presence_of :first_name, :last_name
   
