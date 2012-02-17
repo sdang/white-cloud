@@ -11,3 +11,24 @@
 <h1>Your Open D/C Packets</h1>
 <%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
 </div>
+
+<% content_for :sidebar do %>
+	<h1>Search for patient</h1>
+	<%= form_tag :controller => "/dashboard", :action => "index" do %>
+		<%= text_field_tag :mrn, "", :title => "0000000", :size => 8 -%>
+		<%= submit_tag "Search", :class => "button white small" %>
+	<% end %>
+	<br/>
+	Search will find all reminders, d/c summaries, and signouts
+	associated with a given patient
+	<br/><br/>
+	<h1>Recent Activity</h1>
+	<br/>
+	
+	<br/><br/>
+	<h1>Links</h1>
+	<%= link_to "Clinical Workstation", "#" -%><br/>
+	<%= link_to "PADI", "#" -%><br/>
+	<%= link_to "ePageMD", "#" -%><br/>
+	<%= link_to "UpToDate", "#" -%><br/>
+<% end %>

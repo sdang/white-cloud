@@ -8,6 +8,8 @@ class DcSummary < ActiveRecord::Base
   
   has_many :prescriptions
   
+  attr_accessor :missing_fields
+  
   def finalize!
     # validate everything is complete for a final discharge, if valid set the finalized_at and finalized (bool) parameters
     
@@ -43,6 +45,28 @@ class DcSummary < ActiveRecord::Base
   
   def prescriptions_in_english(pw)
     self.prescriptions.collect { |x| x.in_english }.join("\n")
+  end
+  
+  def can_be_finalized?
+    self.missing_fields = []
+    self.missing_fields.push("Attending") if self.attending.blank?
+    self.missing_fields.push("Resident") if self.resident.blank?
+    self.missing_fields.push("Discharge Diagnoses") if self.diagnoses.blank?
+    self.missing_fields.push("History of Present Illness") if self.hpi.blank?
+    self.missing_fields.push("Hospital Course") if self.hospital_course.blank?
+    self.missing_fields.push("Date of Admission") unless self.admit_date
+    self.missing_fields.push("Date of Discharge") unless self.discharge_date
+    self.missing_fields.push("Chief Compliant") if self.chief_complaint.blank?
+    self.missing_fields.push("Condition") if self.condition.blank?
+    self.missing_fields.push("Disposition") if self.disposition.blank?
+    self.missing_fields.push("Diet") if self.diet.blank?
+    self.missing_fields.push("Activity") if self.activity.blank?
+
+    if self.missing_fields.size == 0
+      return true
+    else
+      return false
+    end
   end
   
 end
