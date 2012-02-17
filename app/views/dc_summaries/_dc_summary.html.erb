@@ -1,6 +1,6 @@
 <div id="dc-summary-<%= dc_summary.id -%>" class="reminder">
 	<div id="links">
-		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => dc_summary.id, :controller => "/dc_summaries"}, :method => :delete, :confirm => "Delete this reminder list?" %>
+		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => dc_summary.id, :controller => "/dc_summaries"}, :method => :delete, :confirm => "Delete this reminder list?" %><span style="width: 10px">&nbsp;</span>
 		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => dc_summary.id, :controller => "/dc_summaries"} %>
 	</div>
 	<div id="content">

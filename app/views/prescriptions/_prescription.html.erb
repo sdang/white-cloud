@@ -1,6 +1,6 @@
 <div id="prescription-<%= prescription.id -%>" class="reminder">
 	<div id="links">
-		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => prescription.id, :controller => "prescriptions"}, :method => :delete, :remote => true, :confirm => "Delete this Rx?" %>
+		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => prescription.id, :controller => "prescriptions"}, :method => :delete, :remote => true, :confirm => "Delete this Rx?" %><span style="width: 10px">&nbsp;</span>
 		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => prescription.id, :controller => "prescriptions"}, :remote => true %>
 	</div>
 	<div id="content">

@@ -1,3 +1,6 @@
+<% if @dc_summary.errors.any? %>
+	<div id="alert"><%= errors_for(@dc_summary, "Could not update d/c summary") %></div>
+<% end %>
 <h3>Patient Identification</h3>
 	<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %><br/>
 	<%= @dc_summary.mrn %>

@@ -294,6 +294,13 @@ html, body {
 	}
 }
 
+#dc-summary-content, #patient-instructions-content {
+	display: none;
+	font-size: 12px;
+	line-height: 14px;
+	font-family: monospace;
+}
+
 .reminder {
 	#links { float: left }
 	#content { margin-left: 60px }

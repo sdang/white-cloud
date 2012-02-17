@@ -13,7 +13,7 @@
 		<%= req_field %><%= f.label :mrn%><br/>
 		<%= f.text_field :mrn, :style => "fullwidth", :title => "0000000" %><br/>
 		<%= req_field %><%= f.label "Date of Birth"%><br/>
-		<%= f.text_field :dob, :title => "mm/dd/yyyy", :style => "fullwidth" %><br/>
+		<%= f.date_select :dob, :order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true %><br/>
 	
 	<% if @dc_summary.new_record? %>
 		<%= f.submit "Start D/C Summary", :class => "button green large "%>
