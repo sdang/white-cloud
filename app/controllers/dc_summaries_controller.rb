@@ -33,6 +33,12 @@ class DcSummariesController < ApplicationController
   end
   
   def destroy
+    # only destroy if no real data is saved in it
+  end
+  
+  def show
+    @dc_summary = DcSummary.find_by_id(params[:id])
+    redirect_to :controller => "DcSummary", :action => "index" unless @dc_summary
   end
   
   def prescriptions
@@ -46,6 +52,11 @@ class DcSummariesController < ApplicationController
               :page_layout => :landscape}
               
     @dc_summary = DcSummary.find_by_id(params[:id])
+    
+    respond_to do |format|
+      format.html { redirect_to :action => "prescriptions", :id => @dc_summary.id, :format => :pdf }
+      format.pdf
+    end
   end
   
   

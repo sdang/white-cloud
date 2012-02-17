@@ -12,7 +12,7 @@ OliveViewTools::Application.routes.draw do
   match 'reminders/create_by_string' => 'reminders#create_by_string'
   
   resources :dc_summaries
-  match 'dc_summaries/:id/prescriptions' => 'dc_summaries#prescriptions'
+  match 'dc_summaries/:id/prescriptions(.:format)' => 'dc_summaries#prescriptions'
   
   match 'phi(/:action)' => 'phi'
   match 'sign_out(/:action)' => 'sign_out'
