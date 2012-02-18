@@ -5,8 +5,8 @@
 	</div>
 	<div id="content">
 		<%= prescription.in_medlish %>
-		<% if prescription.quantity.empty? %>
-			<span id="grayText">Please add quantity to have this Rx printed</span>
+		<% unless prescription.print? %>
+			<br/><span id="grayText">Please add sig and quantity to have this Rx printed</span>
 		<% end %>
 	</div>
 	<div style="clear: both"></div>

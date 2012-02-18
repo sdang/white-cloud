@@ -18,16 +18,21 @@ class DcSummariesController < ApplicationController
   def edit
     @dc_summary = DcSummary.find_by_id(params[:id])
     @prescription = Prescription.new
+    
+    if @dc_summary.finalized
+      redirect_to :action => "show", :id => @dc_summary.id
+    end
   end
   
   def update
     @dc_summary = DcSummary.find_by_id(params[:id])
     @dc_summary.last_update_user_id = current_user.id
     if @dc_summary.update_attributes(params[:dc_summary])
-      flash[:notice] = 'Successfully Saved Changes'
-      redirect_to :controller => "dc_summaries", :action => "show", :id => @dc_summary.id
+      flash.now[:notice] = 'Successfully Saved Changes'
+      @prescription = Prescription.new
+      render :action => "edit", :id => @dc_summary.id
     else 
-      # flash.now[:alert] = 'Error saving d/c summary'
+      flash.now[:alert] = 'Error saving d/c summary'
       @prescription = Prescription.new
       render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
     end
