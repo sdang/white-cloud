@@ -52,11 +52,6 @@ class DcSummariesController < ApplicationController
   
   def show
     @dc_summary = DcSummary.find_by_id(params[:id])
-
-    # you should not be able to view this d/c summary unless its finalized
-    if @dc_summary.finalized == false or @dc_summary.can_be_finalized? == false
-      redirect_to :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
-    end
   end
   
   def prescriptions

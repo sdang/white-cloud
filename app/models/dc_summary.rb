@@ -10,8 +10,6 @@ class DcSummary < ActiveRecord::Base
   has_many :prescriptions
   
   attr_accessor :missing_fields
-
-  before_save :check_finalized
   
   def user
     if self.read_attribute(:last_update_user)
@@ -64,13 +62,6 @@ class DcSummary < ActiveRecord::Base
       return true
     else
       return false
-    end
-  end
-  
-  private
-  def check_finalized
-    if self.finalized == true and self.can_be_finalized? == false
-      self.finalized = false
     end
   end
   

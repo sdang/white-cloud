@@ -58,10 +58,12 @@
 
 	
 	<br/>
-	<h1>Next Step</h1>
-	Once you have filled out all the required fields the "Finalize Discharge" button will appear. 
-	Clicking this button will generate all the required discharge paperwork, including prescriptions,
-	and notes to copy and paste into clinical workstation.
+	<% unless @dc_summary.can_be_finalized? %>
+		<h1>Next Step</h1>
+		Once you have filled out all the required fields the "Finalize Discharge" button will appear. 
+		Clicking this button will generate all the required discharge paperwork, including prescriptions,
+		and notes to copy and paste into clinical workstation.
+	<% end %>
 	</div>
 	</div>
 <% end %>

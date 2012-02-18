@@ -30,7 +30,7 @@
 		<%= f.label :one_liner %><br/>
 		<%= import_buttons("one_liner") %><br/>
 		<%= f.text_area :one_liner, :rows => 5, :class => "fullwidth", :title => "One liner is used to pre-fill consultation requests for you", :value => f.object.one_liner.decrypt(session[:group_password])%><br/>
-		<%= f.label :chief_complaint %><br/>
+		<%= req_field %><%= f.label :chief_complaint %><br/>
 		<%= f.text_area :chief_complaint, :rows => 2, :class => "fullwidth", :title => "", :value => f.object.chief_complaint.decrypt(session[:group_password])%><br/>
 		<%= req_field %><%= f.label "Discharge Diagnoses" %> <br/><%= import_buttons("diagnoses") -%> <br/>
 		<%= f.text_area :diagnoses, :rows => 10, :class => "fullwidth", :title => "Please include all diagnoses, including those not addressed during this admission", :value => f.object.diagnoses.decrypt(session[:group_password])%>
