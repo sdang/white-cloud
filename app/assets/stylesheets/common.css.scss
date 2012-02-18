@@ -314,10 +314,16 @@ html, body {
 	color: gray;
 }
 
+.strikethru {
+	text-decoration: line-through;
+	color: #ddd;
+}
+
 @import "alert_notice";
 @import "buttons";
 @import "edit-user";
 @import "forms";
+@import "dc_summary";
 
 // fix IE 6 footer bug
 * html #footer {

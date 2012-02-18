@@ -23,3 +23,11 @@ $ ->
 		else
 			$('#show-hide-patient-instructions').html("show")
 		end
+	$('#save-discharge-summary').click ->
+		$('.edit_dc_summary').submit()
+	$('#finalize-discharge-summary').click ->
+		ans = confirm("Finalize this discharge? This will prevent any further editing!")
+		if ans
+			$('#dc_summary_finalized').val("t")
+			$('.edit_dc_summary').submit()
+		end

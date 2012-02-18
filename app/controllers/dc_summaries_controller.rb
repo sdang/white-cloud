@@ -33,8 +33,16 @@ class DcSummariesController < ApplicationController
     end
   end
   
+  def finalize
+  end
+  
   def destroy
     # only destroy if no real data is saved in it
+    flash[:alert] = "Deleting discharge summaries is not supported"
+    respond_to do |format|
+      format.js { render :nothing }
+      format.html { redirect_to :action => "index" }
+    end
   end
   
   def show

@@ -1,6 +1,7 @@
 class DcSummary < ActiveRecord::Base
   encrypt_with_public_key :first_name, :last_name, :diagnoses, :condition, 
         :diet, :activity, :discharge_orders, :hospital_course, :hpi, :follow_up, :dc_instructions,
+        :chief_complaint, :one_liner, :procedures, :disposition,
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
         
   validates_presence_of :first_name, :last_name, :dob
@@ -9,11 +10,8 @@ class DcSummary < ActiveRecord::Base
   has_many :prescriptions
   
   attr_accessor :missing_fields
-  
-  def finalize!
-    # validate everything is complete for a final discharge, if valid set the finalized_at and finalized (bool) parameters
-    
-  end
+
+  before_save :check_finalized
   
   def user
     if self.read_attribute(:last_update_user)
@@ -66,6 +64,13 @@ class DcSummary < ActiveRecord::Base
       return true
     else
       return false
+    end
+  end
+  
+  private
+  def check_finalized
+    if self.finalized == true and self.can_be_finalized? == false
+      self.finalized = false
     end
   end
   
