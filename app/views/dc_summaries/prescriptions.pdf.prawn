@@ -10,11 +10,11 @@ num_scripts = (@dc_summary.prescriptions_to_print.size/6.0).ceil
   end
   
   pdf.start_new_page if i.odd? and i > 2
-  pdf.stroke do
-    pdf.line_width = 1
-    pdf.stroke_color "bbbbbb"
-    pdf.vertical_line -35, 600, :at => 360
-  end
+  # pdf.stroke do
+  #   pdf.line_width = 1
+  #   pdf.stroke_color "bbbbbb"
+  #   pdf.vertical_line -35, 600, :at => 360
+  # end
   
   render :partial => "prescription",
       :locals => { :p_pdf => pdf, :h_displace => h_displace, :prescriptions => @dc_summary.prescriptions_to_print[(i-1)*6..(i-1)*6+5] }
