@@ -33,7 +33,7 @@ class DcSummariesController < ApplicationController
     
     if @dc_summary.update_attributes(params[:dc_summary])
       flash.now[:notice] = 'Successfully Saved Changes'
-      render :action => "edit", :id => @dc_summary.id
+      redirect_to :action => "edit", :id => @dc_summary.id
     else 
       flash.now[:alert] = 'Error saving d/c summary'
       render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
@@ -73,6 +73,10 @@ class DcSummariesController < ApplicationController
       format.pdf
     end
   end
+  
+  def consults
+  end
+  
   
   
 end
