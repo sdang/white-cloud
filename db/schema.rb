@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218030751) do
+ActiveRecord::Schema.define(:version => 20120218193927) do
 
   create_table "admin_sign_outs", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(:version => 20120218030751) do
     t.integer  "dc_summary_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "priority"
+    t.datetime "appointment_time"
+    t.boolean  "contact_after_seen", :default => false
   end
 
   create_table "dc_summaries", :force => true do |t|

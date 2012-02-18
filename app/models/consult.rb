@@ -12,4 +12,12 @@ class Consult < ActiveRecord::Base
     str += self.dc_summary.prescriptions.collect { |x| x.drug + " " + x.sig }.join(", ")
   end
   
+  def priority
+    if self.read_attribute(:priority).blank?
+      return "Routine"
+    else
+      return self.read_attribute(:priority)
+    end
+  end
+  
 end

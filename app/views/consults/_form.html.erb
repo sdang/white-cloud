@@ -1,30 +1,29 @@
 <div id="consult-form-errors" class="alert hidden"></div>
 <div class="small-form">
 <%= form_for @consult, :remote => true, do |f|%>
+
 	<%= f.hidden_field :dc_summary_id, :value => dc_summary_id -%>
-	<table>
-		<tr>
-			<td colspan="3">
-				<%= f.label :service %><br/>
-				<%= f.text_field :service, :title => "Cardiology", :size => 25, :value => f.object.service.decrypt(session[:group_password]) -%>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<%= f.label :reason %></br>
-				<% value = f.object.reason.decrypt(session[:group_password]) || f.object.dc_summary.one_liner.decrypt(session[:group_password]) %>
-				<%= f.text_area :reason, :title => "Please add a one liner below and your consults will be pre-filled for you.", :rows => 5, :cols => 50, :value => value %>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-			<% if @consult.new_record? %>
-				<%= f.submit "+ Add consult", :class => "button green medium" %>
-			<% else %>
-				<%= f.submit "Update", :class => "button white small" %>
-			<% end %>
-			</td>
-		</tr>
-	</table>
+
+	<%= req_field %><%= f.label :service %><br/>
+	<%= f.text_field :service, :title => "Cardiology", :size => 25, :value => f.object.service.decrypt(session[:group_password]) -%><br/>
+	
+	<%= req_field %><%= f.label :reason %></br>
+<% value = f.object.reason.decrypt(session[:group_password]) || f.object.dc_summary.one_liner.decrypt(session[:group_password]) %>
+
+	<%= f.text_area :reason, :title => "Please add a one liner below and your consults will be pre-filled for you.", :rows => 5, :cols => 50, :value => value %><br/>
+	
+	<%= f.label :priority %><br/>
+	<%= f.text_field :priority, :title => "Routine" %><br/>
+	
+	<%= f.label :appointment_time %><br/>
+	<%= f.datetime_select :appointment_time, :order => [:month, :day, :year, :hour, :minute], :include_blank => true, :start_year => Time.now.year %><br/>
+
+	<% if @consult.new_record? %>
+		<%= f.submit "+ Add consult", :class => "button green medium" %>
+	<% else %>
+		<%= f.submit "Update", :class => "button white small" %>
+	<% end %>
+	
 <% end %>
+<br/><br/>
 </div>

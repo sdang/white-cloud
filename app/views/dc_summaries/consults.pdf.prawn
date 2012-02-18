@@ -64,6 +64,8 @@
   # Priority
   pdf.grid([8,9], [8,14]).bounding_box do
     pdf.text_box "PRIORITY:", :size => 7, :at => [5, pdf.bounds.height-5]
+    pdf.move_down(20)
+    pdf.text consult.priority, :size => 10, :align => :center
     pdf.stroke { pdf.horizontal_line 0, pdf.bounds.width, :at => 0 }
   end
   
@@ -84,8 +86,7 @@
     pdf.text_box "DATE OF CLINIC APPOINTMENT: ", :size => 7, :at => [10, pdf.bounds.top-5]
     pdf.stroke { pdf.horizontal_line 10, pdf.bounds.width, :at => 5 }
     pdf.stroke { pdf.horizontal_line 0, pdf.bounds.width, :at => 0 }
-    # todo: put clinic appt date if it exists here
-    # pdf.text_box current_user.name, :size => 12, :at => [36, 20], :height => 20, :overflow => :shrink_to_fit, :width => 180    
+    pdf.text_box consult.appointment_time.strftime("%m-%d-%Y %l:%M%p"), :size => 12, :at => [36, 20], :height => 20, :overflow => :shrink_to_fit, :width => 180 if consult.appointment_time
   end
   
   
