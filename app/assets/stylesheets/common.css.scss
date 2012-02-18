@@ -43,11 +43,7 @@ html, body {
 }
 
 #header {
-	background: {
-		// image: url('/assets/Olive-View-Logo.gif'); 
-		repeat:no-repeat;
-		color: $accent-color;
-	}
+	background-color: $accent-color;
 	height: 58px;
 	color: white;
 	font-family: helvetica;
@@ -55,12 +51,19 @@ html, body {
 	font-size: 16px;
 	padding: {
 		top: 10px;
-		left: 20px;	
+		left: 10px;	
 	}
 	
 	#logo {
+		background: {
+			image: url('/assets/olive-view-logo.gif'); 
+			repeat: no-repeat;
+		}
+		
 		float: left; 
-		margin-left: 16px;
+		margin-left: 10px;
+		padding-left: 80px;
+		height: 51px;
 		
 		#small-text {
 			font-size: 12px;
