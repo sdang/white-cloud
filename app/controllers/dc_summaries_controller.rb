@@ -1,5 +1,6 @@
 class DcSummariesController < ApplicationController
   before_filter :authenticate_user!, :authorized_user!
+  before_filter :authenticate_admin!, :only => ["unfinalize"]
   before_filter :set_last_uri, :only => ["index", "edit"]
             
   def index
@@ -58,7 +59,7 @@ class DcSummariesController < ApplicationController
   
   def prescriptions
     require "prawn/measurement_extensions"
-    redirect_to :action => "edit", :id => params[:id] unless session[:group_password]
+    redirect_to :action => "index" unless session[:group_password]
     prawnto :prawn => {
               :left_margin => 0.5.send(:in), 
               :right_margin => 0.5.send(:in),
@@ -75,8 +76,32 @@ class DcSummariesController < ApplicationController
   end
   
   def consults
+    
+    require "prawn/measurement_extensions"
+    redirect_to :action => "index" unless session[:group_password]
+    prawnto :prawn => {
+      :left_margin => 0.5.send(:in),
+      :right_margin => 0.5.send(:in),
+      :top_margin => 0.75.send(:in),
+      :bottom_margin => 0.75.send(:in),
+      :page_layout => :portrait
+    }
+    
+    @dc_summary = DcSummary.find_by_id(params[:id])
+    
+    respond_to do |format|
+      format.html { redirect_to :ation => "consults", :id => @dc_summary.id, :format => :pdf }
+      format.pdf
+    end
+    
   end
   
+  def unfinalize
+    @dc_summary = DcSummary.find_by_id(params[:id])
+    @dc_summary.update_attribute(:finalized, false)
+    
+    redirect_to :action => "edit", :id => @dc_summary.id
+  end
   
   
 end

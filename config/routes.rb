@@ -15,7 +15,7 @@ OliveViewTools::Application.routes.draw do
   resources :dc_summaries
   match 'dc_summaries/:id/consults(.:format)' => 'dc_summaries#consults'
   match 'dc_summaries/:id/prescriptions(.:format)' => 'dc_summaries#prescriptions'
-  match 'dc_summaries/:id/finalize' => 'dc_summaries#finalize'
+  match 'dc_summaries/:id/unfinalize' => 'dc_summaries#unfinalize'
   
   match 'phi(/:action)' => 'phi'
   match 'sign_out(/:action)' => 'sign_out'
