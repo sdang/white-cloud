@@ -22,7 +22,21 @@
 	</div>
 	<br/><br/>
 
-	
+<h3>Consultation Requests</h3>
+	<br/>
+	<%= render :partial => "/consults/table", :object => @dc_summary.consults %>
+	<br/>
+	<%= button_tag "+ Add Consults", :id => "add-button-consults", :class => "button green small" %>
+	<div id="add-form-consults">
+		<%= render :partial => "/consults/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+	</div>
+	<% if @dc_summary.one_liner.blank? %>
+		<br/><br/>
+		<div id="grayText">You have not inputed a one-liner below yet. If you provide a one 
+			liner it will automatically be added to your consult requests</div>
+	<% end %>
+	<br/><br/>
+
 <%= form_for @dc_summary do |f| %>
 
 	

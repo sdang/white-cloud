@@ -3,6 +3,7 @@ OliveViewTools::Application.routes.draw do
   get "sign_out/index"
 
   resources :prescriptions
+  resources :consults
   
   resources :reminder_lists
   match 'reminder_lists/cancel_edit/:id' => 'reminder_lists#cancel_edit'

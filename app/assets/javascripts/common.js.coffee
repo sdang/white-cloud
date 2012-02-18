@@ -31,3 +31,5 @@ $ ->
 			$('#dc_summary_finalized').val("t")
 			$('.edit_dc_summary').submit()
 		end
+	$('#add-button-consults').click ->
+		$('#add-form-consults').slideToggle('fast')
