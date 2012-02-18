@@ -16,6 +16,7 @@
 </div>
 
 <% content_for :sidebar do %>
+	<% if session[:group_password] %>
 	<div id="sideBarWrapper">
 	<div id="followContent">
 		<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "button medium white"%>
@@ -66,4 +67,5 @@
 	<% end %>
 	</div>
 	</div>
+	<% end %>
 <% end %>
