@@ -99,11 +99,11 @@
 			</table>
 			
 			<%= f.label :follow_up %><br/>
-			<%= f.text_area :follow_up, :class => "fullwidth", :rows => 5, :title => "List all upcoming clinic appointments and outpatient studies. Any consultation requests you create will automatically be included in the final follow up list." %>
+			<%= f.text_area :follow_up, :class => "fullwidth", :rows => 5, :title => "List all upcoming clinic appointments and outpatient studies. Any consultation requests you create will automatically be included in the final follow up list.", :value => f.object.follow_up.decrypt(session[:group_password])  %>
 			<%= f.label :discharge_instructions %><br/>
-			<%= f.text_area :dc_instructions, :class => "fullwidth", :rows => 5, :title => "Discharge instructions will directly print on the patient information sheet as well as be included in the d/c summary." %>
+			<%= f.text_area :dc_instructions, :class => "fullwidth", :rows => 5, :title => "Discharge instructions will directly print on the patient information sheet as well as be included in the d/c summary.", :value => f.object.dc_instructions.decrypt(session[:group_password])  %>
 			<%= f.label :discharge_orders %><br/>
-			<%= f.text_area :discharge_orders, :class => "fullwidth", :rows => 5, :title => "Any outpatient studies you would like to order. These will be printed on the final patient instruction sheet"%>
+			<%= f.text_area :discharge_orders, :class => "fullwidth", :rows => 5, :title => "Any outpatient studies you would like to order. These will be printed on the final patient instruction sheet", :value => f.object.discharge_orders.decrypt(session[:group_password]) %>
 			<div id='follow-button' style='text-align: right'>
 			
 			<%= f.hidden_field :finalized %>

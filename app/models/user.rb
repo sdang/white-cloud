@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     self.dc_summaries.find_all_by_finalized(false)
   end
   
+  def recently_finalized_dc_summaries
+    self.dc_summaries.where("finalized = ? and updated_at > ?", true, Time.now-5.days)
+  end
+  
   def authorized?
     return self.authorized rescue false
   end
