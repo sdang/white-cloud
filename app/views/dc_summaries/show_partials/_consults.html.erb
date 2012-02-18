@@ -1,0 +1,15 @@
+<div id="contentCard" class="x-large-form">
+
+<h1>Medications</h1>
+<table id="prescription-link">
+	<tr valign="middle"><td>
+	<%= link_to image_tag("pdficon_large.png"), url_for(:action => "consults", :id => @dc_summary.id, :format => "pdf"), :target => "_blank"%></td>
+	<td><%= link_to "Download / Print Yellow Consults", url_for(:action => "consults", :id => @dc_summary.id, :format => "pdf"), :target => "_blank" -%></td>
+</table>
+<br/>
+<% @dc_summary.consults.each do |c| %>
+	<b><%= c.service.decrypt(session[:group_password]) %></b><br/>
+	<%= c.reason.decrypt(session[:group_password]) %><br/><br/>
+<% end %>
+
+</div>

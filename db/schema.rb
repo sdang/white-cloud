@@ -11,12 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217214754) do
+ActiveRecord::Schema.define(:version => 20120218030751) do
 
   create_table "admin_sign_outs", :force => true do |t|
     t.integer  "user_id"
     t.integer  "resident_user_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "consults", :force => true do |t|
+    t.binary   "service"
+    t.binary   "service_iv"
+    t.binary   "service_key"
+    t.binary   "reason"
+    t.binary   "reason_iv"
+    t.binary   "reason_key"
+    t.integer  "dc_summary_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -131,11 +143,11 @@ ActiveRecord::Schema.define(:version => 20120217214754) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "pager_number"
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "authorized",                            :default => false
     t.boolean  "admin",                                 :default => false
+    t.string   "pager_number"
     t.text     "sms_number"
     t.string   "preferences"
   end

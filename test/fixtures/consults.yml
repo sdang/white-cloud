@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  to: 
+  to_iv: 
+  to_key: 
+  reason: 
+  reason_iv: 
+  reason_key: 
+  dc_summary_id: 1
+
+two:
+  to: 
+  to_iv: 
+  to_key: 
+  reason: 
+  reason_iv: 
+  reason_key: 
+  dc_summary_id: 1

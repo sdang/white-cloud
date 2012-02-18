@@ -1,0 +1,10 @@
+<div id="consult-<%= consult.id -%>" class="reminder">
+	<div id="links">
+		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => consult.id, :controller => "consults"}, :method => :delete, :remote => true, :confirm => "Delete this consult?" %><span style="width: 10px">&nbsp;</span>
+		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => consult.id, :controller => "consults"}, :remote => true %>
+	</div>
+	<div id="content">
+		<%= consult.service.decrypt(session[:group_password]) %>
+	</div>
+	<div style="clear: both"></div>
+</div>

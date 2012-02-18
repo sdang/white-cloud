@@ -18,6 +18,7 @@ class DcSummariesController < ApplicationController
   def edit
     @dc_summary = DcSummary.find_by_id(params[:id])
     @prescription = Prescription.new
+    @consult = Consult.new(:dc_summary_id => @dc_summary.id)
     
     if @dc_summary.finalized
       redirect_to :action => "show", :id => @dc_summary.id
@@ -27,13 +28,14 @@ class DcSummariesController < ApplicationController
   def update
     @dc_summary = DcSummary.find_by_id(params[:id])
     @dc_summary.last_update_user_id = current_user.id
+    @prescription = Prescription.new
+    @consult = Consult.new(:dc_summary_id => @dc_summary.id)
+    
     if @dc_summary.update_attributes(params[:dc_summary])
       flash.now[:notice] = 'Successfully Saved Changes'
-      @prescription = Prescription.new
-      render :action => "edit", :id => @dc_summary.id
+      redirect_to :action => "edit", :id => @dc_summary.id
     else 
       flash.now[:alert] = 'Error saving d/c summary'
-      @prescription = Prescription.new
       render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
     end
   end
@@ -71,6 +73,10 @@ class DcSummariesController < ApplicationController
       format.pdf
     end
   end
+  
+  def consults
+  end
+  
   
   
 end

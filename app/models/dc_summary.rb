@@ -8,6 +8,7 @@ class DcSummary < ActiveRecord::Base
   validates_numericality_of :mrn, :message => "must be numbers only"
   
   has_many :prescriptions
+  has_many :consults
   
   attr_accessor :missing_fields
   
