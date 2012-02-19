@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :reminders
   has_many :dc_summaries, :foreign_key => :created_user_id
+  
+  after_create :notify_admin
+
   after_initialize :set_blank_preferences
   
   validates_presence_of :first_name, :last_name
@@ -101,6 +104,10 @@ class User < ActiveRecord::Base
     return ReminderList.find_by_id(self.default_reminder_list_id)
   end
 
+  def notify_admin
+      AdminMailer.send_new_user_notification(self.id).deliver  
+  end
+  
   private
   def self.phone_str_to_num(str)
     str = str.gsub(/[^0-9]/,'')
