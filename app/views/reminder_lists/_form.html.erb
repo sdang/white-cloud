@@ -2,8 +2,8 @@
 <% @reminder_list ||= ReminderList.new %>
 <div class="<%= 'small-form' unless @reminder_list.new_record?%>">
 <%= form_for @reminder_list, :remote => true, :id => @reminder_list.id do |f| %>
-	<%= f.label :name %><br/>
-	<%= f.text_field :name, :title => "List Name" %>
+	<%= req_field %><%= f.label :name %><br/>
+	<%= f.text_field :name, :title => "List Name" %><br/>
 
 	<%= f.label :default_user %><br/>
 	<%= collection_select(:reminder_list, :user_id, User.all(:order => "email ASC"), :id, :email, :include_blank => true)%>

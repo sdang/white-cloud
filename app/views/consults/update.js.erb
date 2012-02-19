@@ -3,5 +3,9 @@
 	$("#consult-form-errors").effect("highlight", {}, 3000)
 <% else %>
 	$("#consult-<%= @consult.id %>").html("<%= escape_javascript(render @consult) %>");
+	$("#consult-<%= @consult.id %>").css("background-color", "#ffffff");
+	$("#consult-<%= @consult.id %>").find('#links').fadeTo('fast', 0.5);
 	$("#consult-<%= @consult.id %>").effect("highlight", {}, 3000);
 <% end %>
+
+

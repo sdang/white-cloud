@@ -3,5 +3,6 @@
 	$("#reminder-form-error").effect("highlight", {}, 3000)
 <% else %>
 	$("#reminder-<%= @reminder.id %>").html("<%= escape_javascript(render @reminder) %>");
+	$("#reminder-<%= @reminder.id %>").css("background-color", "#ffffff");
 	$("#reminder-<%= @reminder.id %>").effect("highlight", {}, 3000);
 <% end %>
