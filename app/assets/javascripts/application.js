@@ -27,10 +27,6 @@ $(document).on('click', '#fade', function() {
 	$(this).parent().slideToggle("fast");
 });
 
-$(document).on('click', '#phi-explanation-link', function() {
-	$('#phi-explanation').slideToggle('fast');
-})
-
 $(document).ready(function () {  
   var top = $('#followContent').offset().top - parseFloat($('#followContent').css('marginTop').replace(/auto/, 0));
   $(window).scroll(function (event) {

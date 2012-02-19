@@ -33,3 +33,5 @@ $ ->
 		end
 	$('#add-button-consults').click ->
 		$('#add-form-consults').slideToggle('fast')
+	$('#phi-explanation-link').click ->
+		$('#phi-explanation').slideToggle('fast');
