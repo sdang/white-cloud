@@ -38,5 +38,5 @@ class ApplicationController < ActionController::Base
   def set_last_uri
     session[:last_uri] = request.fullpath
   end
-  
+    
 end
