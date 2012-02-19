@@ -3,7 +3,7 @@
 <h1>Medications</h1>
 <table id="prescription-link">
 	<tr valign="middle"><td>
-	<%= link_to image_tag("pdficon_large.png"), url_for(:action => "prescriptions", :id => @dc_summary.id, :format => "pdf"), :target => "_blank"%></td>
+	<%= link_to image_tag("pdficon_large.png", :border => 0), url_for(:action => "prescriptions", :id => @dc_summary.id, :format => "pdf"), :target => "_blank"%></td>
 	<td><%= link_to "Download / Print Prescription", url_for(:action => "prescriptions", :id => @dc_summary.id, :format => "pdf"), :target => "_blank" -%></td>
 </table>
 <br/>
