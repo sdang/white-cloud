@@ -7,14 +7,14 @@ class Prescription < ActiveRecord::Base
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
         
   def in_medlish(pw)
-    self.drug ||= ""
-    self.sig ||= ""
+    self.drug = "" if self.drug.decrypt(pw).blank?
+    self.sig = "" if self.sig.decrypt(pw).blank?
     self.quantity ||= ""
     self.refills ||= 0
     
     str = ""
-    str << self.drug.decrypt(pw) if self.drug
-    str << ", " + self.sig.decrypt(pw) if self.sig
+    str << self.drug.decrypt(pw) unless self.drug.decrypt(pw).blank?
+    str << ", " + self.sig.decrypt(pw) unless self.sig.decrypt(pw).blank?
     str << " qty: " + self.quantity unless self.quantity.empty?
     str << " refills: " + self.refills.to_s
     

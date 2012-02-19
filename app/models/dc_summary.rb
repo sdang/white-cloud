@@ -69,6 +69,7 @@ class DcSummary < ActiveRecord::Base
   def readonly?
     # we have to actually read from the db to see if this is finalized
     # and not just a newly finalized record we're trying to save
+    return false if self.new_record? and self.finalized == false
     return false if self.admin_override
     return true if DcSummary.find(self.id).read_attribute(:finalized)
   end

@@ -7,8 +7,8 @@
 	<% end %>
 	<h3>Patient Identification</h3>
 		<%= req_field %><%= f.label "Name" %><br/>
-		<%= f.text_field :first_name, :title => "First Name", :style => "fullwidth" %><br/>
-		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth" %><br/>
+		<%= f.text_field :first_name, :title => "First Name", :style => "fullwidth", :value => "" %><br/>
+		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth", :value => "" %><br/>
 	
 		<%= req_field %><%= f.label :mrn%><br/>
 		<%= f.text_field :mrn, :style => "fullwidth", :title => "0000000" %><br/>

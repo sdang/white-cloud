@@ -19,10 +19,10 @@
 	<% if session[:group_password] %>
 	<div id="sideBarWrapper">
 	<div id="followContent">
-		<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "button medium white"%>
+		<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "button medium white",  :style => "width: 200px"%>
 		<% if @dc_summary.can_be_finalized? %>
 			<br/><br/>
-			<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "button medium green" %>
+			<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "button medium green", :style => "width: 200px" %>
 		<% end %>
 	
 	<br/><br/><br/>

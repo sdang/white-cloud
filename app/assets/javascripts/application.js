@@ -11,6 +11,10 @@
 //= require jquery.idTabs.min.js
 //= require common.js
 
+if($.browser.msie && $.browser.version=="6.0") {
+	window.location = "/unsupported_browser.html"
+}
+
 $(document).on('click', '#add-button', function() {
 	$('#add-form').slideToggle('fast');
 });
