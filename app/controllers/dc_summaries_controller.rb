@@ -29,6 +29,7 @@ class DcSummariesController < ApplicationController
   def update
     @dc_summary = DcSummary.find_by_id(params[:id])
     @dc_summary.last_update_user_id = current_user.id
+      
     @prescription = Prescription.new
     @consult = Consult.new(:dc_summary_id => @dc_summary.id)
     
