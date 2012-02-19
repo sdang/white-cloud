@@ -6,13 +6,13 @@
 		<tr>
 			<td colspan="3">
 				<%= f.label :drug %><br/>
-				<%= f.text_field :drug, :title => "Lasix 20mg", :size => 25 -%>
+				<%= f.text_field :drug, :title => "Lasix 20mg", :size => 25, :value => f.object.drug.decrypt(session[:group_password]) -%>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="3">
 				<%= f.label :sig %></br>
-				<%= f.text_field :sig, :title => "1 tab PO BID", :size => 25 %>
+				<%= f.text_field :sig, :title => "1 tab PO BID", :size => 25, :value => f.object.sig.decrypt(session[:group_password]) %>
 			</td>
 		</tr>
 		<tr>

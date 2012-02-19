@@ -2,7 +2,7 @@ class DcSummariesController < ApplicationController
   before_filter :authenticate_user!, :authorized_user!
   before_filter :authenticate_admin!, :only => ["unfinalize"]
   before_filter :set_last_uri, :only => ["index", "edit"]
-            
+  
   def index
   end
   
@@ -29,10 +29,12 @@ class DcSummariesController < ApplicationController
   def update
     @dc_summary = DcSummary.find_by_id(params[:id])
     @dc_summary.last_update_user_id = current_user.id
+      
     @prescription = Prescription.new
     @consult = Consult.new(:dc_summary_id => @dc_summary.id)
     
-    if @dc_summary.update_attributes(params[:dc_summary])
+    if @dc_summary.update_attributes(params[:dc_summary])      
+      
       flash.now[:notice] = 'Successfully Saved Changes'
       redirect_to :action => "edit", :id => @dc_summary.id
     else 
@@ -40,9 +42,7 @@ class DcSummariesController < ApplicationController
       render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
     end
   end
-  
-  def finalize
-  end
+
   
   def destroy
     # only destroy if no real data is saved in it
@@ -98,10 +98,12 @@ class DcSummariesController < ApplicationController
   
   def unfinalize
     @dc_summary = DcSummary.find_by_id(params[:id])
+    
+    # we have to toggle off read-only
+    @dc_summary.admin_override = true
     @dc_summary.update_attribute(:finalized, false)
     
     redirect_to :action => "edit", :id => @dc_summary.id
   end
-  
   
 end

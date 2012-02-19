@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :reminders
   has_many :dc_summaries, :foreign_key => :created_user_id
+  
+  after_create :notify_admin
+
   after_initialize :set_blank_preferences
   
   validates_presence_of :first_name, :last_name
@@ -10,9 +13,9 @@ class User < ActiveRecord::Base
       :with => /^[\(\)0-9\- \+\.]{10,20}$/
   
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :trackable, :validatable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :pager_number, :sms_number,
@@ -100,7 +103,11 @@ class User < ActiveRecord::Base
   def default_reminder_list
     return ReminderList.find_by_id(self.default_reminder_list_id)
   end
-    
+
+  def notify_admin
+      AdminMailer.send_new_user_notification(self.id).deliver  
+  end
+  
   private
   def self.phone_str_to_num(str)
     str = str.gsub(/[^0-9]/,'')

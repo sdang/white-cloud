@@ -25,7 +25,8 @@ OliveViewTools::Application.routes.draw do
   # admin area
   namespace :admin do |admin|
       resources :dashboard
-      resource :sign_outs
+      resources :sign_outs
+      match 'users/:id/:action' => 'users'
   end
   
   # twilio receive sms

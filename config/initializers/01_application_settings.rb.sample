@@ -9,6 +9,7 @@ ENV['SEND_GRID_PW'] ||= "Password"
 ENV['SEND_GRID_DOMAIN'] ||= "domain.com"
 ENV['DEVISE_FROM_EMAIL'] ||= "noreply@domain.com"
 ENV['DEFAULT_FROM_EMAIL'] ||= "noreply@domain.com"
+ENV['ADMIN_NOTIFY_EMAIL'] ||= "noreply@domain.com"
 
 # SMS Settings
 ENV['TWILIO_ACCOUNT_SID'] ||= "**************************"

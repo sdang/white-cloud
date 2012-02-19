@@ -3,23 +3,26 @@ class Prescription < ActiveRecord::Base
   
   validates_presence_of :dc_summary_id, :drug
   
-  def in_medlish
+  encrypt_with_public_key :drug, :sig,
+        :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
+        
+  def in_medlish(pw)
     self.drug ||= ""
     self.sig ||= ""
     self.quantity ||= ""
     self.refills ||= 0
     
     str = ""
-    str << self.drug unless self.drug.empty?
-    str << ", " + self.sig unless self.sig.empty?
+    str << self.drug.decrypt(pw) if self.drug
+    str << ", " + self.sig.decrypt(pw) if self.sig
     str << " qty: " + self.quantity unless self.quantity.empty?
     str << " refills: " + self.refills.to_s
     
     return str
   end
   
-  def in_english
-    str = self.in_medlish || ""
+  def in_english(pw)
+    str = self.in_medlish(pw) || ""
     
     # iterate through common med abbreviations and convert to english
 
@@ -47,7 +50,7 @@ class Prescription < ActiveRecord::Base
   end
   
   def print?
-    true if !self.drug.blank? and !self.sig.blank?
+    true if !self.drug.blank? and !self.sig.blank? and self.quantity
   end
   
 end
