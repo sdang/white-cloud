@@ -4,7 +4,7 @@
 		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => prescription.id, :controller => "prescriptions"}, :remote => true %>
 	</div>
 	<div id="content">
-		<%= prescription.in_medlish %>
+		<%= prescription.in_medlish(session[:group_password]) %>
 		<% unless prescription.print? %>
 			<br/><span id="grayText">Please add sig and quantity to have this Rx printed</span>
 		<% end %>

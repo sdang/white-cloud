@@ -99,6 +99,7 @@ class DcSummariesController < ApplicationController
   
   def unfinalize
     @dc_summary = DcSummary.find_by_id(params[:id])
+    @dc_summary.admin_override = true
     @dc_summary.update_attribute(:finalized, false)
     
     redirect_to :action => "edit", :id => @dc_summary.id

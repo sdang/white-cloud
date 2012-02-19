@@ -10,7 +10,7 @@ class DcSummary < ActiveRecord::Base
   has_many :prescriptions
   has_many :consults
   
-  attr_accessor :missing_fields
+  attr_accessor :missing_fields, :admin_override
   
   def user
     if self.read_attribute(:last_update_user)
@@ -37,11 +37,11 @@ class DcSummary < ActiveRecord::Base
   end
   
   def prescriptions_in_medlish(pw)
-    self.prescriptions.collect { |x| x.in_medlish }.join("\n") 
+    self.prescriptions.collect { |x| x.in_medlish(pw) }.join("\n") 
   end
   
   def prescriptions_in_english(pw)
-    self.prescriptions.collect { |x| x.in_english }.join("\n")
+    self.prescriptions.collect { |x| x.in_english(pw) }.join("\n")
   end
   
   def can_be_finalized?
@@ -69,6 +69,7 @@ class DcSummary < ActiveRecord::Base
   def readonly?
     # we have to actually read from the db to see if this is finalized
     # and not just a newly finalized record we're trying to save
+    return false if self.admin_override
     return true if DcSummary.find(self.id).read_attribute(:finalized)
   end
   
