@@ -7,7 +7,7 @@
 		recently discharged or seen in clinic. Once a reminder is due you will receive a page
 		daily reminding you to check on the study.<br/>
 		<br/>
-		You can also text reminders to <b>818-581-2401</b> using your cell phone. Please make sure
+		You can also text reminders to <b><%= number_to_phone(ENV['TWILIO_PHONE_NUMBER'], :area_code => true)%></b> using your cell phone. Please make sure
 		your text messages include a 7 digit MRN, and when to remind you. Examples:
 		<ul>
 			<li>5671234 Check coags in 6 hours</li>
