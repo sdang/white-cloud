@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
   
   def dc_summaries_list
-    self.dc_summaries.find_all_by_finalized(false)
+    DcSummary.find(:all, :conditions => ["(created_user_id = ? OR last_update_user_id = ?) AND finalized = ?", self.id, self.id, false], :order => "updated_at DESC")
   end
   
   def recently_finalized_dc_summaries
