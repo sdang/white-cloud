@@ -90,7 +90,7 @@ class DcSummariesController < ApplicationController
     @dc_summary = DcSummary.find_by_id(params[:id])
     
     respond_to do |format|
-      format.html { redirect_to :ation => "consults", :id => @dc_summary.id, :format => :pdf }
+      format.html { redirect_to :action => "consults", :id => @dc_summary.id, :format => :pdf }
       format.pdf
     end
     
@@ -105,5 +105,28 @@ class DcSummariesController < ApplicationController
     
     redirect_to :action => "edit", :id => @dc_summary.id
   end
+  
+  def import_handler
+    # update the dc summary with the required data, handles:
+    # rx, one_liner, diagnoses for now
+    @dc_summary = DcSummary.find_by_id(params[:id])
+    @prefix = params[:prefix]
+    if params[:prefix] == "rx"
+      @update_result = @dc_summary.import_rx(session[:group_password])
+    elsif params[:prefix] == "one_liner"
+      @update_result = @dc_summary.import_one_liner(session[:group_password])
+    elsif params[:prefix] == "diagnoses"
+      @update_result = @dc_summary.import_diagnoses(session[:group_password])
+    else
+      @update_result = false
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to :action => "edit", :id => @dc_summary.id }
+      format.js
+    end
+    
+  end
+  
   
 end

@@ -29,7 +29,7 @@ html, body {
     margin: 0;
 	padding: 0;
 	
-	a, a:hover, a:visited {
+	a, a:link, a:hover, a:visited {
 		color: blue;
 	}
 }
@@ -110,7 +110,7 @@ html, body {
 		}
 		
 		a {
-			&:visited, &:hover { color: $accent-color }
+			&:link, &:visited, &:hover { color: $accent-color }
 		}
 	}
 	
@@ -184,18 +184,18 @@ html, body {
 	}
 	
 	#log-message {
-		font-size: 10px;
+		font-size: 11px;
 	}
 	
 	#log-time {
-		font-size: 8px;
+		font-size: 9px;
 		color: green;
 	}
 	
 	li {
 		margin-left: -20px;
 		margin-bottom: 10px;
-		line-height: 12px;
+		line-height: 11px;
 	}
 }
 

@@ -3,6 +3,8 @@ class Consult < ActiveRecord::Base
   
   validates_presence_of :dc_summary_id, :service, :reason
   
+  after_save :touch_dc_summary
+      
   encrypt_with_public_key :service, :reason, :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
 
   def reason_for_yellow(pw)
@@ -19,5 +21,10 @@ class Consult < ActiveRecord::Base
       return self.read_attribute(:priority)
     end
   end
+  
+  def touch_dc_summary
+    self.dc_summary.touch
+  end
+
   
 end

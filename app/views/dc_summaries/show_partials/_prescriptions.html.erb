@@ -18,9 +18,9 @@
 	
 	<% @dc_summary.prescriptions.each do |rx| %>
 	<tr valign="top">
-		<td><%= rx.drug %></td>
+		<td><%= rx.drug.decrypt(session[:group_password]) %></td>
 		<td><%= rx.quantity%></td>
-		<td><%= rx.sig %></td>
+		<td><%= rx.sig.decrypt(session[:group_password]) %></td>
 		<td><%= rx.refills%></td>
 		<td><%= image_tag("checkmark-13.gif") if rx.print?%></td>
 	</tr>
