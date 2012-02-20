@@ -2,3 +2,5 @@ basic:
     first_name: First
     last_name: Last
     mrn: 1231234
+    dob: <%= Time.now %>
+    

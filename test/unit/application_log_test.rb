@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LogTest < ActiveSupport::TestCase
+class ApplicationLogTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
