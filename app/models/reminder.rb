@@ -101,12 +101,13 @@ class Reminder < ActiveRecord::Base
     puts "Sending reminders..."
     # find all reminders, not completed, who are due for a reminder, and who haven't been notified in 24 hours
     reminders = Reminder.where("completed = ? AND remind_time < ? AND last_notification < ?", false, Time.now, Time.now-24.hours)
-    
+    puts "Found #{reminders.size} which need reminding"
     reminders.each do |r|
       if r.user
         r.send_reminder 
       else
-        logger.info "Unable to send email reminder for #{r.id}"
+        
+        p "Unable to send reminder for #{r.id}, no matching user (#{r.user_id}) found"
       end
     end
     

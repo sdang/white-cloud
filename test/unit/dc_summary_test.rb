@@ -11,7 +11,7 @@ class DcSummaryTest < ActiveSupport::TestCase
   
   test "invalid mrn" do
     dc = DcSummary.new(:first_name => "First", :last_name => "Last", :mrn => "MRN", :created_user_id => 1)
-    assert !dc.save, "saved dc/ summary with invalid MRN"
+    assert !dc.save, "saved d/c summary with invalid MRN"
   end
   
   test "data gets encrypted" do
@@ -35,6 +35,11 @@ class DcSummaryTest < ActiveSupport::TestCase
     assert_equal(dc.user.id, u1.id, "User method did not return created user for new dc summary")
     dc.last_update_user_id = u2.id
     assert_equal(dc.user.id, u2.id, "User method did not return last updated user for updated dc summary")
+  end
+  
+  test "save dc summary without user id" do
+    dc = DcSummary.new(:first_name => "test", :last_name => "last_name", :dob => Time.now, :mrn => "0000000")
+    assert !dc.save, "saved d/c summary without user id"
   end
     
 end

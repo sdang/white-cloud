@@ -1,6 +1,7 @@
 class ConsultsController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :get_dc_summary, :except => ["destroy", "edit"]
-  
+
   def create
     @consult = @dc_summary.consults.new(params[:consult])
     @consult.save
@@ -36,12 +37,20 @@ class ConsultsController < ApplicationController
   
   private
   def get_dc_summary
-    unless params[:consult][:dc_summary_id]
+    begin
+      unless params[:consult][:dc_summary_id]
+        flash[:alert] = "Critical error, could not attach consult to d/c summary."
+        redirect_to :controller => "/dc_summaries", :action => "index"
+      else
+        @dc_summary = DcSummary.find(params[:consult][:dc_summary_id])
+      end
+    rescue
+      ApplicationLog.write("created a critical error, attempted to modify a consult without passing dc_summary_id", 5)
       flash[:alert] = "Critical error, could not attach consult to d/c summary."
       redirect_to :controller => "/dc_summaries", :action => "index"
     end
     
-    @dc_summary = DcSummary.find(params[:consult][:dc_summary_id])
+
   end
 
 end
