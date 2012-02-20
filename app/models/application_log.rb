@@ -3,7 +3,12 @@ class ApplicationLog < ActiveRecord::Base
   belongs_to  :user
   
   def self.write(msg,level=0,user_id=nil)
-    return ApplicationLog.new(:message => msg, :level => level, :user_id => user_id).save
+
+    al = ApplicationLog.new(:message => msg, :level => level, :user_id => user_id)
+    al.save
+    AdminMailer.send_critical_log_notice(al.id).deliver if level == 5
+    return al
+    
   end
   
   def self.recent_logs
