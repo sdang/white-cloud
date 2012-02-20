@@ -23,9 +23,11 @@
 	associated with a given patient
 	<br/><br/>
 	<h1>Recent Activity</h1>
+	<ul>
 	<% current_user.recent_logs.each do |l| %>
-		<li><%= l.message %> <%= time_ago_in_words(l.created_at) %> ago</li>
+		<li><span id="log-message"><%= l.message %></span> <span id="log-time"><%= time_ago_in_words(l.created_at) %> ago</span> </li>
 	<% end %>
+	</ul>
 	
 	<br/><br/>
 	<h1>Links</h1>

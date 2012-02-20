@@ -2,6 +2,7 @@ class Reminder < ActiveRecord::Base
   belongs_to :user
   belongs_to :reminder_list
   before_create :set_last_notification
+  after_create :add_log_message
 
   attr_accessor :time_value, :time_units
   before_validation :convert_relative_to_absolute_time
@@ -110,6 +111,10 @@ class Reminder < ActiveRecord::Base
   private
   def set_last_notification
     self.last_notification = Time.now - 1.year
+  end
+  
+  def add_log_message
+    ApplicationLog.write("created reminder for #{self.mrn}", 1, self.user_id)
   end
   
 end
