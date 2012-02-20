@@ -3,4 +3,5 @@ basic:
     last_name: Last
     mrn: 1231234
     dob: <%= Time.now %>
+    created_user_id: 1
     
