@@ -5,7 +5,7 @@
 	</div>
 	<div id="content">
 		<span id="mrn">#<%= reminder.mrn %></span>: 
-		<%= reminder.reminder %>
+		<span class="<%= 'strikethru' if reminder.completed %>"><%= reminder.reminder %></span>
 		<% if reminder.remind_time < Time.now %>
 			<span id="overdue">
 				due <%= time_ago_in_words(reminder.remind_time) if reminder.remind_time%> ago
