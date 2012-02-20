@@ -14,7 +14,7 @@
 
 <% content_for :sidebar do %>
 	<h1>Search for patient</h1>
-	<%= form_tag :controller => "/dashboard", :action => "index" do %>
+	<%= form_tag :action => "search" do %>
 		<%= text_field_tag :mrn, "", :title => "0000000", :size => 8 -%>
 		<%= submit_tag "Search", :class => "button white small" %>
 	<% end %>

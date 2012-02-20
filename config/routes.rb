@@ -32,5 +32,7 @@ OliveViewTools::Application.routes.draw do
   # twilio receive sms
   match 'sms' => 'sms#index'
 
+  match 'search(/:mrn)' => 'dashboard#search'
+  
   root :to => 'dashboard#index'
 end

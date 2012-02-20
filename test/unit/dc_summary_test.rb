@@ -23,17 +23,14 @@ class DcSummaryTest < ActiveSupport::TestCase
   end
   
   test "user method for dc summary" do
-    puts "Load Users"
     u1 = User.find(users(:one))
     u2 = User.find(users(:two))
 
-    puts "create dc summary"    
     dc = DcSummary.new(:first_name => "test", :last_name => "lastname", :mrn => "0001234", :dob => Time.now)
     dc.created_user_id = u1.id
     dc.last_update_user_id = nil
     dc.save
 
-    puts "perform tests"        
     assert_equal(dc.created_user_id, u1.id, "Could not set created_user_id")
     assert_equal(dc.user.id, u1.id, "User method did not return created user for new dc summary")
     dc.last_update_user_id = u2.id
