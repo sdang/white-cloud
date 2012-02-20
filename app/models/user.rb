@@ -108,6 +108,10 @@ class User < ActiveRecord::Base
       AdminMailer.send_new_user_notification(self.id).deliver  
   end
   
+  def recent_logs
+    return ApplicationLog.find_all_by_user_id(self.id, :order => "created_at DESC", :limit => 5)
+  end
+  
   private
   def self.phone_str_to_num(str)
     str = str.gsub(/[^0-9]/,'')

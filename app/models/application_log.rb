@@ -7,7 +7,7 @@ class ApplicationLog < ActiveRecord::Base
   end
   
   def self.recent_logs
-    return ApplicationLog.find(:all, :order => ["created_at ASC"], :limit => 50)
+    return ApplicationLog.find(:all, :order => "created_at DESC", :limit => 50)
   end
   
 end

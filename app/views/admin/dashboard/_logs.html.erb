@@ -1,11 +1,13 @@
 <div id="contentCard">
 	<h1>Logs</h1>
-	<% ApplicationLog.find(:all, :order => ["created_at ASC"], :limit => 50).each do |l| %>
-		<%= l.message %>, <%= time_ago_in_words(l.created_at)%> ago
-		<% if l.user %>
-			(<%= l.user.name || "" %>)
-		<% end %>
-		<br/>
+	<% ApplicationLog.recent_logs.each do |l| %>
+		<div class="log-row" style="background-color: <%= cycle('#ffffff', '#eeeeee')%>">
+			<% if l.user %>
+				<span id="user"><%= l.user.name || "" %></span>
+			<% end %>
+			<span id="message"><%= l.message %></span>
+			<span id="timestamp"><%= time_ago_in_words(l.created_at)%> ago</span>
+		</div>
 	<% end %>
 	
 </div>

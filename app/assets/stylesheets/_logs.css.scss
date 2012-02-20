@@ -1,0 +1,18 @@
+.log-row {
+	width: 500px;
+	
+	padding: 4px;
+	
+	#message {
+		font-size: 12px;
+	}
+	
+	#user {
+		font-size: 12px;
+	}
+	
+	#timestamp {
+		font-size: 10px;
+		color: green;
+	}
+}
