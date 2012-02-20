@@ -122,7 +122,7 @@ class Reminder < ActiveRecord::Base
   end
   
   def add_update_log_message
-    Application.write("updated reminder #{self.id} for #{self.mrn}", 1, self.user_id)
+    ApplicationLog.write("updated reminder #{self.id} for #{self.mrn}", 1, self.user_id)
   end
   
 end
