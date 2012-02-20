@@ -10,11 +10,14 @@ class DcSummary < ActiveRecord::Base
   has_many :prescriptions
   has_many :consults
   
+  after_update :add_update_log_message
+  after_create :add_create_log_message
+  
   attr_accessor :missing_fields, :admin_override
   
   def user
-    if self.read_attribute(:last_update_user)
-      return User.find(self.read_attribute(:last_update_user))
+    if self.read_attribute(:last_update_user_id)
+      return User.find(self.read_attribute(:last_update_user_id))
     else
       return User.find(self.read_attribute(:created_user_id))
     end
@@ -72,6 +75,15 @@ class DcSummary < ActiveRecord::Base
     return false if self.new_record? and self.finalized == false
     return false if self.admin_override
     return true if DcSummary.find(self.id).read_attribute(:finalized)
+  end
+  
+  private
+  def add_update_log_message
+    ApplicationLog.write("updated d/c summary for #{self.mrn}",1,self.last_update_user_id)
+  end
+  
+  def add_create_log_message
+    ApplicationLog.write("created d/c summary for #{self.mrn}", 1, self.created_user_id)
   end
   
 end

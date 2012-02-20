@@ -105,7 +105,12 @@ class User < ActiveRecord::Base
   end
 
   def notify_admin
-      AdminMailer.send_new_user_notification(self.id).deliver  
+      AdminMailer.send_new_user_notification(self.id).deliver
+      ApplicationLog.write("signed up for an account", 1, self.id) 
+  end
+  
+  def recent_logs
+    return ApplicationLog.find_all_by_user_id(self.id, :order => "created_at DESC", :limit => 5)
   end
   
   private

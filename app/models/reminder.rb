@@ -2,6 +2,8 @@ class Reminder < ActiveRecord::Base
   belongs_to :user
   belongs_to :reminder_list
   before_create :set_last_notification
+  after_create :add_log_message
+  after_update :add_update_log_message
 
   attr_accessor :time_value, :time_units
   before_validation :convert_relative_to_absolute_time
@@ -71,6 +73,7 @@ class Reminder < ActiveRecord::Base
     log_str +=  ", page to #{self.user.pager_number}"
     reminder_string_short = "Reminder: #{self.reminder}, pt: #{self.mrn} sent by #{ENV['APPLICATION_NAME']}"
     Pager.send_page(reminder_string_short, self.user.pager_number)
+    ApplicationLog.write("received reminder regarding #{self.mrn} via pager")
     
     # send the text message
     if self.user.remind_by_sms
@@ -80,11 +83,13 @@ class Reminder < ActiveRecord::Base
         :from => "+1#{ENV['TWILIO_PHONE_NUMBER']}",
         :to => self.user.sms_number,
         :body => reminder_string_short)
+      ApplicationLog.write("received reminder regarding #{self.mrn} via text message")
     end
     
     # send the email reminder
     if self.user.remind_by_email
       NotificationMailer.send_notification_for_reminder(self).deliver
+      ApplicationLog.write("received reminder regarding #{self.mrn} via email")
       log_str +=  ", email to #{self.user.email}"
     end
     
@@ -110,6 +115,14 @@ class Reminder < ActiveRecord::Base
   private
   def set_last_notification
     self.last_notification = Time.now - 1.year
+  end
+  
+  def add_log_message
+    ApplicationLog.write("created reminder for #{self.mrn}", 1, self.user_id)
+  end
+  
+  def add_update_log_message
+    Application.write("updated reminder #{self.id} for #{self.mrn}", 1, self.user_id)
   end
   
 end

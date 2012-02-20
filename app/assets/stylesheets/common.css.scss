@@ -182,6 +182,21 @@ html, body {
 	a {
 		color: #444;
 	}
+	
+	#log-message {
+		font-size: 10px;
+	}
+	
+	#log-time {
+		font-size: 8px;
+		color: green;
+	}
+	
+	li {
+		margin-left: -20px;
+		margin-bottom: 10px;
+		line-height: 12px;
+	}
 }
 
 #footer {
@@ -327,6 +342,7 @@ html, body {
 @import "edit-user";
 @import "forms";
 @import "dc_summary";
+@import "logs";
 
 // fix IE 6 footer bug
 * html #footer {
