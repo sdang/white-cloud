@@ -77,6 +77,44 @@ class DcSummary < ActiveRecord::Base
     return true if DcSummary.find(self.id).read_attribute(:finalized)
   end
   
+  def import_rx(pw)
+    summary_to_import = self.find_summary_for_import
+    
+    # fail if no summary matched
+    return false unless summary_to_import
+    
+    # fail if no prescriptions from last dc summary
+    return false if summary_to_import.prescriptions.size == 0
+    
+    # update current dc_summary with new prescriptions
+    summary_to_import.prescriptions.each do |rx|
+      self.prescriptions.create(:drug => rx.drug.decrypt(pw), :sig => rx.sig.decrypt(pw), :quantity => 0)
+    end
+    str = "Imported " + summary_to_import.prescriptions.collect {|x| x.drug.decrypt(pw) }.join(", ") + " into this d/c summary"
+    
+    return str
+  end
+  
+  def import_one_liner(pw)
+    summary_to_import = self.find_summary_for_import
+    
+    return false unless summary_to_import
+    return false if summary_to_import.one_liner.decrypt(pw).blank?
+    return summary_to_import.one_liner.decrypt(pw)
+  end
+  
+  def import_diagnoses(pw)
+    summary_to_import = self.find_summary_for_import
+    
+    return false unless summary_to_import
+    return false if summary_to_import.diagnoses.decrypt(pw).blank?
+    return summary_to_import.diagnoses.decrypt(pw)
+  end
+  
+  def find_summary_for_import
+    return DcSummary.find(:all, :conditions => ["id <> ? AND finalized = ? AND mrn = ?", self.id, true, self.mrn], :order => "updated_at DESC", :limit => 1).first
+  end
+  
   private
   def add_update_log_message
     ApplicationLog.write("updated d/c summary for #{self.mrn}",1,self.last_update_user_id)

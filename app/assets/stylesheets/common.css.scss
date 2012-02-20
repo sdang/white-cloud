@@ -29,7 +29,7 @@ html, body {
     margin: 0;
 	padding: 0;
 	
-	a, a:hover, a:visited {
+	a, a:link, a:hover, a:visited {
 		color: blue;
 	}
 }
@@ -110,7 +110,7 @@ html, body {
 		}
 		
 		a {
-			&:visited, &:hover { color: $accent-color }
+			&:link, &:visited, &:hover { color: $accent-color }
 		}
 	}
 	
