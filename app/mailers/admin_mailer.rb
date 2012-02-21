@@ -1,5 +1,6 @@
 class AdminMailer < ActionMailer::Base
   default :from => ENV['DEFAULT_FROM_EMAIL']
+  layout "email"
   
   def send_new_user_notification(user_id)
     @user = User.find(user_id)

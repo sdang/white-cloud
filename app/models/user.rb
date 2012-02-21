@@ -106,6 +106,7 @@ class User < ActiveRecord::Base
 
   def notify_admin
       AdminMailer.send_new_user_notification(self.id).deliver
+      UserMailer.sign_up_email(self.id).deliver
       ApplicationLog.write("signed up for an account", 1, self.id) 
   end
   

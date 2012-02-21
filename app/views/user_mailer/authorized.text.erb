@@ -1,0 +1,17 @@
+You have been granted access to <%= ENV['APPLICATION_NAME']%>
+
+You have been granted access to <%= ENV['APPLICATION_NAME']%>. You can log by visiting <%= url_for(:controller => "/dashboard", :only_path => false) %>. This site is designed to provide tools for medicine residents and faculty, with a focus on improving patient safety and improving efficiency.
+
+Features:
+
+* Reminders: Create reminders for patients you have seen in clinic or have recently discharged. You can create reminders on the website or by texting <%= number_to_phone(ENV["TWILIO_PHONE_NUMBER"], :area_code => true)%> (usage charges may apply). You can receive notifications by email, phone, and pager.
+
+* D/C Summaries: Start discharge summaries on admission, and slowly work on your discharge paperwork throughout a patient's admission. Pass discharge summaries to other users once complete. Once complete, the system will try and generate all the required paperwork, including prescriptions, yellow consultations, discharge summary, and patient instruction sheet.
+
+* Don't Repeat Yourself: <%= ENV['APPLICATION_NAME']%> works to minimize the amount of time you entering the same data. Import medications and patient history from prior visits. Input medications once and have them available in your patient instructions (translated into plain english), prescriptions, and discharge documents.
+
+* Clean Up Tools: Simple clean up tools which allow you to copy and paste clinical workstation documents and strip out excess spacing. Also, generate a table of all patients in a signout organized by ward for easier lookup during cross cover.
+
+* Coming Soon, Improved Signout! Generate signouts from previous discharge documents or from prior signouts. Move patients between teams. Different signout views for interns, residents/attendings, and cross cover.
+
+Please email <%= ENV["ADMIN_NOTIFY_EMAIL"]%> with questions, comments, or suggestions.
