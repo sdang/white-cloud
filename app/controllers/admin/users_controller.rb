@@ -14,6 +14,7 @@ class Admin::UsersController < ApplicationController
     def authorize
       @user = User.find(params[:id])
       @user.update_attribute(:authorized, true)
+      UserMailer.authorized(@user.id).deliver
       ApplicationLog.write("is set to be an authorized user", 2, @user.id)
       redirect_to :action => "index", :controller => "/admin/dashboard"
     end
