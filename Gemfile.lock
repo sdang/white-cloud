@@ -67,6 +67,7 @@ GEM
     mime-types (1.17.2)
     minitest (2.11.2)
     multi_json (1.0.4)
+    newrelic_rpm (3.3.2)
     orm_adapter (0.0.5)
     pdf-reader (1.0.0)
       Ascii85 (~> 1.0.0)
@@ -145,6 +146,7 @@ DEPENDENCIES
   devise (= 1.4.9)
   jquery-rails
   minitest
+  newrelic_rpm
   pg
   prawn
   rails (= 3.1.0)

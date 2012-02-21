@@ -29,4 +29,7 @@ ENV['WCTP_PASSWORD'] ||= 'password'
 # error tracking
 ENV['AIRBRAKE_API_KEY'] ||= '******************'
 
+# New Relic Monitoring
+ENV["NEW_RELIC_LICENSE_KEY"] ||= "*********************"
+
 ENV['DEFAULT_HOST'] ||= "olive-view-tools.dev"

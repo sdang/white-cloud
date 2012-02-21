@@ -28,6 +28,8 @@ gem 'prawn'
 
 gem "airbrake"
 
+gem "newrelic_rpm"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
