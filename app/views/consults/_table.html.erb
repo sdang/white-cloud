@@ -1,0 +1,9 @@
+<div id="consult-table">
+	<% table.each do |consult| %>
+		<%= render consult %>
+	<% end %>
+	
+	<% if table.size == 0 %>
+		No consults saved
+	<% end %>
+</div>

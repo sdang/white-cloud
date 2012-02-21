@@ -1,0 +1,35 @@
+# Reasonable defaults for the application for local development
+# Designed to be overwritten by heroku's config env
+
+ENV['APPLICATION_NAME'] ||= "OVTools"
+
+# Email Settings
+ENV['SEND_GRID_USER'] ||= "UserName"
+ENV['SEND_GRID_PW'] ||= "Password"
+ENV['SEND_GRID_DOMAIN'] ||= "domain.com"
+ENV['DEVISE_FROM_EMAIL'] ||= "noreply@domain.com"
+ENV['DEFAULT_FROM_EMAIL'] ||= "noreply@domain.com"
+ENV['ADMIN_NOTIFY_EMAIL'] ||= "noreply@domain.com"
+
+# SMS Settings
+ENV['TWILIO_ACCOUNT_SID'] ||= "**************************"
+ENV['TWILIO_ACCOUNT_TOKEN'] ||= "************************"
+ENV['TWILIO_PHONE_NUMBER'] ||= "8185551212"
+
+# Paging Settings
+ENV['use_proxy'] ||= "yes" # comment out line if you do not require proxy
+ENV['proxy_url'] ||= "http://someproxy.com"
+ENV['proxy_port'] ||= "8080"
+ENV['proxy_username'] ||= "username"
+ENV['proxy_password'] ||= "password"
+ENV['WCTP_URL'] ||= 'http://wctp.amsmsg.net/wctp'
+ENV['WCTP_USERNAME'] ||= 'username'
+ENV['WCTP_PASSWORD'] ||= 'password'
+
+# error tracking
+ENV['AIRBRAKE_API_KEY'] ||= '******************'
+
+# New Relic Monitoring
+ENV["NEW_RELIC_LICENSE_KEY"] ||= "*********************"
+
+ENV['DEFAULT_HOST'] ||= "olive-view-tools.dev"

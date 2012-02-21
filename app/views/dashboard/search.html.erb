@@ -1,0 +1,37 @@
+<div id="contentCard">
+	<h1>Search for another patient</h1>
+	<div class="x-large-form">
+	<%= form_tag :action => "search" do %>
+		<%= text_field :mrn, "", :size => 30, :title => "0000000" %>
+		<%= submit_tag :search, :class => "button white large" %>
+	<% end %>
+	</div>
+</div>
+
+<div id="contentCard">
+<h1>In Progress D/C Summaries for <%= params[:mrn] %></h1>
+<% if @dc_summaries_open.empty? %>
+	No in progress d/c summaries found
+<% else %>
+	<%= render :partial => '/dc_summaries/table', :object => @dc_summaries_open %>
+<% end %>
+</div>
+
+
+<div id="contentCard">
+<h1>Finalized D/C Summaries for <%= params[:mrn] %></h1>
+<% if @dc_summaries_finalized.empty? %>
+	No finalized d/c summaries found
+<% else %>
+	<%= render :partial => '/dc_summaries/table', :object => @dc_summaries_finalized %>
+<% end %>
+</div>
+
+<div id="contentCard">
+<h1>Reminders for <%= params[:mrn] %></h1>
+<% if @reminders.empty?%>
+	No Reminders Found
+<% else %>
+	<%= render :partial => '/reminders/table', :object => @reminders %>
+<% end %>
+</div>

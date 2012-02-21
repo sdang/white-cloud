@@ -1,0 +1,9 @@
+<div id="dc-summaries-table">
+<% table.each do |dc_summary| %>
+	<%= render dc_summary %>
+<% end %>
+
+<% if table.size == 0 %>
+	<%= render :partial => "/dc_summaries/dc_summaries_help" -%>
+<% end%>
+</div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dc_summary_id: 1
+  drug: MyString
+  quantity: MyString
+  sig: MyString
+
+two:
+  dc_summary_id: 1
+  drug: MyString
+  quantity: MyString
+  sig: MyString

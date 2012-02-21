@@ -1,0 +1,3 @@
+$("#reminder-<%= @reminder.id %>").html("<%= escape_javascript(render :partial => '/reminders/form') %>");
+$("#reminder-<%= @reminder.id %>").css("background-color", "#ffffff");
+$("#reminder-<%= @reminder.id %>").find('#links').fadeTo('fast', 0.5);

@@ -1,0 +1,38 @@
+<%= render :partial => '/shared/unlock_phi' -%>
+
+<%= render :partial => "/reminders/quick_add_reminder" %>
+
+<div id="contentCard">
+<h1>Your Upcoming Reminders</h1>
+<%= render :partial => '/reminders/table', :object => current_user.reminder_list %>
+</div>
+
+<div id="contentCard">
+<h1>Your Open D/C Packets</h1>
+<%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
+</div>
+
+<% content_for :sidebar do %>
+	<h1>Search for patient</h1>
+	<%= form_tag :action => "search" do %>
+		<%= text_field_tag :mrn, "", :title => "0000000", :size => 8 -%>
+		<%= submit_tag "Search", :class => "button white small" %>
+	<% end %>
+	<br/>
+	Search will find all reminders, d/c summaries, and signouts
+	associated with a given patient
+	<br/><br/>
+	<h1>Recent Activity</h1>
+	<ul>
+	<% current_user.recent_logs.each do |l| %>
+		<li><span id="log-message"><%= l.message %></span> <span id="log-time"><%= time_ago_in_words(l.created_at) %> ago</span> </li>
+	<% end %>
+	</ul>
+	
+	<br/><br/>
+	<h1>Links</h1>
+	<%= link_to "Clinical Workstation", "#" -%><br/>
+	<%= link_to "PADI", "#" -%><br/>
+	<%= link_to "ePageMD", "#" -%><br/>
+	<%= link_to "UpToDate", "#" -%><br/>
+<% end %>

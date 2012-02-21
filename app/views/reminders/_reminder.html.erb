@@ -1,0 +1,18 @@
+<div id="reminder-<%= reminder.id -%>" class="reminder">
+	<div id="links">
+		<%= link_to image_tag("delete_16.gif", :border => 0), {:action => "destroy", :id => reminder.id, :controller => "reminders"}, :method => :delete, :remote => true, :confirm => "Delete this reminder?" %><span style="width: 10px">&nbsp;</span>
+		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => reminder.id, :controller => "reminders"}, :remote => true %>
+	</div>
+	<div id="content">
+		<span id="mrn">#<%= reminder.mrn %></span>: 
+		<span class="<%= 'strikethru' if reminder.completed %>"><%= reminder.reminder %></span>
+		<% if reminder.remind_time < Time.now %>
+			<span id="overdue">
+				due <%= time_ago_in_words(reminder.remind_time) if reminder.remind_time%> ago
+			</span>
+		<% else %>
+			<span id="due">in <%= time_ago_in_words(reminder.remind_time) if reminder.remind_time %></span>
+		<% end %>
+	</div>
+	<div style="clear: both"></div>
+</div>

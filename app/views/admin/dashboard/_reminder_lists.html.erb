@@ -1,0 +1,12 @@
+<div id="contentCard">
+	<div id="title">
+		<h1>Reminder Lists</h1>
+	</div>
+	<%= button_tag "+ Add Reminder List", :id => "add-button", :class => "button green small" %>
+	<div style="clear: both"></div>
+	
+	<div id="add-form" class='small-form'>
+		<%= render :partial => "/reminder_lists/form" %>
+	</div>
+	<%= render :partial => '/reminder_lists/table', :object => ReminderList.find(:all) %>
+</div>

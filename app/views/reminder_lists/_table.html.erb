@@ -1,0 +1,5 @@
+<div id="reminder-list-table">
+	<% table.each do |reminder_list| %>
+		<%= render :partial => "/reminder_lists/reminder_list", :object => reminder_list %>
+	<% end %>
+</div>

@@ -1,0 +1,7 @@
+<div id="contentCard">
+<h1>Add Reminder</h1>
+<% @reminder ||= Reminder.new %>
+<div class="large-form">
+<%= render :partial => '/reminders/form' %>
+</div>
+</div>

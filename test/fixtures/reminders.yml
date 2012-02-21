@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  mrn: 000000
+  reminder: MyString
+  created_at: 2012-01-29 16:25:59
+  updated_at: 2012-01-29 16:25:59
+  remind_time: 2012-01-29 16:25:59
+  last_notification: 2011-01-29 16:25:59
+  reminder_list_id: 1
+  user_id: 1
+  completed: false
+
+two:
+  mrn: 1111111
+  reminder: MyString
+  created_at: 2012-01-29 16:25:59
+  updated_at: 2012-01-29 16:25:59
+  remind_time: 2012-01-29 16:25:59
+  last_notification: 2011-01-29 16:25:59
+  reminder_list_id: 1
+  user_id: 1
+  completed: false

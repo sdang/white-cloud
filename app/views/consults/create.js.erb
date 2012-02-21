@@ -1,0 +1,10 @@
+<% if @consult.new_record? %>
+	$('#consult-form-errors').html("<%= escape_javascript(errors_for(@consult, 'Cannot add consult'))%>")
+	$('#consult-form-errors').effect("highlight", {}, 3000)
+<% else %>
+	$("#consult-form-errors").css("display", "none");
+	$("#consult-table").html("<%= escape_javascript(render :partial => '/consults/table', :object => @dc_summary.consults) %>");
+	$("#consult-<%= @consult.id %>").effect("highlight", {}, 3000);
+	$("#new_consult")[0].reset();
+	$(".reminder").find('div:first').fadeTo(0,0.5);
+<% end %>

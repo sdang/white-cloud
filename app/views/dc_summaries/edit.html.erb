@@ -1,0 +1,71 @@
+<%= render :partial => '/shared/unlock_phi' -%>
+
+<div id="contentCard">
+<h1>Editing D/C Summary</h1>
+	<% if session[:group_password] %>
+		<div class='x-large-form' style="margin-left: 15px; width: 545px">
+		<%= render :partial => "form_edit" %>
+		</div>
+	<% else %>
+		<div id="alert">
+			<b>Viewing and editing discharge summary locked.</b><br/><br/>
+			Please provide the group password 
+			in the form above to edit or view this discharge summary.
+		</div>
+	<% end %>
+</div>
+
+<% content_for :sidebar do %>
+	<% if session[:group_password] %>
+	<div id="sideBarWrapper">
+	<div id="followContent">
+		<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "button medium white",  :style => "width: 200px"%>
+		<% if @dc_summary.can_be_finalized? %>
+			<br/><br/>
+			<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "button medium green", :style => "width: 200px" %>
+		<% end %>
+	
+	<br/><br/><br/>
+	<% if @dc_summary.can_be_finalized? %>
+		<h1>All Required Fields Filled</h1>
+		All the required fields are filled to finalize this discharge. Use the "Finalize Discharge"
+		button below to generate your discharge documents.
+		<br/>
+		<br/>Warning: after finalizing discharge
+		you not be able to make any changes without administrative approval.
+	<% else %>
+		<h1>Missing Fields</h1>
+		You are still missing the following fields before
+		you can finalize this d/c summary:<br/>
+	<% end %>
+	
+	<ol>
+		<li class="<%= "strikethru" unless @dc_summary.chief_complaint.blank? -%>">Chief Complaint</li>
+		<li class="<%= "strikethru" unless @dc_summary.diagnoses.blank? -%>">Discharge Diagnoses</li>
+		<li class="<%= "strikethru" unless @dc_summary.hpi.blank? -%>">History of Present Illness</li>
+		<li class="<%= "strikethru" unless @dc_summary.hospital_course.blank? -%>">Hospital Course</li>
+		<li class="<%= "strikethru" if @dc_summary.admit_date -%>">Admission Date</li>
+		<li class="<%= "strikethru" if @dc_summary.discharge_date -%>">Discharge Date</li>
+		<li class="<%= "strikethru" unless @dc_summary.service.blank? -%>">Service</li>
+		<li class="<%= "strikethru" unless @dc_summary.attending.blank? -%>">Attending</li>
+		<li class="<%= "strikethru" unless @dc_summary.resident.blank? -%>">Resident</li>
+		<li class="<%= "strikethru" unless @dc_summary.activity.blank? -%>">Activity</li>
+		<li class="<%= "strikethru" unless @dc_summary.condition.blank? -%>">Condition</li>
+		<li class="<%= "strikethru" unless @dc_summary.disposition.blank? -%>">Disposition</li>
+		<li class="<%= "strikethru" unless @dc_summary.diet.blank? -%>">Diet</li>
+	</ol>
+	<br/>
+	
+
+	
+	<br/>
+	<% unless @dc_summary.can_be_finalized? %>
+		<h1>Next Step</h1>
+		Once you have filled out all the required fields the "Finalize Discharge" button will appear. 
+		Clicking this button will generate all the required discharge paperwork, including prescriptions,
+		and notes to copy and paste into clinical workstation.
+	<% end %>
+	</div>
+	</div>
+	<% end %>
+<% end %>

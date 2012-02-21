@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>olive-view-tools</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+<div id="wrap">
+	<div id="header">
+		<%= render :partial => "/shared/header" %>
+	</div>
+	<div id="nav">
+		<%= render :partial => "/shared/navigation" %>
+	</div>
+	<div id="main">
+		<div style="margin: 30px">
+			<% if flash[:notice]%>
+				<div id="notice">
+				<%= flash[:notice] %>
+				</div>
+			<% end %>
+			<% if flash[:alert] %>
+				<div id="alert">
+				<%= flash[:alert] %>
+				</div>
+			<% end %>
+			<%=yield %>
+		</div>
+	</div>
+	<div id="sidebar">
+		<div style="margin: 10px">
+			<%= yield :sidebar %>
+		</div>
+	</div>
+	<div id="footer"><%= render :partial => "/shared/footer" %></div>
+</div>
+
+</body>
+</html>

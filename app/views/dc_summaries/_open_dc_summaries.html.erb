@@ -1,0 +1,11 @@
+<div id="contentCard">
+<h1>Your Open D/C Summaries</h1>
+<%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
+</div>
+
+<% if current_user.recently_finalized_dc_summaries.size > 0 %>
+<div id="contentCard">
+<h1>D/C Summaries Finalized within the last 5 days</h1>
+<%= render :partial => '/dc_summaries/table', :object => current_user.recently_finalized_dc_summaries %>
+</div>
+<% end %>

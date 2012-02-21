@@ -1,0 +1,39 @@
+#alert, .alert {
+	border: 1px solid red;
+	background-color: pink;
+	padding: 5px;
+	color: red;
+	text-align: left;
+	width: 80%;
+	margin: {
+		left: auto;
+		right: auto;
+		bottom: 15px;
+	}
+	
+	h2 {
+		font-size: 14px;
+	}
+	
+	ul {
+		font-size: 12px;
+	}
+}
+
+#notice, .notice {
+	border: 1px solid green;
+	background-color: lightgreen;
+	padding: 5px;
+	color: green;
+	text-align: left;
+	width: 80%;
+	margin: {
+		left: auto;
+		right: auto;
+		bottom: 15px;
+	}
+	
+	h2 {
+		font-size: 15px;
+	}
+}
