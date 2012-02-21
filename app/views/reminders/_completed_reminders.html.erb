@@ -1,0 +1,4 @@
+<div id="contentCard">
+<h1>Completed Reminders</h1>
+<%= render :partial => '/reminders/table', :object => current_user.reminders.find_all_by_completed(true) %>
+</div>

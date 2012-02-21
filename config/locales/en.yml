@@ -3,3 +3,23 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+      attributes:
+          dc_summary:
+              mrn: "MRN"
+              dob: "Date of Birth"
+          reminder:
+              remind_time: "When"
+              mrn: "MRN"
+      errors:
+          models:
+              dc_summary:
+                  attributes:
+                      mrn:
+                          blank: "is required"
+              reminder:
+                  attributes:
+                      mrn:
+                          blank: "is required"
+                          numeric: "must only be digits"
+                          

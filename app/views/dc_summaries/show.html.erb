@@ -1,0 +1,10 @@
+
+<%= render :partial => "/dc_summaries/show_partials/dc_summary" %>
+<%= render :partial => "/dc_summaries/show_partials/patient_instructions" %>
+<%= render :partial => "/dc_summaries/show_partials/prescriptions" %>
+<%= render :partial => "/dc_summaries/show_partials/consults" %>
+
+<% content_for :sidebar do %>
+	<h1>Administrative Functions</h1>
+	<%= link_to "Un-finalize this d/c summary", :action => "unfinalize", :id => @dc_summary.id %>
+<% end %>

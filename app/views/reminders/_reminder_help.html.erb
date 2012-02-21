@@ -1,10 +1,18 @@
 <div id="help-text">
-	<div id="fade">hide</div>
+	<div id="fade" class="button small white">hide</div>
 	<div id="help-content">
-		<h2><%= link_to "Create Your First Reminder", new_reminder_path %></h2>
+		<h2><%= link_to "Create Your First Reminder", :controller => "reminders" %></h2>
 	
 		The reminders feature is designed to assist in following up labs/studies for patients
 		recently discharged or seen in clinic. Once a reminder is due you will receive a page
-		daily reminding you to check on the study.
+		daily reminding you to check on the study.<br/>
+		<br/>
+		You can also text reminders to <b><%= number_to_phone(ENV['TWILIO_PHONE_NUMBER'], :area_code => true)%></b> using your cell phone. Please make sure
+		your text messages include a 7 digit MRN, and when to remind you. Examples:
+		<ul>
+			<li>5671234 Check coags in 6 hours</li>
+			<li>In 1 week check secondary HTN w/u 5231234</li>
+			<li>Follow up blood cultures for 5123212 in 1 day</li>
+		</ul>
 	</div>
 </div>

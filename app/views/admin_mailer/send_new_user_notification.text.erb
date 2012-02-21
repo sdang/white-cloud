@@ -1,0 +1,8 @@
+A new user has registered on <%= ENV['APPLICATION_NAME'] %>
+
+
+Name: <%= @user.name %>
+Email Address: <%= @user.email %>
+Pager: <%= number_to_phone(@user.pager_number, :area_code => true) %>
+
+To Authorize User: <%= url_for(:controller => "admin/users", :action => "authorize", :id => @user.id, :only_path => false )%>

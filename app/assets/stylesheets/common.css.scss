@@ -1,4 +1,7 @@
-$accent-color: navy;
+// $accent-color: navy;
+// $accent-color: #005080;
+// $accent-color: #0065B8;
+$accent-color: #004090;
 $border-color: #777;
 $highlight-color: #ffff99;
 $application-width: 850px;
@@ -9,7 +12,7 @@ $sidebar-width: 250px;
 	-webkit-box-shadow: 0 0 30px 5px #222;
 }
 
-input.blur {
+input.blur, textarea.blur {
 	color: #999;
 }
 			
@@ -26,7 +29,7 @@ html, body {
     margin: 0;
 	padding: 0;
 	
-	a, a:hover, a:visited {
+	a, a:link, a:hover, a:visited {
 		color: blue;
 	}
 }
@@ -34,21 +37,13 @@ html, body {
 #wrap {
 	width: $application-width;
 	margin: 0 auto;
-	background: #ddd;
-	background: {
-		image: url('/assets/sidebar-bg.gif');
-		repeat:y-repeat;
-	}
+	background: #fff;
 	clear: both;
 	@include shadow;
 }
 
 #header {
-	background: {
-		image: url('/assets/Olive-View-Logo.gif'); 
-		repeat:no-repeat;
-		color: $accent-color;
-	}
+	background-color: $accent-color;
 	height: 58px;
 	color: white;
 	font-family: helvetica;
@@ -56,11 +51,29 @@ html, body {
 	font-size: 16px;
 	padding: {
 		top: 10px;
-		left: 20px;	
+		left: 10px;	
 	}
 	
 	#logo {
-		float: left; margin-left: 80px;
+		background: {
+			image: url('/assets/ov-logo.gif'); 
+			repeat: no-repeat;
+		}
+		
+		float: left; 
+		margin-left: 10px;
+		padding-left: 80px;
+		height: 51px;
+		
+		#small-text {
+			font-size: 12px;
+		}
+		
+		#large-text {
+			font-size: 16px;
+			margin-top: 3px;
+			font-family: 'Arial Black'
+		}
 	}
 	
 	#login {
@@ -97,7 +110,7 @@ html, body {
 		}
 		
 		a {
-			&:visited, &:hover { color: $accent-color }
+			&:link, &:visited, &:hover { color: $accent-color }
 		}
 	}
 	
@@ -125,7 +138,6 @@ html, body {
 	float:left;
 	width:$application-width - $sidebar-width;
 	background-color: white;
-	border-right: 1px solid $border-color;
 
 	h1 { 
 		font-family: verdana, arial, sans-serif;
@@ -134,33 +146,29 @@ html, body {
 		font-size: 14px;
 		letter-spacing: 2px
 	}
-	
-	input, label {
-		font-size: 16px;
-	}
-	
+		
 	#unlock-phi-table {
 		width: 500px;
 	}
+	
+	min-height: 500px;
 		
 }
 
 #sidebar {
 	float:right;
 	width:$sidebar-width - 1px;
-	// background-color: #ddd; 
-	background: {
-		// image: url('/assets/sidebar-bg.gif');
-		repeat:y-repeat;
-	}
 	font-size: 12px; 
 	line-height: 16px;
 	color: gray;
 	font-family: arial;
 	
-	input {
-		// border: 1px solid $border-color;
-		// height: 18px;
+	input[type="text"] {
+		width: 150px;
+	}
+	
+	#reminder_time_value {
+		width: 50px;
 	}
 	
 	h1 { 
@@ -168,11 +176,26 @@ html, body {
 		color: $accent-color;
 		text-transform:uppercase;
 		font-size: 11px;
-		letter-spacing: 1px
+		letter-spacing: 1px;
 	}
 	
 	a {
 		color: #444;
+	}
+	
+	#log-message {
+		font-size: 11px;
+	}
+	
+	#log-time {
+		font-size: 9px;
+		color: green;
+	}
+	
+	li {
+		margin-left: -20px;
+		margin-bottom: 10px;
+		line-height: 11px;
 	}
 }
 
@@ -200,7 +223,7 @@ html, body {
 	}
 }
 
-#help-text {
+#help-text, #phi-explanation {
 	background: {
 		color: $highlight-color;
 		image: url('/assets/help-bg.gif');
@@ -234,14 +257,6 @@ html, body {
 
 }
 
-
-.reminder {
-	&:hover { background-color: $highlight-color }
-	img { vertical-align: top }
-	margin-bottom: 5px
-}
-
-
 #grayText {
 	font-size: 12px;
 	line-height: 16px;
@@ -254,7 +269,6 @@ html, body {
 
 #fade {
 	float: right;
-	color: $border-color;
 	margin: {
 		top: 4px;
 		right: 4px;
@@ -269,11 +283,66 @@ html, body {
 	display:inline-block
 }
 
-#contentCard {background-color: #fff; border-top: 1px solid #ddd; margin-bottom: 30px}
-// .auto-hint { color: #AAAAAA; }
+#contentCard {
+	background-color: #fff;
+	border-top: 1px solid #ddd;
+	margin-bottom: 30px;
+	
+	#title {
+		float: left;
+	}
+	
+	#add-button, #add-button-consults {
+		margin-top: 10px;
+		float: right;
+	}
+	
+	#add-form, #add-button-consults {
+		margin-bottom: 20px;
+	}
+}
+
+#dc-summary-content, #patient-instructions-content {
+	display: none;
+	font-size: 12px;
+	line-height: 14px;
+	font-family: monospace;
+}
+
+.reminder {
+	#links { float: left }
+	#content { margin-left: 60px }
+	#mrn {color: $border-color }
+	#overdue {color: red; font-size: 10px;}
+	#due {color: green; font-size: 10px;}
+	&:hover { background-color: $highlight-color }
+	img { vertical-align: top }
+	margin-bottom: 5px
+}
+
+.hidden {
+	display: none;
+}
+
+#page-navigation-tabs {
+	text-align: center;
+}
+
+.encrypted-text {
+	color: gray;
+}
+
+.strikethru {
+	text-decoration: line-through;
+	color: #ddd;
+}
 
 @import "alert_notice";
 @import "buttons";
+@import "edit-user";
+@import "forms";
+@import "dc_summary";
+@import "logs";
 
 // fix IE 6 footer bug
 * html #footer {

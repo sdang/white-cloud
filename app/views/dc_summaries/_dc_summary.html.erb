@@ -1,1 +1,15 @@
-Summary
+<div id="dc-summary-<%= dc_summary.id -%>" class="reminder">
+	<div id="links">
+		<span style="width: 10px">&nbsp;</span>
+		<%= link_to image_tag("edit_16.gif", :border => 0), {:action => "edit", :id => dc_summary.id, :controller => "/dc_summaries"} %>
+	</div>
+	<div id="content">
+		<% if session[:group_password]%>
+			<%= dc_summary.patient_name(session[:group_password])%>
+		<% else %>
+			<span class="encrypted-text">Patient Name Locked</span>
+		<% end %>
+		<span id="mrn"><%= dc_summary.mrn %></span> <span id="due">updated <%= time_ago_in_words(dc_summary.updated_at) %> ago by <%= dc_summary.user.name %></span>
+	</div>
+	<div style="clear: both"></div>
+</div>

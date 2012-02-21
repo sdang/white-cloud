@@ -1,10 +1,10 @@
-#alert {
+#alert, .alert {
 	border: 1px solid red;
 	background-color: pink;
 	padding: 5px;
 	color: red;
-	text-align: center;
-	width: ($application-width - $sidebar-width) * 0.8;
+	text-align: left;
+	width: 80%;
 	margin: {
 		left: auto;
 		right: auto;
@@ -12,17 +12,21 @@
 	}
 	
 	h2 {
-		font-size: 15px;
+		font-size: 14px;
+	}
+	
+	ul {
+		font-size: 12px;
 	}
 }
 
-#notice {
+#notice, .notice {
 	border: 1px solid green;
 	background-color: lightgreen;
 	padding: 5px;
 	color: green;
-	text-align: center;
-	width: ($application-width - $sidebar-width) * 0.8;
+	text-align: left;
+	width: 80%;
 	margin: {
 		left: auto;
 		right: auto;

@@ -1,0 +1,9 @@
+<div id="prescription-table">
+	<% table.each do |prescription| %>
+		<%= render prescription %>
+	<% end %>
+	
+	<% if table.size == 0 %>
+		No prescriptions saved
+	<% end %>
+</div>

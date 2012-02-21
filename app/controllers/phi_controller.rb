@@ -1,5 +1,5 @@
 class PhiController < ApplicationController
-    before_filter :authenticate_user!
+    before_filter :authenticate_user!, :authorized_user!
     
     
     def unlock_phi
@@ -8,7 +8,7 @@ class PhiController < ApplicationController
       begin
         if dc.hospital_course.decrypt(params[:group_password]) == "test"
           session[:group_password] = params[:group_password]
-          flash[:notice] = "PHI Unlocked, please log out when you are complete"
+          flash[:notice] = "PHI unlocked. Please log out when you are complete"
           logger.debug "PHI Unlocked"
           logger.debug session[:last_uri]
           redirect_to session[:last_uri]

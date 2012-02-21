@@ -9,13 +9,12 @@
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
-			<td><%= submit_tag "Unlock PHI" %>
+			<td><%= submit_tag "Unlock PHI", :class => "button small white"%>
 			<%= link_to "Why do I have to do this?", "#", :id => "phi-explanation-link" -%></td>
 		</tr>
 	</table>
-	<div id="phi-explanation">
-		<div id="help-text">
-			<div id="fade">hide</div>
+		<div id="phi-explanation">
+			<div id="fade" class="button small white">hide</div>
 			<div id="help-content">
 				<h2>Group Passwords Secure Health Information</h2>
 				OV Tools contains a significant amount of protected health information (PHI). In order to maximally
@@ -27,7 +26,6 @@
 				able to retrieve this information.
 			</div>
 		</div>	
-	</div>
 <% end %>
 </div>
 <% end %>

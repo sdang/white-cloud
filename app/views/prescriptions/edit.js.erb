@@ -1,0 +1,1 @@
+$("#prescription-<%= @prescription.id %>").html("<%= escape_javascript(render :partial => '/prescriptions/form', :locals => {:dc_summary_id => @prescription.dc_summary_id}) %>");

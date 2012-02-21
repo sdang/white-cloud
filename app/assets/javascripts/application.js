@@ -8,21 +8,42 @@
 //= require jquery_ujs
 //= require jquery.hint.js
 //= require jquery-ui.min.js
+//= require jquery.idTabs.min.js
 //= require common.js
 
+if($.browser.msie && $.browser.version=="6.0") {
+	window.location = "/unsupported_browser.html"
+}
+
+$(document).on('click', '#add-button', function() {
+	$('#add-form').slideToggle('fast');
+});
+
 $(document).on('mouseenter','.reminder', function() {
-	$(this).find('div:first').fadeTo('fast', 1);
+	$(this).find('#links').fadeTo('fast', 1);
 });
 
 $(document).on('mouseleave','.reminder', function() {
-	$(this).find('div:first').fadeTo('fast',0.5);
+	$(this).find('#links').fadeTo('fast',0.5);
 });
 
 $(document).on('click', '#fade', function() {
-	$(this).parent().slideUp("fast");
+	$(this).parent().slideToggle("fast");
 });
 
-$(document).on('click', '#phi-explanation-link', function() {
-	$('#phi-explanation').fadeToggle('fast');
-})
-
+$(document).ready(function () {  
+  var top = $('#followContent').offset().top - parseFloat($('#followContent').css('marginTop').replace(/auto/, 0));
+  $(window).scroll(function (event) {
+    // what the y position of the scroll is
+    var y = $(this).scrollTop();
+  
+    // whether that's below the form
+    if (y >= top) {
+      // if so, ad the fixed class
+      $('#followContent').addClass('fixed');
+    } else {
+      // otherwise remove it
+      $('#followContent').removeClass('fixed');
+    }
+  });
+});

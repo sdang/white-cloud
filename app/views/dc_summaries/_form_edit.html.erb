@@ -1,0 +1,128 @@
+<% if @dc_summary.errors.any? %>
+	<div id="alert"><%= errors_for(@dc_summary, "Could not update d/c summary") %></div>
+<% end %>
+<h3>Patient Identification</h3>
+	<h2>
+		<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %>
+	</h2>
+	<h2>
+		<%= @dc_summary.mrn %>
+	</h2>
+	</br><br/>
+	<%= req_field %>Field required to finalize discharge<br/><br/>
+	
+<h3>Medications</h3>
+	<%= import_buttons("rx", @dc_summary.id) -%><br/>
+	<br/>
+	<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
+	<br/>
+	<%= button_tag "+ Add Prescription", :id => "add-button", :class => "button green small" %>
+	<div id="add-form">
+		<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+	</div>
+	<br/><br/>
+
+<h3>Consultation Requests</h3>
+	<br/>
+	<%= render :partial => "/consults/table", :object => @dc_summary.consults %>
+	<br/>
+	<%= button_tag "+ Add Consults", :id => "add-button-consults", :class => "button green small" %>
+	<div id="add-form-consults">
+		<%= render :partial => "/consults/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+	</div>
+	<% if @dc_summary.one_liner.blank? %>
+		<br/><br/>
+		<div id="grayText">You have not inputed a one-liner below yet. If you provide a one 
+			liner it will automatically be added to your consult requests</div>
+	<% end %>
+	<br/><br/>
+
+<%= form_for @dc_summary do |f| %>
+
+	
+	<h3>Medical Information</h3>
+		<%= f.label :one_liner %><br/>
+		<%= import_buttons("one_liner", @dc_summary.id) %><br/>
+		<%= f.text_area :one_liner, :rows => 5, :class => "fullwidth", :title => "One liner is used to pre-fill consultation requests for you", :value => f.object.one_liner.decrypt(session[:group_password])%><br/>
+		<%= req_field %><%= f.label :chief_complaint %><br/>
+		<%= f.text_area :chief_complaint, :rows => 2, :class => "fullwidth", :title => "", :value => f.object.chief_complaint.decrypt(session[:group_password])%><br/>
+		<%= req_field %><%= f.label "Discharge Diagnoses" %> <br/><%= import_buttons("diagnoses", @dc_summary.id) -%> <br/>
+		<%= f.text_area :diagnoses, :rows => 10, :class => "fullwidth", :title => "Please include all diagnoses, including those not addressed during this admission", :value => f.object.diagnoses.decrypt(session[:group_password])%>
+		
+		<%= req_field %><%= f.label "History of Present Illness" %> <br/>
+		<%= f.text_area :hpi, :rows => 10, :class => "fullwidth", :title => "Briefly describe pertinent patient history", :value => f.object.hpi.decrypt(session[:group_password]) %>
+	
+		<%= req_field %><%= f.label "Hospital Course" %> <br/>
+		<%= f.text_area :hospital_course, :rows => 10, :class => "fullwidth", :title => "Include all pertinent procedures, studies, and medical decision making", :value => f.object.hospital_course.decrypt(session[:group_password]) %><br/>
+		
+		<%= f.label "Procedures" %> <br/>
+		<%= f.text_area :procedures, :rows => 10, :class => "fullwidth", :title => "Any procedures performed during this admission", :value => f.object.procedures.decrypt(session[:group_password]) %>
+	
+		<h3>General Info</h3>
+			<table class="fullwidth">
+				<tr valign="top">
+					<td width="250">				
+						<%= req_field %><%= f.label "Admission Date" %><br/>
+						<%= f.date_select :admit_date, :order => [:month, :day, :year], :include_blank => true %><br/>
+
+						<%= req_field %><%= f.label "Discharge Date" %><br/>
+						<%= f.date_select :discharge_date, :order => [:month, :day, :year], :include_blank => true %><br/>
+						
+						<%= req_field %><%= f.label "Service"%><br/>
+						<%= f.text_field :service, :size => 18 %>
+					</td>
+					<td width="30">&nbsp;</td>
+					<td>
+						<%= req_field %><%= f.label "Attending" %><br/>
+						<%= f.text_field :attending, :size => 18 %><br/>
+
+						<%= req_field %><%= f.label "Resident" %><br/>
+						<%= f.text_field :resident, :size => 18  %><br/>
+
+						<%= f.label "Intern" %><br/>
+						<%= f.text_field :intern, :size => 18  %><br/>
+
+						<%= f.label "Medical Student" %><br/>
+						<%= f.text_field :medical_student, :size => 18  %>
+					</td>
+				</tr>
+			</table>
+			
+		<h3>Patient Instructions</h3>
+			<table>
+				<tr>
+					<td>
+						<%= req_field %><%= f.label :activity %><br/>
+						<%= f.text_field :activity, :title => "As tolerated, bed rest, etc", :value => @dc_summary.activity.decrypt(session[:group_password]) %><br/>
+					</td>
+					<td>
+						<%= req_field %><%= f.label :condition %><br/>
+						<%= f.text_field :condition, :title => "Stable, guarded, etc", :value => @dc_summary.condition.decrypt(session[:group_password]) %><br/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<%= req_field %><%= f.label :disposition %><br/>
+						<%= f.text_field :disposition, :title => "Home, SNF, etc", :value => @dc_summary.disposition.decrypt(session[:group_password]) %><br/>
+					</td>
+					<td>
+						<%= req_field %><%= f.label :diet %><br/>
+						<%= f.text_field :diet, :title => "Heart Healthy, Carb Controlled", :value => @dc_summary.diet.decrypt(session[:group_password]) %><br/>
+					</td>
+				</tr>
+			</table>
+			
+			<%= f.label :follow_up %><br/>
+			<%= f.text_area :follow_up, :class => "fullwidth", :rows => 5, :title => "List all upcoming clinic appointments and outpatient studies. Any consultation requests you create will automatically be included in the final follow up list.", :value => f.object.follow_up.decrypt(session[:group_password])  %>
+			<%= f.label :discharge_instructions %><br/>
+			<%= f.text_area :dc_instructions, :class => "fullwidth", :rows => 5, :title => "Discharge instructions will directly print on the patient information sheet as well as be included in the d/c summary.", :value => f.object.dc_instructions.decrypt(session[:group_password])  %>
+			<%= f.label :discharge_orders %><br/>
+			<%= f.text_area :discharge_orders, :class => "fullwidth", :rows => 5, :title => "Any outpatient studies you would like to order. These will be printed on the final patient instruction sheet", :value => f.object.discharge_orders.decrypt(session[:group_password]) %>
+			<div id='follow-button' style='text-align: right'>
+			
+			<%= f.hidden_field :finalized %>
+			<%= f.submit "Save Discharge Summary", :class => "button white large" %> 
+			<%= link_to "Cancel", url_for(:action => "show", :id => @dc_summary.id), :confirm => "Are you sure? You will lose any changes you've made" %>
+			</div>
+			
+<% end %>

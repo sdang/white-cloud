@@ -34,11 +34,31 @@ bc. cat config/private.pem  config/public.pem >> config/keypair.pem
 
 h3. Setup the database
 
-This suite has been tested against Postgres, but should work with any standard sql based server. To create the database run:
+Olive-view-tools has been tested against Postgres, but should work with any standard sql based server. To create the database run:
 
 bc. rake db:create
 rake db:migrate
 
-h2. Authors
+h3. Deployment
+
+Designed with deployment to heroku in mind, and relies on environment variables for application configuration. For development / other deployment:
+
+bc. cp config/initializers/01_application_settings.rb.sample config/initializers/01_application_settings.rb
+
+Edit the file and change all the configuration options based upon your installation
+
+h3. Dependencies
+
+Olive-view-tools relies on several services for additional features:
+
+* Airbrake: Exception monitoring / notification
+
+* SendGrid: Production email service, setup as SMTP. Can be swapped out with any SMTP provided. Edit the mailer.rb to specify your SMTP server
+
+* MockSMTP: Development email is setup to utilize the MockSTMP OS X application
+
+* Twilio: All text messaging features utilize twilios api
+
+h2. Author
 
 Suite written by Sabin Dang, MD (sabin@sabindang.com)

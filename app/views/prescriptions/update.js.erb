@@ -1,0 +1,9 @@
+<% unless @prescription.valid? %>
+	$("#prescription-form-errors").html("<%= escape_javascript(errors_for(@prescription, 'Unable to udpate prescription'))%>")
+	$("#prescription-form-errors").effect("highlight", {}, 3000)
+<% else %>
+	$("#prescription-<%= @prescription.id %>").html("<%= escape_javascript(render @prescription) %>");
+	$("#prescription-<%= @prescription.id %>").css("background-color", "#ffffff");
+	$("#prescription-<%= @prescription.id %>").find('#links').fadeTo('fast', 0.5);
+	$("#prescription-<%= @prescription.id %>").effect("highlight", {}, 3000);
+<% end %>

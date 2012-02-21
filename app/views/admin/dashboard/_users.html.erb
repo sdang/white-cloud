@@ -1,0 +1,24 @@
+<div id="contentCard">
+	<h1>Pending Authorization</h1>
+	<% User.where("authorized = ?", false).each do |u|%>
+		<%= link_to "authorize", :action => "authorize", :id => u.id, :controller => "admin/users"%>  | 
+		<%= u.name %> (<%= u.email %>)<br/>
+	<% end %>
+</div>
+
+<div id="contentCard">
+	<h1>Administrators</h1>
+	<% User.where("authorized = ? and admin = ?", true, true).each do |u|%>
+		<%= link_to "revoke admin", :action => "revoke_admin", :id => u.id, :controller => "admin/users" %> |
+		<%= u.name %> (<%= u.email %>)<br/>
+	<% end %>
+</div>
+
+<div id="contentCard">
+	<h1>Active Users</h1>
+	<% User.where("authorized = ? and admin = ?", true, false).each do |u|%>
+		<%= link_to "make admin", :action => "make_admin", :id => u.id, :controller => "admin/users" %> |
+		<%= link_to "revoke", :action => "revoke", :id => u.id, :controller => "admin/users" %>
+		<%= u.name %> (<%= u.email %>)<br/>
+	<% end %>
+</div>

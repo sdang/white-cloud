@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120210021820) do
+ActiveRecord::Schema.define(:version => 20120220022131) do
 
   create_table "admin_sign_outs", :force => true do |t|
     t.integer  "user_id"
@@ -21,13 +21,36 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.datetime "updated_at"
   end
 
+  create_table "application_logs", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "message"
+    t.integer  "user_id"
+    t.integer  "level"
+  end
+
+  create_table "consults", :force => true do |t|
+    t.binary   "service"
+    t.binary   "service_iv"
+    t.binary   "service_key"
+    t.binary   "reason"
+    t.binary   "reason_iv"
+    t.binary   "reason_key"
+    t.integer  "dc_summary_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "priority"
+    t.datetime "appointment_time"
+    t.boolean  "contact_after_seen", :default => false
+  end
+
   create_table "dc_summaries", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_user_id"
     t.integer  "last_update_user_id"
     t.datetime "finalized_at"
-    t.boolean  "finalized"
+    t.boolean  "finalized",            :default => false
     t.string   "mrn"
     t.date     "admit_date"
     t.date     "discharge_date"
@@ -41,12 +64,11 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.binary   "last_name"
     t.binary   "last_name_key"
     t.binary   "last_name_iv"
-    t.binary   "dob"
     t.binary   "dob_key"
     t.binary   "dob_iv"
     t.binary   "diagnoses"
     t.binary   "diagnoses_key"
-    t.binary   "diagnosis_iv"
+    t.binary   "diagnoses_iv"
     t.binary   "condition"
     t.binary   "condition_key"
     t.binary   "condition_iv"
@@ -71,6 +93,36 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.binary   "dc_instructions"
     t.binary   "dc_instructions_key"
     t.binary   "dc_instructions_iv"
+    t.date     "dob"
+    t.binary   "chief_complaint"
+    t.binary   "chief_complaint_iv"
+    t.binary   "chief_complaint_key"
+    t.binary   "one_liner"
+    t.binary   "one_liner_iv"
+    t.binary   "one_liner_key"
+    t.binary   "procedures"
+    t.binary   "procedures_iv"
+    t.binary   "procedures_key"
+    t.binary   "service"
+    t.binary   "service_iv"
+    t.binary   "service_key"
+    t.binary   "disposition"
+    t.binary   "disposition_iv"
+    t.binary   "disposition_key"
+  end
+
+  create_table "prescriptions", :force => true do |t|
+    t.integer  "dc_summary_id"
+    t.string   "quantity"
+    t.integer  "refills",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.binary   "drug"
+    t.binary   "drug_iv"
+    t.binary   "drug_key"
+    t.binary   "sig"
+    t.binary   "sig_iv"
+    t.binary   "sig_key"
   end
 
   create_table "reminder_lists", :force => true do |t|
@@ -88,8 +140,9 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.datetime "remind_time"
     t.integer  "reminder_list_id"
     t.integer  "user_id"
-    t.boolean  "completed"
+    t.boolean  "completed",         :default => false
     t.string   "contact_number"
+    t.datetime "last_notification"
   end
 
   create_table "users", :force => true do |t|
@@ -105,11 +158,13 @@ ActiveRecord::Schema.define(:version => 20120210021820) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "pager_number"
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "authorized",                            :default => false
     t.boolean  "admin",                                 :default => false
+    t.string   "pager_number"
+    t.text     "sms_number"
+    t.string   "preferences"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

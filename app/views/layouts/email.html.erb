@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>olive-view-tools</title>
+  <link href="/assets/devise.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+  background-color: #6b6b6b;
+  background-repeat: repeat-x;
+  font-family: arial;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+#login-window {
+  -moz-box-shadow: 0 0 30px 5px #222;
+  -webkit-box-shadow: 0 0 30px 5px #222;
+  background-color: white;
+  border: 1px solid #777777;
+  width: 300px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#logo {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+#links {
+  padding-top: 10px;
+  color: gray;
+  font-size: 14px;
+  text-align: center;
+}
+
+#links a, #links a:visited, #links a:hover {
+  color: navy;
+}
+
+#footer {
+  width: 300px;
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #222;
+  text-align: center;
+}
+
+#gray {
+  color: gray;
+  font-size: 13px;
+}
+
+#mrn {
+	color: gray;
+}
+
+#overdue {
+	font-size: 11px;
+	color: red;
+}
+
+#due {
+	font-size: 11px;
+	color: green;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="login-window" class="vcenter" style="width: 400px">
+	<div id="logo">
+		<img alt="Olive-view-logo-login" src="http://<%= ENV['DEFAULT_HOST']%>/assets/Olive-View-Logo-Login.gif" />
+	</div>
+	
+	<%= yield %>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<div id="reminder-list-form-error" class="hidden alert"></div>
+<% @reminder_list ||= ReminderList.new %>
+<div class="<%= 'small-form' unless @reminder_list.new_record?%>">
+<%= form_for @reminder_list, :remote => true, :id => @reminder_list.id do |f| %>
+	<%= req_field %><%= f.label :name %><br/>
+	<%= f.text_field :name, :title => "List Name" %><br/>
+
+	<%= f.label :default_user %><br/>
+	<%= collection_select(:reminder_list, :user_id, User.all(:order => "email ASC"), :id, :email, :include_blank => true)%>
+	<% if @reminder_list.new_record? %>
+		<%= f.submit "+ Add Reminder List", :class => "button medium green" %>
+	<% else %>
+		<%= f.submit "Edit Reminder List", :class => "button small white" %>
+		<%= link_to "cancel", {:controller => "/reminder_lists", :action => "cancel_edit", :id => @reminder_list.id }, :method => :get, :remote => true %>
+	<% end %>
+<% end %>
+</div>

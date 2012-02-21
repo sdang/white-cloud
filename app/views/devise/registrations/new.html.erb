@@ -3,16 +3,41 @@
 	<div id="alert"><%= devise_error_messages! %></div>
   <% end %>
 
-	<%= f.label :email, "Email Address" %><br />
-	<%= f.email_field :email, :title => "name@domain.com" %>
+	<%= req_field -%><%= f.label :email, "Email Address" %><br />
+	<%= f.email_field :email, :id => "text-field-input", :title => "name@domain.com" %>
 
-  	<%= f.label :password %><br />
-	<%= f.password_field :password, :title => "**********" %>
+  	<%= req_field -%><%= f.label :password %><br />
+	<%= f.password_field :password, :id => "text-field-input", :title => "**********" %>
 
-	<%= f.label :password_confirmation %><br />
-  	<%= f.password_field :password_confirmation, :title => "**********", :class => "auto-hint" %>
-
-  <div><%= f.submit "Sign up", :disable_with => "Please Wait ..." %></div>
+	<%= req_field -%><%= f.label :password_confirmation %><br />
+  	<%= f.password_field :password_confirmation, :id => "text-field-input", :title => "**********", :class => "auto-hint" %>
+	
+	<table>
+		<tr>
+			<td>
+				<%= req_field -%><%= f.label :first_name %><br/>
+				<%= f.text_field :first_name, :id => "text-field-input", :title => "John" %>
+			</td>
+			<td width="5">&nbsp;</td>
+			<td>
+				<%= req_field -%><%= f.label :last_name %><br/>
+				<%= f.text_field :last_name, :id => "text-field-input", :title => "Doe" %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<%= req_field -%><%= f.label :pager_number %><br/>
+				<%= f.text_field :pager_number, :id => "text-field-input", :title => "818-313-1212" %>
+			</td>
+			<td width="5">&nbsp;</td>
+			<td>
+				<%= f.label :sms_number, "Cell Phone" %><br/>
+				<%= f.text_field :sms_number, :id => "text-field-input", :title => "818-313-1212" %>
+			</td>
+		</tr>
+	</table>
+  <div><%= f.submit "Sign up", :class => "button white max_width medium", :disable_with => "Please Wait ..." %></div>
+	<div id="gray">Cell phone number is required if you would like to create and/or receive reminders via text messages</div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

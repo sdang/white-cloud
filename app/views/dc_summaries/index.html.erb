@@ -1,6 +1,12 @@
+<div id="page-navigation-tabs">
+	<div class="idTabs">
+		<%= link_to "Create D/C Summary", "#create_dc_summary", :class => "button medium white" -%>
+		<%= link_to "Open D/C Summaries", "#open_dc_summaries", :class => "button medium white" -%>
+	</div>
+</div>
+<br/>
+
 <%= render :partial => '/shared/unlock_phi' -%>
 
-<div id="contentCard">
-<h1>Your Open D/C Packets</h1>
-<%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
-</div>
+<div id="create_dc_summary"><%= render :partial => "create_dc_summary" %></div>
+<div id="open_dc_summaries"><%= render :partial => "open_dc_summaries" %></div>

@@ -12,6 +12,7 @@ gem 'devise', '1.4.9'
 gem 'activerecord-sqlserver-adapter', '3.1.3', :platforms => :mingw
 gem 'ruby-odbc', :platforms => :mingw
 
+gem 'twilio-ruby'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,6 +23,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem 'prawn'
+
+gem "airbrake"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -34,5 +39,6 @@ gem 'jquery-rails'
 
 group :test do
   # Pretty printed test output
+  gem 'minitest'
   gem 'turn', :require => false
 end
