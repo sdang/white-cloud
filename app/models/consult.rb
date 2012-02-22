@@ -9,7 +9,7 @@ class Consult < ActiveRecord::Base
     str = ""
     str += self.reason.decrypt(pw)
     str += "\n\nDischarge Medications: "
-    str += self.dc_summary.prescriptions.collect { |x| x.drug.decrypt(pw) + " " + (x.sig.decrypt(pw) || "") }.join(", ")
+    str += self.dc_summary.prescriptions.collect { |x| (x.drug.decrypt(pw) || "") + " " + (x.sig.decrypt(pw) || "") }.join(", ")
   end
   
   def priority

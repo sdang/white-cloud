@@ -28,12 +28,32 @@ class DcSummariesController < ApplicationController
   
   def update
     @dc_summary = DcSummary.find_by_id(params[:id])
+    
+    # redirect to edit if this is a finalized dc summary
+    if @dc_summary.finalized
+      flash[:alert] = "Cannot update this discharge summary, it is finalized"
+      redirect_to :action => "show", :id => @dc_summary.id
+      return
+    else 
+      @dc_summary.admin_override = true
+    end
+    
     @dc_summary.last_update_user_id = current_user.id
       
     @prescription = Prescription.new
     @consult = Consult.new(:dc_summary_id => @dc_summary.id)
     
-    @dc_summary.update_attributes(params[:dc_summary])
+    begin
+      @dc_summary.update_attributes(params[:dc_summary])
+    rescue ActiveRecord::ReadOnlyRecord
+      @dc_summary.errors[:base] << "this d/c summary has been marked read-only"
+      respond_to do |format|
+        format.html {redirect_to :action => "edit", :id => @dc_summary.id}
+        format.js
+      end
+      
+      return
+    end
     
     # due to a bug in strongbox, we have to iterate through 
     # parameters, if empty string, directly set object to nil

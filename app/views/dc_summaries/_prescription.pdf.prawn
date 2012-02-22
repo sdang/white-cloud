@@ -128,7 +128,7 @@ p_pdf.bounding_box [h_displace, 540.0], :width => 350.0, :height => 540.0 do
         p_pdf.stroke_bounds
         p_pdf.move_down(8)
         p_pdf.bounds.indent(15,4) do
-          p_pdf.text prescriptions[i].drug, :overflow => :shrink_to_fit if prescriptions[i]
+          p_pdf.text prescriptions[i].drug.decrypt(session[:group_password]), :overflow => :shrink_to_fit if prescriptions[i]
         end
       end
       
@@ -146,7 +146,7 @@ p_pdf.bounding_box [h_displace, 540.0], :width => 350.0, :height => 540.0 do
         p_pdf.stroke_bounds
         p_pdf.move_down(8)
         p_pdf.bounds.indent(4,4) do
-          p_pdf.text prescriptions[i].sig, :overflow => :shrink_to_fit if prescriptions[i]
+          p_pdf.text prescriptions[i].sig.decrypt(session[:group_password]), :overflow => :shrink_to_fit if prescriptions[i]
         end
       end
       
