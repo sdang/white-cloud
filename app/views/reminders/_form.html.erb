@@ -1,5 +1,6 @@
 <div id="reminder-form-error" class="hidden alert"></div>
 <div id="reminder-form-notice" class="hidden notice"></div>
+<% @reminder.reminder_list_id ||= current_user.default_reminder_list.id %>
 <%= form_for @reminder, :remote => true, :id => @reminder.id do |f| %>
 
 	<%= f.label :mrn %><br/>
