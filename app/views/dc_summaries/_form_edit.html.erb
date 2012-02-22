@@ -93,21 +93,21 @@
 				<tr>
 					<td>
 						<%= req_field %><%= f.label :activity %><br/>
-						<%= f.text_field :activity, :title => "As tolerated, bed rest, etc", :value => @dc_summary.activity.decrypt(session[:group_password]) %><br/>
+						<%= f.text_field :activity, :title => "As tolerated, bed rest, etc", :value => @dc_summary.activity.decrypt(session[:group_password]), :size => 20 %><br/>
 					</td>
 					<td>
 						<%= req_field %><%= f.label :condition %><br/>
-						<%= f.text_field :condition, :title => "Stable, guarded, etc", :value => @dc_summary.condition.decrypt(session[:group_password]) %><br/>
+						<%= f.text_field :condition, :title => "Stable, guarded, etc", :value => @dc_summary.condition.decrypt(session[:group_password]), :size => 20 %><br/>
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<%= req_field %><%= f.label :disposition %><br/>
-						<%= f.text_field :disposition, :title => "Home, SNF, etc", :value => @dc_summary.disposition.decrypt(session[:group_password]) %><br/>
+						<%= f.text_field :disposition, :title => "Home, SNF, etc", :value => @dc_summary.disposition.decrypt(session[:group_password]), :size => 20 %><br/>
 					</td>
 					<td>
 						<%= req_field %><%= f.label :diet %><br/>
-						<%= f.text_field :diet, :title => "Heart Healthy, Carb Controlled", :value => @dc_summary.diet.decrypt(session[:group_password]) %><br/>
+						<%= f.text_field :diet, :title => "Heart Healthy, Carb Controlled", :value => @dc_summary.diet.decrypt(session[:group_password]), :size => 20 %><br/>
 					</td>
 				</tr>
 			</table>
