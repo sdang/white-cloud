@@ -6,7 +6,7 @@
 		<%= form_tag url_for(:controller => "/reminders", :action => "create_by_string"), :remote => true, :id => "quick-form-string" do %>
 			<table>
 				<tr valign="center">
-					<td><%= text_field_tag :string, "", :id => "quick-form-string", :title => "eg Check Cultures in 2 days 1231234", :size => "40", :style => "margin-bottom: 0px" %></td>
+					<td><%= text_field_tag :string, "", :id => "quick-form-string", :title => "eg Check Cultures in 2 days 1231234", :size => "40", :style => "margin-bottom: 0px; width: 350px" %></td>
 					<td><%= submit_tag "Add Reminder", :class => "button green medium"%></td>
 				</tr>
 			</table>

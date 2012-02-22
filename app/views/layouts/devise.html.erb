@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>olive-view-tools</title>
+  <title>WhiteCloudApp</title>
   <%= stylesheet_link_tag    "devise" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -21,7 +21,7 @@
 	<% end %>
 	<%= yield %>
 	<div id="footer">
-		olive-view-tools : build <%= APP_VERSION -%>
+		WhiteCloudApp : build <%= ENV["APP_VERSION"] -%>
 	</div>
 </div>
 

@@ -32,4 +32,7 @@ ENV['AIRBRAKE_API_KEY'] ||= '******************'
 # New Relic Monitoring
 ENV["NEW_RELIC_LICENSE_KEY"] ||= "*********************"
 
+# App Version
+ENV["APP_VERSION"] = `git describe --always`
+
 ENV['DEFAULT_HOST'] ||= "olive-view-tools.dev"
