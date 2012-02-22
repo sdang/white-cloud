@@ -3,6 +3,12 @@
 <div id="contentCard">
 <h1>Editing D/C Summary</h1>
 	<% if session[:group_password] %>
+		<%= javascript_tag do -%>
+		  setInterval(function() {
+		      $('.edit_dc_summary').submit()
+		}, 300000);
+		<% end -%>
+	
 		<div class='x-large-form' style="margin-left: 15px; width: 545px">
 		<%= render :partial => "form_edit" %>
 		</div>
