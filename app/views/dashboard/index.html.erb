@@ -12,6 +12,8 @@
 <%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
 </div>
 
+<%= render :partial => '/reminder_lists/reminders_for_supervisor' unless current_user.reminder_lists.empty? %>
+
 <% content_for :sidebar do %>
 	<h1>Search for patient</h1>
 	<%= form_tag :action => "search" do %>

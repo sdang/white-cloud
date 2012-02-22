@@ -7,4 +7,8 @@ class ReminderList < ActiveRecord::Base
     ReminderList.reminders.where(:remind_time < Time.now, :order => ["remind_time DESC"])
   end
   
+  def open_reminders
+    ReminderList.reminders.where(["completed = ?", false], :order => ["remind_time DESC"])
+  end
+  
 end
