@@ -50,7 +50,7 @@ class Prescription < ActiveRecord::Base
   end
   
   def print?
-    true if !self.drug.blank? and !self.sig.blank? and self.quantity
+    true if !self.drug.blank? and !self.sig.blank? and !self.quantity.blank?
   end
   
 end
