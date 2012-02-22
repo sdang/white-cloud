@@ -1,9 +1,7 @@
 class Prescription < ActiveRecord::Base
-  belongs_to :dc_summary
+  belongs_to :dc_summary, :touch => true
   
   validates_presence_of :dc_summary_id, :drug
-  
-  after_save :touch_dc_summary
   
   encrypt_with_public_key :drug, :sig,
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
@@ -53,10 +51,6 @@ class Prescription < ActiveRecord::Base
   
   def print?
     true if !self.drug.blank? and !self.sig.blank? and self.quantity
-  end
-  
-  def touch_dc_summary
-    self.dc_summary.touch
   end
   
 end
