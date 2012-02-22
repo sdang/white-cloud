@@ -1,3 +1,4 @@
+$('#followContent').html("<%= escape_javascript(render :partial => 'edit_sidebar')%>")
 <% if @dc_summary.errors.any? %>
 	$('#side-bar-notification').html("<div id='alert'><%= escape_javascript(errors_for(@dc_summary))%></div>");
 <% else %>

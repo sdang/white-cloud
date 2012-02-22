@@ -33,16 +33,27 @@ class DcSummariesController < ApplicationController
     @prescription = Prescription.new
     @consult = Consult.new(:dc_summary_id => @dc_summary.id)
     
-    if @dc_summary.update_attributes(params[:dc_summary])
-      respond_to do |format|
-        format.html { redirect_to :action => "edit", :id => @dc_summary.id, :notice => 'Successfully Saved Changes' }
-        format.js
-      end
-    else 
-      respond_to do |format|
-        format.html { render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id, :alert => "Error Saving D/C Summary" }
-        format.js
-      end
+    @dc_summary.update_attributes(params[:dc_summary])
+    
+    # due to a bug in strongbox, we have to iterate through 
+    # parameters, if empty string, directly set object to nil
+    ["diagnoses", "condition", "diet", "activity", "discharge_orders", 
+        "hospital_course", "hpi", "follow_up", "dc_instructions", "chief_complaint", 
+        "one_liner", "procedures", "disposition"].each do |attribute|
+      @dc_summary[:"#{attribute}"] = nil if params["dc_summary"][attribute].blank?
+      logger.warn "cleared #{attribute}" if params["dc_summary"][attribute].blank?
+    end
+    @dc_summary.save
+    
+    respond_to do |format|
+      format.html { 
+        if @dc_summary.errors.any?
+          render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id, :alert => "Error Saving D/C Summary"
+        else
+          redirect_to :action => "edit", :id => @dc_summary.id, :notice => 'Successfully Saved Changes' 
+        end
+      }
+      format.js
     end
   end
 
