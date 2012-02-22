@@ -8,7 +8,7 @@ class Reminder < ActiveRecord::Base
   attr_accessor :time_value, :time_units
   before_validation :convert_relative_to_absolute_time
   
-  validates_presence_of :reminder, :mrn, :remind_time, :user_id
+  validates_presence_of :reminder, :mrn, :remind_time, :user_id, :reminder_list_id
   validates_numericality_of :mrn
   
   def convert_relative_to_absolute_time
@@ -55,7 +55,7 @@ class Reminder < ActiveRecord::Base
     msg = msg.gsub(time_match, '')
     
     # create the reminder
-    reminder = Reminder.new(:mrn => mrn, :reminder => msg, :user_id => 1, :time_value => time_val, :time_units => time_unit_multiplier, :user_id => user_id)
+    reminder = Reminder.new(:mrn => mrn, :reminder => msg, :user_id => 1, :time_value => time_val, :time_units => time_unit_multiplier, :user_id => user_id, :reminder_list_id => User.find(user_id).default_reminder_list_id)
   
     # return error if we can't save the reminder
     if reminder.save
