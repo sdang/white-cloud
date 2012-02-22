@@ -30,6 +30,8 @@ gem "airbrake"
 
 gem "newrelic_rpm"
 
+gem "ruby-prof"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
