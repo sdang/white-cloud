@@ -12,7 +12,6 @@ class DashboardControllerTest < ActionController::TestCase
   end
   
   test "should render login" do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
     sign_in User.find(users(:two).id)
     
     get :index
@@ -20,11 +19,14 @@ class DashboardControllerTest < ActionController::TestCase
   end
   
   test "should redirect non-authorized user to login" do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
     sign_in User.find(users(:three).id)
     
     get :index
     assert_redirected_to :action=>"new", :controller=>"/devise/sessions"
+  end
+    
+  def setup
+    @request.env["devise.mapping"] = Devise.mappings[:user]
   end
   
 end
