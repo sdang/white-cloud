@@ -1,0 +1,5 @@
+Overdue Reminders for <%= @reminder_list.name %>
+
+<%@reminders.each do |reminder|%>
+#<%= reminder.mrn %>: <%= reminder.reminder %>	due <%= time_ago_in_words(reminder.remind_time) %> ago (<%= reminder.user.name %>)
+<% end -%>
