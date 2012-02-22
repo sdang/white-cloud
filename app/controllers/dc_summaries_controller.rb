@@ -33,13 +33,16 @@ class DcSummariesController < ApplicationController
     @prescription = Prescription.new
     @consult = Consult.new(:dc_summary_id => @dc_summary.id)
     
-    if @dc_summary.update_attributes(params[:dc_summary])      
-      
-      flash.now[:notice] = 'Successfully Saved Changes'
-      redirect_to :action => "edit", :id => @dc_summary.id
+    if @dc_summary.update_attributes(params[:dc_summary])
+      respond_to do |format|
+        format.html { redirect_to :action => "edit", :id => @dc_summary.id, :notice => 'Successfully Saved Changes' }
+        format.js
+      end
     else 
-      flash.now[:alert] = 'Error saving d/c summary'
-      render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id
+      respond_to do |format|
+        format.html { render :controller => "dc_summaries", :action => "edit", :id => @dc_summary.id, :alert => "Error Saving D/C Summary" }
+        format.js
+      end
     end
   end
 
