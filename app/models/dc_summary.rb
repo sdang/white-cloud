@@ -69,13 +69,13 @@ class DcSummary < ActiveRecord::Base
     end
   end
   
-  def readonly?
-    # we have to actually read from the db to see if this is finalized
-    # and not just a newly finalized record we're trying to save
-    return false if self.new_record? and self.finalized == false
-    return false if self.admin_override
-    return true if DcSummary.find(self.id).read_attribute(:finalized)
-  end
+ def readonly?
+   # we have to actually read from the db to see if this is finalized
+   # and not just a newly finalized record we're trying to save
+   return false if self.new_record? and self.finalized == false
+   return false if self.admin_override
+   return true if DcSummary.find(self.id).read_attribute(:finalized)
+ end
   
   def import_rx(pw)
     summary_to_import = self.find_summary_for_import
