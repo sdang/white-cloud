@@ -1,23 +1,23 @@
-<%= form_for @dc_summary, :id => @dc_summary.id do |f| %>
+<%= form_for @dc_summary, :id => @dc_summary.id, :class => "form-vertical" do |f| %>
 	<%= req_field %>Field required to finalize discharge<br/><br/>
 	<% if @dc_summary.errors.any? %>
-	<div id="alert">
+	<div class="alert alert-error">
 		<%= errors_for(@dc_summary, "Could not start d/c summary:")%>
 	</div>
 	<% end %>
-	<h3>Patient Identification</h3>
-		<%= req_field %><%= f.label "Name" %><br/>
-		<%= f.text_field :first_name, :title => "First Name", :style => "fullwidth", :value => "" %><br/>
-		<%= f.text_field :last_name, :title => "Last Name", :style => "fullwidth", :value => "" %><br/>
+	<h5>Patient Identification</h5>
+		<%= req_field %><%= f.label "Name" %>
+		<%= f.text_field :first_name, :placeholder => "First Name", :class => "span2", :value => "" %>
+		<%= f.text_field :last_name, :placeholder => "Last Name", :class => "span2", :value => "" %>
 	
-		<%= req_field %><%= f.label :mrn%><br/>
-		<%= f.text_field :mrn, :style => "fullwidth", :title => "0000000" %><br/>
-		<%= req_field %><%= f.label "Date of Birth"%><br/>
-		<%= f.date_select :dob, :order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true %><br/>
+		<%= req_field %><%= f.label :mrn%>
+		<%= f.text_field :mrn, :class => "span3", :title => "0000000" %>
+		<%= req_field %><%= f.label "Date of Birth"%>
+		<%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true},  {:class => "span1"} %><br/>
 	
 	<% if @dc_summary.new_record? %>
-		<%= f.submit "Start D/C Summary", :class => "button green large "%>
+		<%= f.submit "Start D/C Summary", :class => "btn"%>
 	<% else %>
-		<%= f.submit "Save D/C Summary", :class => "button green large fullwidth" %>
+		<%= f.submit "Save D/C Summary", :class => "btn" %>
 	<% end %>
 <% end %>

@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def req_field
-    return "<span class='required'>*</span> ".html_safe
+    return "".html_safe
   end
   
   def errors_for(object, message=nil)

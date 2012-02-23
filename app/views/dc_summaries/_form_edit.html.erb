@@ -1,26 +1,33 @@
 <% if @dc_summary.errors.any? %>
-	<div id="alert"><%= errors_for(@dc_summary, "Could not update d/c summary") %></div>
+	<div class="alert alert-error"><%= errors_for(@dc_summary, "Could not update d/c summary") %></div>
 <% end %>
-<h3>Patient Identification</h3>
-	<h2>
+
+<div class="page-header">
+<h4>Patient Identification</h4>
+	<p>
 		<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %>
-	</h2>
-	<h2>
+	</p>
+	<p>
 		<%= @dc_summary.mrn %>
-	</h2>
-	</br><br/>
+	</p>
+	</br>
 	<%= req_field %>Field required to finalize discharge<br/><br/>
-	
-<h3>Medications</h3>
-	<%= import_buttons("rx", @dc_summary.id) -%><br/>
-	<br/>
-	<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
-	<br/>
-	<%= button_tag "+ Add Prescription", :id => "add-button", :class => "button green small" %>
-	<div id="add-form">
-		<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+</div>
+
+<div class="page-header">
+	<div class="row">
+		<div class="span8">
+			<h4>Medications</h4>
+			<%= import_buttons("rx", @dc_summary.id) -%><br/>
+			<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
+		</div>
 	</div>
-	<br/><br/>
+	<div class="row">
+		<div class="span8" id="add-form">
+			<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+		</div>
+	</div>
+</div>
 
 <h3>Consultation Requests</h3>
 	<br/>

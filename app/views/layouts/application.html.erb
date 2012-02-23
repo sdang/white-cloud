@@ -32,10 +32,10 @@
 				<%= yield :sidebar %>
 		</div>
 	</div>
-	<div class="row">
-			<div class="span11 offset1">
-				<p>&copy; <%= Time.now.year %>, Olive View-UCLA, Department of Medicine<br/>
-				WhiteCloud : build <%= ENV["APP_VERSION"] -%></p>
+	<div class="row well">
+			<div class="span10">
+				<div class="pull-left">&copy; <%= Time.now.year %>, Olive View-UCLA, Department of Medicine</div>
+				<div class="pull-right">WhiteCloud : build <%= ENV["APP_VERSION"] -%></div>
 			</div>
 	</div>
 </div>
