@@ -32,9 +32,11 @@ $(document).on('click', '#fade', function() {
 	$(this).parent().slideToggle("fast");
 });
 
+
 $(document).ready(function () {  
   var top = $('#followContent').offset().top - parseFloat($('#followContent').css('marginTop').replace(/auto/, 0));
 	$(".alert").alert();
+
   $(window).scroll(function (event) {
     // what the y position of the scroll is
     var y = $(this).scrollTop();

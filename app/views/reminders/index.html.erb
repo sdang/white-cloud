@@ -1,17 +1,24 @@
-<div id="page-navigation-tabs">
-	<div class="idTabs">
-		<%= link_to "All Upcoming Reminders", "#upcoming_reminders", :class => "button medium white" -%>
-		<%= link_to "Completed Reminders", "#completed_reminders", :class => "button medium white" -%>
-		<%= link_to "Add Reminder", "#add_reminder", :class => "button medium white" -%>
-	</div>
-</div>
-<br/>
-
 <%= render :partial => "quick_add_reminder" %>
 
-<div id="upcoming_reminders">
-	<%= render :partial => "upcoming_reminders" %>
-	<%= render :partial => '/reminder_lists/reminders_for_supervisor' unless current_user.reminder_lists.empty? %>
+<div class="tabbable">
+	  <ul class="nav nav-pills">
+		<li><%= link_to "All Upcoming Reminders", "#upcoming_reminders", :'data-toggle' => "tab", :class => "button medium white" -%></li>
+		<li><%= link_to "Completed Reminders", "#completed_reminders", :'data-toggle' => "tab", :class => "button medium white" -%></li>
+		<li><%= link_to "Add Reminder", "#add_reminder", :'data-toggle' => "tab", :class => "button medium white" -%></li>
+	  </ul>
+	
+	<div class="tab-content">
+		<div class="tab-pane active" id="upcoming_reminders">
+			<%= render :partial => "upcoming_reminders" %>
+			<%= render :partial => '/reminder_lists/reminders_for_supervisor' unless current_user.reminder_lists.empty? %>
+		</div>
+
+		<div class="tab-pane" id="completed_reminders">
+			<%= render :partial => "completed_reminders" %>
+		</div>
+
+		<div class="tab-pane" id="add_reminder">
+			<%= render :partial => "add_reminder" %>
+		</div>
+	</div>
 </div>
-<div id="completed_reminders"><%= render :partial => "completed_reminders" %></div>
-<div id="add_reminder"><%= render :partial => "add_reminder" %></div>

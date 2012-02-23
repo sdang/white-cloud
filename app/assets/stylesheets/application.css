@@ -7,7 +7,9 @@
 */
 
 
-
+body {
+  padding-top: 40px;
+}
 
 .hidden { display: none}
 #links, #content {display: inline}
