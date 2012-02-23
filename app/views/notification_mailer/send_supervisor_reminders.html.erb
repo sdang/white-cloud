@@ -1,0 +1,23 @@
+<div style="font-size: 20px; text-align: center">Overdue Reminders for <%= @reminder_list.name %></div>
+
+<br/>
+<br/>
+
+<div id="content" style="text-align: left">
+	<%@reminders.each do |reminder|%>
+		<span id="mrn">#<%= reminder.mrn %></span>: 
+		<span><%= reminder.reminder %></span>
+		<span>(<%= reminder.user.name %>)</span>
+		<% if reminder.remind_time < Time.now %>
+			<span id="overdue">
+				due <%= time_ago_in_words(reminder.remind_time) if reminder.remind_time%> ago
+			</span>
+		<% else %>
+			<span id="due">in <%= time_ago_in_words(reminder.remind_time) if reminder.remind_time %></span>
+		<% end %><br/>
+	<% end %>
+</div>
+<br/><br/>
+<div id="gray" style="margin-bottom: 30px">
+</div>
+

@@ -1,9 +1,7 @@
 class Consult < ActiveRecord::Base
-  belongs_to :dc_summary
+  belongs_to :dc_summary, :touch => true
   
   validates_presence_of :dc_summary_id, :service, :reason
-  
-  after_save :touch_dc_summary
       
   encrypt_with_public_key :service, :reason, :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
 
@@ -11,7 +9,7 @@ class Consult < ActiveRecord::Base
     str = ""
     str += self.reason.decrypt(pw)
     str += "\n\nDischarge Medications: "
-    str += self.dc_summary.prescriptions.collect { |x| x.drug.decrypt(pw) + " " + (x.sig.decrypt(pw) || "") }.join(", ")
+    str += self.dc_summary.prescriptions.collect { |x| (x.drug.decrypt(pw) || "") + " " + (x.sig.decrypt(pw) || "") }.join(", ")
   end
   
   def priority
@@ -21,10 +19,5 @@ class Consult < ActiveRecord::Base
       return self.read_attribute(:priority)
     end
   end
-  
-  def touch_dc_summary
-    self.dc_summary.touch
-  end
-
   
 end

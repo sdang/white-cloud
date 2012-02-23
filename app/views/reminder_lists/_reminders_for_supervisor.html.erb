@@ -1,0 +1,14 @@
+<div id="contentCard">	
+	<h1>Reminder Lists You Are Supervising</h1>
+	<div id="grayText">
+		Below are all the reminder lists you have been assigned to supervise. You will receive an email daily
+		for any reminders which are 3 days overdue or more.
+	</div>
+	
+<% current_user.reminder_lists.each do |rl| %>
+
+		<div id="sub-heading"><%= rl.name %></div>
+		<%= render :partial => '/reminders/table', :object => rl.reminders unless rl.reminders.empty? %>
+
+<% end%>
+</div>

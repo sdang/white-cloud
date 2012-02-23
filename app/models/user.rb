@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :reminders
+  has_many :reminder_lists
   has_many :dc_summaries, :foreign_key => :created_user_id
   
   after_create :notify_admin
