@@ -10,6 +10,7 @@
 //= require jquery-ui.min.js
 //= require jquery.idTabs.min.js
 //= require common.js
+//= require bootstrap.min.js
 
 if($.browser.msie && $.browser.version=="6.0") {
 	window.location = "/unsupported_browser.html"
@@ -33,6 +34,7 @@ $(document).on('click', '#fade', function() {
 
 $(document).ready(function () {  
   var top = $('#followContent').offset().top - parseFloat($('#followContent').css('marginTop').replace(/auto/, 0));
+	$(".alert").alert();
   $(window).scroll(function (event) {
     // what the y position of the scroll is
     var y = $(this).scrollTop();

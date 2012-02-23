@@ -2,39 +2,41 @@
 
 <%= render :partial => "/reminders/quick_add_reminder" %>
 
-<div id="contentCard">
-<h1>Your Upcoming Reminders</h1>
+<div class="page-header">
+<h3>Your Upcoming Reminders</h3>
 <%= render :partial => '/reminders/table', :object => current_user.reminder_list %>
 </div>
 
-<div id="contentCard">
-<h1>Your Open D/C Packets</h1>
+<div class="page-header">
+<h3>Your Open D/C Packets</h3>
 <%= render :partial => '/dc_summaries/table', :object => current_user.dc_summaries_list %>
 </div>
 
 <%= render :partial => '/reminder_lists/reminders_for_supervisor' unless current_user.reminder_lists.empty? %>
 
 <% content_for :sidebar do %>
-	<h1>Search for patient</h1>
-	<%= form_tag :action => "search" do %>
-		<%= text_field_tag :mrn, "", :title => "0000000", :size => 8 -%>
-		<%= submit_tag "Search", :class => "button white small" %>
+	<h6>Search for patient</h6>
+	<%= form_tag url_for(:controller => "/dashboard", :action => "search"), :class => "form-horizontal" do %>
+		<%= text_field_tag :mrn, "", :placeholder => "0000000", :size => 8 -%>
+		<%= submit_tag "Search", :class => "btn" %>
 	<% end %>
-	<br/>
+	<p>
 	Search will find all reminders, d/c summaries, and signouts
 	associated with a given patient
-	<br/><br/>
-	<h1>Recent Activity</h1>
+	</p>
+	<br/>
+	<h6>Recent Activity</h6>
 	<ul>
 	<% current_user.recent_logs.each do |l| %>
-		<li><span id="log-message"><%= l.message %></span> <span id="log-time"><%= time_ago_in_words(l.created_at) %> ago</span> </li>
+		<li><span id="log-message"><%= l.message %></span></li>
 	<% end %>
 	</ul>
 	
-	<br/><br/>
-	<h1>Links</h1>
-	<%= link_to "Clinical Workstation", "#" -%><br/>
-	<%= link_to "PADI", "#" -%><br/>
-	<%= link_to "ePageMD", "#" -%><br/>
-	<%= link_to "UpToDate", "#" -%><br/>
+	<br/>
+	<h6>Links</h6>
+	<ul>
+	<li><%= link_to "Clinical Workstation", "#" -%></li>
+	<li><%= link_to "PADI", "#" -%></li>
+	<li><%= link_to "ePageMD", "#" -%></li>
+	<li><%= link_to "UpToDate", "#" -%></li>
 <% end %>

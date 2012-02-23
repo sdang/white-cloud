@@ -1,14 +1,38 @@
-<ul>    
-	<li class="navigation-tab" id="<%= 'selected' if controller.class == DashboardController %>">
-		<%= link_to "Dashboard", :controller => "/dashboard" %></li>
-	<li class="navigation-tab" id="<%= 'selected' if controller.class == RemindersController %>">
-		<%= link_to "Reminders", :controller => "/reminders" %></li>
-	<li class="navigation-tab" id="<%= 'selected' if controller.class == DcSummariesController %>">
-		<%= link_to "D/C Summaries", :controller => "/dc_summaries" %></li>
-	<li class="navigation-tab" id="<%= 'selected' if controller.class == Devise::RegistrationsController%>">
-		<%= link_to('My Profile', edit_user_registration_path)%></li>
-	                           
-	<% if current_user.admin? %>
-		<li class="navigation-tab" id="<%= 'selected' if controller.class == Admin::DashboardController %>"><%= link_to "Admin", :controller => "/admin/dashboard" %></li>
-	<% end %>
-</ul>
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">
+			  WhiteCloud
+			</a>
+			<ul class="nav">
+			  <li class=<%= 'active' if controller.class == DashboardController %>>
+			    <%= link_to "Dashboard", :controller => "/dashboard" %>
+			  </li>
+			  <li class="<%= 'active' if controller.class == RemindersController %>">
+				<%= link_to "Reminders", :controller => "/reminders" %>
+			  </li>
+			  <li class="<%= 'active' if controller.class == DcSummariesController %>">
+				<%= link_to "D/C Summaries", :controller => "/dc_summaries" %>
+			  </li>
+			 <li class="<%= 'active' if controller.class == Devise::RegistrationsController%>">
+				<%= link_to('My Profile', edit_user_registration_path)%>
+			  </li>
+			<% if current_user.admin? %>
+				<li class="<%= 'active' if controller.class == Admin::DashboardController %>">
+					<%= link_to "Admin", :controller => "/admin/dashboard" %>
+				</li>
+			<% end %>
+			<li>
+				<%= link_to('Logout', destroy_user_session_path, :class => "button red small", :method => :delete) %>
+			</li>
+			
+			</ul>
+			
+			<form class="navbar-search pull-left">
+				<%= form_tag url_for(:controller => "/dashboard", :action => "search"), :class => "form-horizontal" do %>
+					<%= text_field_tag :mrn, "", :placeholder => "Search for Patient", :class => "search-query" -%>
+				<% end %>
+			</form>
+		</div>
+	</div>
+</div>

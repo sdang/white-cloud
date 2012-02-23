@@ -3,9 +3,13 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require common
+ *= require bootstrap.min
 */
 
 
 
 
+.hidden { display: none}
+#links, #content {display: inline}
+#overdue {font-size: 10px; color: red}
+#due {font-size: 10px; color: green}
