@@ -1,6 +1,5 @@
 <%= render :partial => '/shared/unlock_phi' -%>
 
-<div class="page-header">
 	<% if session[:group_password] %>
 		<%= javascript_tag do -%>
 		  setInterval(function() {
@@ -8,9 +7,9 @@
 		}, 300000);
 		<% end -%>
 	
-		<div>
-		<%= render :partial => "form_edit" %>
-		</div>
+
+	<%= render :partial => "form_edit" %>
+
 	<% else %>
 		<div class="alert">
 			<b>Viewing and editing discharge summary locked.</b><br/><br/>
@@ -18,7 +17,6 @@
 			in the form above to edit or view this discharge summary.
 		</div>
 	<% end %>
-</div>
 
 <% content_for :sidebar do %>
 	<% if session[:group_password] %>
