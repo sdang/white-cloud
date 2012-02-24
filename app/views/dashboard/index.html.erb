@@ -15,16 +15,6 @@
 <%= render :partial => '/reminder_lists/reminders_for_supervisor' unless current_user.reminder_lists.empty? %>
 
 <% content_for :sidebar do %>
-	<h6>Search for patient</h6>
-	<%= form_tag url_for(:controller => "/dashboard", :action => "search"), :class => "form-horizontal" do %>
-		<%= text_field_tag :mrn, "", :placeholder => "0000000", :size => 8 -%>
-		<%= submit_tag "Search", :class => "btn" %>
-	<% end %>
-	<p>
-	Search will find all reminders, d/c summaries, and signouts
-	associated with a given patient
-	</p>
-	<br/>
 	<h6>Recent Activity</h6>
 	<ul>
 	<% current_user.recent_logs.each do |l| %>
