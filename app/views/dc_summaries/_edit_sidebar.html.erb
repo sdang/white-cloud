@@ -1,22 +1,22 @@
 <div id="side-bar-notification"></div>
-<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "btn btn-info"%>
+<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "btn btn-large btn-info"%>
 	<% if @dc_summary.can_be_finalized? %>
 		<br/><br/>
-		<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "button medium green", :style => "width: 200px" %>
+		<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "btn btn-large btn-danger" %>
 	<% end %>
 
 <br/><br/><br/>
 <% if @dc_summary.can_be_finalized? %>
 	<h3>All Required Fields Filled</h3>
-	All the required fields are filled to finalize this discharge. Use the "Finalize Discharge"
-	button below to generate your discharge documents.
-	<br/>
-	<br/>Warning: after finalizing discharge
-	you not be able to make any changes without administrative approval.
+	<p>All the required fields are filled to finalize this discharge. Use the "Finalize Discharge"
+	button below to generate your discharge documents.</p>
+
+	<p>Warning: after finalizing discharge
+	you not be able to make any changes without administrative approval.</p>
 <% else %>
 	<h3>Missing Fields</h3>
-	You are still missing the following fields before
-	you can finalize this d/c summary:<br/>
+	<p>You are still missing the following fields before
+	you can finalize this d/c summary:</p>
 <% end %>
 
 <ol>

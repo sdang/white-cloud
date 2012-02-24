@@ -14,10 +14,24 @@ body {
 #sidebar {
 	padding-top: 30px;
 }
-.hidden { display: none}
+
+#followContent {
+  position: absolute;
+  top: 0;
+  /* just used to show how to include the margin in the effect */
+  padding-top: 60px;
+  width: 300px;
+}
+
+#followContent.fixed {
+  position: fixed;
+  top: 0;
+}
+
 #links {display: inline; text-align: right}
 #content {display: inline}
 #overdue {font-size: 10px; color: red}
 #due {font-size: 10px; color: green}
 .gray-text { color: gray; display: block; margin-bottom: 6px; }
 .reminder { margin-top: 5px;}
+.strikethru {text-decoration: line-through; color: #ddd}

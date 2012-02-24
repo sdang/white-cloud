@@ -1,5 +1,6 @@
 <% unless @reminder.valid? %>
 	$("#reminder-form-error").html("<%= escape_javascript(@reminder.errors.full_messages.join(', '))%>")
+	$("#reminder-form-error").removeClass("hidden")
 	$("#reminder-form-error").effect("highlight", {}, 3000)
 <% else %>
 	$("#reminder-<%= @reminder.id %>").html("<%= escape_javascript(render @reminder) %>");

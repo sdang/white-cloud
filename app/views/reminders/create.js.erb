@@ -1,8 +1,10 @@
 <% if @reminder.new_record? %>
 	$("#reminder-form-error").html("<%= escape_javascript(errors_for(@reminder, 'Cannot create reminder').html_safe)%>")
+	$("#reminder-form-error").removeClass("hidden")
 	$("#reminder-form-error").effect("highlight", {}, 3000)
 <% else %>
 	$("#reminder-form-notice").html("Reminder Created")
+	$("#reminder-form-notice").removeClass("hidden")
 	$("#reminder-form-notice").effect("highlight", {}, 3000)
 	$("#reminder-form-error").css("display", "none");
 	$("#reminder-table").html("<%= escape_javascript(render :partial => '/reminders/table', :object => current_user.reminder_list) %>");
