@@ -5,6 +5,7 @@
 <%= render :partial => "/dc_summaries/show_partials/consults" %>
 
 <% content_for :sidebar do %>
-	<h1>Administrative Functions</h1>
-	<%= link_to "Un-finalize this d/c summary", :action => "unfinalize", :id => @dc_summary.id %>
+	<% if current_user.admin? %>
+		<%= link_to "Un-finalize this d/c summary", url_for(:action => "unfinalize", :id => @dc_summary.id), :class => "btn btn-danger" %>
+	<% end %>
 <% end %>

@@ -1,23 +1,25 @@
-<%= form_for @dc_summary, :id => @dc_summary.id, :class => "form-vertical" do |f| %>
-	<%= req_field %>Field required to finalize discharge<br/><br/>
-	<% if @dc_summary.errors.any? %>
+<br/>
+<% if @dc_summary.errors.any? %>
 	<div class="alert alert-error">
 		<%= errors_for(@dc_summary, "Could not start d/c summary:")%>
 	</div>
-	<% end %>
-	<h5>Patient Identification</h5>
-		<%= req_field %><%= f.label "Name" %>
-		<%= f.text_field :first_name, :placeholder => "First Name", :class => "span2", :value => "" %>
-		<%= f.text_field :last_name, :placeholder => "Last Name", :class => "span2", :value => "" %>
+<% end %>
+
+<%= form_for @dc_summary, :id => @dc_summary.id, :class => "form-vertical" do |f| %>
+	<div class="row">
+		<div class="span3">
+			<%= req_field %><%= f.label "Name" %>
+			<%= f.text_field :first_name, :placeholder => "First Name", :class => "span2", :value => f.object.first_name.decrypt(session[:group_password]) %>
+			<%= f.text_field :last_name, :placeholder => "Last Name", :class => "span2", :value => "" %>
 	
-		<%= req_field %><%= f.label :mrn%>
-		<%= f.text_field :mrn, :class => "span3", :title => "0000000" %>
-		<%= req_field %><%= f.label "Date of Birth"%>
-		<%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true},  {:class => "span1"} %><br/>
-	
-	<% if @dc_summary.new_record? %>
-		<%= f.submit "Start D/C Summary", :class => "btn"%>
-	<% else %>
-		<%= f.submit "Save D/C Summary", :class => "btn" %>
-	<% end %>
+			<%= req_field %><%= f.label :mrn %>
+			<%= f.text_field :mrn, :class => "span3", :placeholder => "0000000" %>
+			
+			<%= req_field %><%= f.label "Date of Birth"%>
+			<%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true},  {:class => "span1"} %>
+			<br/>
+			<%= button_tag "Start D/C Summary", :type => "submit", :class => "btn"%>
+
+		</div>
+	</div>
 <% end %>

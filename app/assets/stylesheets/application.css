@@ -35,3 +35,11 @@ body {
 .gray-text { color: gray; display: block; margin-bottom: 6px; }
 .reminder { margin-top: 5px;}
 .strikethru {text-decoration: line-through; color: #ddd}
+
+#dc-summary-content, #patient-instructions-content {
+	margin-top: 15px;
+	display: none;
+	font-size: 12px;
+	line-height: 14px;
+	font-family: monospace;
+}

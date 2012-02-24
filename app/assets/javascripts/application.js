@@ -6,9 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.hint.js
 //= require jquery-ui.min.js
-//= require jquery.idTabs.min.js
 //= require common.js
 //= require bootstrap.min.js
 
