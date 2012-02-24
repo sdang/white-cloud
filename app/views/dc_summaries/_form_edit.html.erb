@@ -3,25 +3,36 @@
 <% end %>
 
 <div class="page-header">
-<h4>Patient Identification</h4>
-	<p>
-		<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %>
-	</p>
-	<p>
-		<%= @dc_summary.mrn %>
-	</p>
-	</br>
-	<%= req_field %>Field required to finalize discharge<br/><br/>
+	<div class="row">
+		<div class="span6">
+		<h1>
+			<%= @dc_summary.first_name.decrypt(session[:group_password]) %> <%= @dc_summary.last_name.decrypt(session[:group_password]) %>
+		</h1>
+		<h2>
+			<%= @dc_summary.mrn %>
+		</h2>
+		</br>
+		<%= req_field %>Field required to finalize discharge<br/><br/>
+		</div>
+	</div>
 </div>
 
 <div class="page-header">
 	<div class="row">
-		<div class="span8">
+		<div class="span2">
 			<h4>Medications</h4>
-			<%= import_buttons("rx", @dc_summary.id) -%><br/>
+		</div>
+		<div class="span3 pull-right">
+			<%= import_buttons("rx", @dc_summary.id) -%>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="span8">
 			<%= render :partial => "/prescriptions/table", :object => @dc_summary.prescriptions %>
 		</div>
 	</div>
+	<br/>
 	<div class="row">
 		<div class="span8" id="add-form">
 			<%= render :partial => "/prescriptions/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
@@ -29,42 +40,73 @@
 	</div>
 </div>
 
-<h3>Consultation Requests</h3>
-	<br/>
-	<%= render :partial => "/consults/table", :object => @dc_summary.consults %>
-	<br/>
-	<%= button_tag "+ Add Consults", :id => "add-button-consults", :class => "button green small" %>
-	<div id="add-form-consults">
-		<%= render :partial => "/consults/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+<div class="page-header">
+	<div class="row">
+		<div class="span4">
+			<h4>Consultation Requests</h4>
+		</div>
 	</div>
-	<% if @dc_summary.one_liner.blank? %>
-		<br/><br/>
-		<div id="grayText">You have not inputed a one-liner below yet. If you provide a one 
-			liner it will automatically be added to your consult requests</div>
-	<% end %>
-	<br/><br/>
-
+	<div class="row">
+		<div class="span8">	
+			<%= render :partial => "/consults/table", :object => @dc_summary.consults %>
+		</div>
+	</div>
+	<br/>
+	<div class="row">
+		<div class="span8" id="add-form-consults">
+			<%= render :partial => "/consults/form", :locals => {:dc_summary_id => @dc_summary.id } -%>
+		</div>
+	</div>
+</div>
 <%= form_for @dc_summary, :remote => true do |f| %>
 
+<div class="page-header">
+	<div class="row">
+		<div class="span8">
+			<h4>Medical Information</h4>
+			<br/>
+		</div>
+	</div>
 	
-	<h3>Medical Information</h3>
-		<%= f.label :one_liner %><br/>
-		<%= import_buttons("one_liner", @dc_summary.id) %><br/>
-		<%= f.text_area :one_liner, :rows => 5, :class => "fullwidth", :title => "One liner is used to pre-fill consultation requests for you", :value => f.object.one_liner.decrypt(session[:group_password])%><br/>
-		<%= req_field %><%= f.label :chief_complaint %><br/>
-		<%= f.text_area :chief_complaint, :rows => 2, :class => "fullwidth", :title => "", :value => f.object.chief_complaint.decrypt(session[:group_password])%><br/>
-		<%= req_field %><%= f.label "Discharge Diagnoses" %> <br/><%= import_buttons("diagnoses", @dc_summary.id) -%> <br/>
-		<%= f.text_area :diagnoses, :rows => 10, :class => "fullwidth", :title => "Please include all diagnoses, including those not addressed during this admission", :value => f.object.diagnoses.decrypt(session[:group_password])%>
+	<div class="row">
+		<div class="span8">
+			<div class="row">
+				<div class="span2">
+					<%= f.label :one_liner %>
+				</div>
+				<div class="span4 pull-left">
+					<%= import_buttons("one_liner", @dc_summary.id) %>
+				</div>
+			</div>
+			
+			<%= f.text_area :one_liner, :rows => 5, :class => "span8", :placeholder => "One liner is used to pre-fill consultation requests for you", :value => f.object.one_liner.decrypt(session[:group_password])%>
+			
+			<%= req_field %><%= f.label :chief_complaint %>
+			<%= f.text_area :chief_complaint, :rows => 2, :class => "span8", :placeholder => "", :value => f.object.chief_complaint.decrypt(session[:group_password])%>
+			
+			<div class="row">
+				<div class="span2">
+					<%= req_field %><%= f.label "Discharge Diagnoses" %>
+				</div>
+				<div class="span4 pull-left">
+					<%= import_buttons("diagnoses", @dc_summary.id) -%>
+				</div>
+			</div>
+			
+			<%= f.text_area :diagnoses, :rows => 10, :class => "span8", :placeholder => "Please include all diagnoses, including those not addressed during this admission", :value => f.object.diagnoses.decrypt(session[:group_password])%>
 		
-		<%= req_field %><%= f.label "History of Present Illness" %> <br/>
-		<%= f.text_area :hpi, :rows => 10, :class => "fullwidth", :title => "Briefly describe pertinent patient history", :value => f.object.hpi.decrypt(session[:group_password]) %>
+			<%= req_field %><%= f.label "History of Present Illness" %>
+			<%= f.text_area :hpi, :rows => 10, :class => "span8", :title => "Briefly describe pertinent patient history", :value => f.object.hpi.decrypt(session[:group_password]) %>
 	
-		<%= req_field %><%= f.label "Hospital Course" %> <br/>
-		<%= f.text_area :hospital_course, :rows => 10, :class => "fullwidth", :title => "Include all pertinent procedures, studies, and medical decision making", :value => f.object.hospital_course.decrypt(session[:group_password]) %><br/>
+			<%= req_field %><%= f.label "Hospital Course" %>
+			<%= f.text_area :hospital_course, :rows => 10, :class => "span8", :title => "Include all pertinent procedures, studies, and medical decision making", :value => f.object.hospital_course.decrypt(session[:group_password]) %>
 		
-		<%= f.label "Procedures" %> <br/>
-		<%= f.text_area :procedures, :rows => 10, :class => "fullwidth", :title => "Any procedures performed during this admission", :value => f.object.procedures.decrypt(session[:group_password]) %>
-	
+			<%= f.label "Procedures" %>
+			<%= f.text_area :procedures, :rows => 10, :class => "span8", :title => "Any procedures performed during this admission", :value => f.object.procedures.decrypt(session[:group_password]) %>
+		</div>
+	</div>
+</div>
+
 		<h3>General Info</h3>
 			<table class="fullwidth">
 				<tr valign="top">
