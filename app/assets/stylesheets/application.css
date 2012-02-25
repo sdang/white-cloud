@@ -43,3 +43,17 @@ body {
 	line-height: 14px;
 	font-family: monospace;
 }
+
+#login-window {
+	background-color: #ffffff; 
+	padding: 20px;
+}
+
+#logo, #footer {
+	text-align: center;
+	color: #bbbbbb;
+}
+
+.hidden {
+	display: none;
+}

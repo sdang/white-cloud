@@ -1,8 +1,19 @@
+<%= render :partial => '/shared/unlock_phi' -%>
 
-<%= render :partial => "/dc_summaries/show_partials/dc_summary" %>
-<%= render :partial => "/dc_summaries/show_partials/patient_instructions" %>
-<%= render :partial => "/dc_summaries/show_partials/prescriptions" %>
-<%= render :partial => "/dc_summaries/show_partials/consults" %>
+	<% if session[:group_password] %>
+		<%= render :partial => "/dc_summaries/show_partials/dc_summary" %>
+		<%= render :partial => "/dc_summaries/show_partials/patient_instructions" %>
+		<%= render :partial => "/dc_summaries/show_partials/prescriptions" %>
+		<%= render :partial => "/dc_summaries/show_partials/consults" %>
+	<% else %>
+		<div class="alert alert-info">
+			<h4 class="alert-heading">Viewing and editing discharge summary locked.</h4>
+			Please provide the group password in the form above to edit
+			or view this discharge summary.
+		</div>
+	<% end %>
+
+
 
 <% content_for :sidebar do %>
 	<% if current_user.admin? %>
