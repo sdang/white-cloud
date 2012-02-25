@@ -29,11 +29,9 @@
 			
 				</ul>
 			</div>
-			<form class="navbar-search pull-right">
-				<%= form_tag url_for(:controller => "/dashboard", :action => "search"), :class => "form-horizontal" do %>
-					<%= text_field_tag :mrn, "", :placeholder => "Search for Patient", :class => "search-query" -%>
-				<% end %>
-			</form>
+			<%= form_tag('/search', :class => "navbar-search pull-right form-horizontal") do %>
+				<%= text_field_tag :mrn, "", :placeholder => "Search for Patient", :class => "search-query" -%>
+			<% end %>
 		</div>
 	</div>
 </div>

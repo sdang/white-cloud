@@ -58,9 +58,8 @@
 	<%= link_to "Change Password", "#", :id => "hide-show-change-password" %>
 	<div id="change-password" style="display: none">
 		<br/>
-		<%= f.label :password %>
+		<%= f.label :new_password %>
 		<%= f.password_field :password %>
-		<p class="help-block">(leave blank if you don't want to change it)</p>
 
 		<%= f.label :password_confirmation %>
 		<%= f.password_field :password_confirmation %>

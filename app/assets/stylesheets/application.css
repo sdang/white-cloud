@@ -31,7 +31,7 @@ body {
 #links {display: inline; text-align: right}
 #content {display: inline}
 #overdue {font-size: 10px; color: red}
-#due {font-size: 10px; color: green}
+#due, #timestamp {font-size: 10px; color: green}
 .gray-text { color: gray; display: block; margin-bottom: 6px; }
 .reminder { margin-top: 5px;}
 .strikethru {text-decoration: line-through; color: #ddd}
