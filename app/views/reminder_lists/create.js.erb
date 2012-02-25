@@ -1,5 +1,6 @@
 <% if @reminder_list.new_record? %>
 	$("#reminder-list-form-error").html("<%= escape_javascript(@reminder_list.errors.full_messages.join(', '))%>")
+	$("#reminder-list-form-error").removeClass("hidden")
 	$("#reminder-list-form-error").effect("highlight", {}, 3000)
 <% else %>
 	$("#reminder-list-table").html("<%= escape_javascript(render :partial => '/reminder_lists/table', :object => ReminderList.find(:all)) %>");

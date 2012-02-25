@@ -1,22 +1,22 @@
 <div id="side-bar-notification"></div>
-<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "button medium white",  :style => "width: 200px"%>
+<%= button_tag "Save Discharge Summary", :id => "save-discharge-summary", :class => "btn btn-large btn-info"%>
 	<% if @dc_summary.can_be_finalized? %>
 		<br/><br/>
-		<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "button medium green", :style => "width: 200px" %>
+		<%= button_tag "Finalize Discharge Summary", :id => "finalize-discharge-summary", :class => "btn btn-large btn-danger" %>
 	<% end %>
 
 <br/><br/><br/>
 <% if @dc_summary.can_be_finalized? %>
-	<h1>All Required Fields Filled</h1>
-	All the required fields are filled to finalize this discharge. Use the "Finalize Discharge"
-	button below to generate your discharge documents.
-	<br/>
-	<br/>Warning: after finalizing discharge
-	you not be able to make any changes without administrative approval.
+	<h3>All Required Fields Filled</h3>
+	<p>All the required fields are filled to finalize this discharge. Use the "Finalize Discharge"
+	button below to generate your discharge documents.</p>
+
+	<p>Warning: after finalizing discharge
+	you not be able to make any changes without administrative approval.</p>
 <% else %>
-	<h1>Missing Fields</h1>
-	You are still missing the following fields before
-	you can finalize this d/c summary:<br/>
+	<h3>Missing Fields</h3>
+	<p>You are still missing the following fields before
+	you can finalize this d/c summary:</p>
 <% end %>
 
 <ol>
@@ -40,7 +40,7 @@
 
 <br/>
 <% unless @dc_summary.can_be_finalized? %>
-	<h1>Next Step</h1>
+	<h3>Next Step</h3>
 	Once you have filled out all the required fields the "Finalize Discharge" button will appear. 
 	Clicking this button will generate all the required discharge paperwork, including prescriptions,
 	and notes to copy and paste into clinical workstation.

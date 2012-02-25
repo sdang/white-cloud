@@ -1,10 +1,8 @@
-<div id="contentCard">
-
-<h1>D/C Summary for <%= @dc_summary.patient_name(session[:group_password])%> (<%= @dc_summary.mrn %>)</h1>
-
-	<div class='x-large-form' style="margin-left: 15px; width: 545px">
-	<h3>Copy and paste version for Clinical Workstation</h3>
-<textarea class="fullwidth" rows="10">
+<div class="page-header">
+	<h1>D/C Summary for <%= @dc_summary.patient_name(session[:group_password])%> (<%= @dc_summary.mrn %>)</h1>
+	<br/><br/>
+	<h5>Copy and paste version for Clinical Workstation</h5>
+<textarea class="span8" rows="10">
 <%= t(:dc_summary, 
 :name =>  @dc_summary.patient_name(session[:group_password]),
 :mrun => @dc_summary.mrn,
@@ -31,34 +29,40 @@
 
 %>
 </textarea>
-			
-	<h3>Preview <button id="show-hide-dc-summary" class="button small white">show</button></h3>
-	<div id="dc-summary-content">
-	<%= t(:dc_summary, 
-		:name =>  @dc_summary.patient_name(session[:group_password]),
-		:mrun => @dc_summary.mrn,
-		:service => @dc_summary.service,
-		:attending => @dc_summary.attending,
-		:resident => @dc_summary.resident,
-		:intern => @dc_summary.intern,
-		:medical_student => @dc_summary.medical_student,
-		:date_of_admission => @dc_summary.admit_date.strftime("%m-%d-%Y"),
-		:date_of_discharge => @dc_summary.discharge_date.strftime("%m-%d-%Y"),
-		:procedures => @dc_summary.procedures.decrypt(session[:group_password]),
-		:discharge_diagnoses => @dc_summary.diagnoses.decrypt(session[:group_password]),
-		:chief_complaint => @dc_summary.chief_complaint.decrypt(session[:group_password]),
-		:hpi => @dc_summary.hpi.decrypt(session[:group_password]),
-		:hospital_course => @dc_summary.hospital_course.decrypt(session[:group_password]),
-		:condition => @dc_summary.condition.decrypt(session[:group_password]),
-		:disposition => @dc_summary.disposition.decrypt(session[:group_password]),
-		:diet => @dc_summary.diet.decrypt(session[:group_password]),
-		:activity_level => @dc_summary.activity.decrypt(session[:group_password]),
-		:medications => @dc_summary.prescriptions_in_medlish(session[:group_password]),
-		:discharge_instructions => @dc_summary.dc_instructions.decrypt(session[:group_password]),
-		:follow_up => @dc_summary.follow_up.decrypt(session[:group_password])
-		).gsub(/\n/, "<br/>").html_safe
-
-	%>
+	<br/><br/>
+	<div class="row">
+		<div class="span4">
+			<button id="show-hide-dc-summary" class="btn btn-mini">Show Preview</button>
+		</div>
 	</div>
+	
+	<div class="row">
+		<div id="dc-summary-content" class="span8">
+		<%= t(:dc_summary, 
+			:name =>  @dc_summary.patient_name(session[:group_password]),
+			:mrun => @dc_summary.mrn,
+			:service => @dc_summary.service,
+			:attending => @dc_summary.attending,
+			:resident => @dc_summary.resident,
+			:intern => @dc_summary.intern,
+			:medical_student => @dc_summary.medical_student,
+			:date_of_admission => @dc_summary.admit_date.strftime("%m-%d-%Y"),
+			:date_of_discharge => @dc_summary.discharge_date.strftime("%m-%d-%Y"),
+			:procedures => @dc_summary.procedures.decrypt(session[:group_password]),
+			:discharge_diagnoses => @dc_summary.diagnoses.decrypt(session[:group_password]),
+			:chief_complaint => @dc_summary.chief_complaint.decrypt(session[:group_password]),
+			:hpi => @dc_summary.hpi.decrypt(session[:group_password]),
+			:hospital_course => @dc_summary.hospital_course.decrypt(session[:group_password]),
+			:condition => @dc_summary.condition.decrypt(session[:group_password]),
+			:disposition => @dc_summary.disposition.decrypt(session[:group_password]),
+			:diet => @dc_summary.diet.decrypt(session[:group_password]),
+			:activity_level => @dc_summary.activity.decrypt(session[:group_password]),
+			:medications => @dc_summary.prescriptions_in_medlish(session[:group_password]),
+			:discharge_instructions => @dc_summary.dc_instructions.decrypt(session[:group_password]),
+			:follow_up => @dc_summary.follow_up.decrypt(session[:group_password])
+			).gsub(/\n/, "<br/>").html_safe
+
+		%>
+		</div>
 	</div>
 </div>

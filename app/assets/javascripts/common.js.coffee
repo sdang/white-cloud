@@ -1,7 +1,5 @@
 
 $ ->
-	$('input[title!=""]').hint();
-	$('textarea[title!=""]').hint();
 	$(".reminder").find('div:first').fadeTo(0,0.5);
 	$("#dashboard").click =>
 		window.location = "/"
@@ -11,17 +9,17 @@ $ ->
 		$('#change-password').slideToggle('fast')
 	$('#show-hide-dc-summary').click ->
 		$('#dc-summary-content').slideToggle('fast')
-		if $('#show-hide-dc-summary').html() == "show"
-			$('#show-hide-dc-summary').html("hide")
+		if $('#show-hide-dc-summary').html() == "Show Preview"
+			$('#show-hide-dc-summary').html("Hide Preview")
 		else
-			$('#show-hide-dc-summary').html("show")
+			$('#show-hide-dc-summary').html("Show Preview")
 		end
 	$('#show-hide-patient-instructions').click ->
 		$('#patient-instructions-content').slideToggle('fast')
-		if $('#show-hide-patient-instructions').html() == "show"
-			$('#show-hide-patient-instructions').html("hide")
+		if $('#show-hide-patient-instructions').html() == "Show Preview"
+			$('#show-hide-patient-instructions').html("Hide Preview")
 		else
-			$('#show-hide-patient-instructions').html("show")
+			$('#show-hide-patient-instructions').html("Show Preview")
 		end
 	$(document).on('click','#save-discharge-summary', ->
 		$('.edit_dc_summary').submit())
@@ -36,4 +34,4 @@ $ ->
 	$('#add-button-consults').click ->
 		$('#add-form-consults').slideToggle('fast')
 	$('#phi-explanation-link').click ->
-		$('#phi-explanation').slideToggle('fast');
+		$('#phi-explanation').removeClass('hidden');

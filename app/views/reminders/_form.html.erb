@@ -1,28 +1,28 @@
-<div id="reminder-form-error" class="hidden alert"></div>
-<div id="reminder-form-notice" class="hidden notice"></div>
+<div id="reminder-form-error" class="hidden alert alert-error"></div>
+<div id="reminder-form-notice" class="hidden alert alert-success"></div>
 <% @reminder.reminder_list_id ||= current_user.default_reminder_list.id %>
 <%= form_for @reminder, :remote => true, :id => @reminder.id do |f| %>
 
-	<%= f.label :mrn %><br/>
-	<%= f.text_field :mrn, :title => "0000000" %><br/>
+	<%= f.label :mrn %>
+	<%= f.text_field :mrn, :placeholder => "0000000" %>
 
-	<%= f.label :Reminder %><br/>
-	<%= f.text_field :reminder, :title => "e.g. Follow up blood Cx" %><br/>
+	<%= f.label :Reminder %>
+	<%= f.text_field :reminder, :placeholder => "e.g. Follow up blood Cx" %>
 
-	<%= f.label :When%><br/>
+	<%= f.label :When%>
 	<% if @reminder.new_record? %>
-		<%= f.text_field :time_value, :style => "width: 50px" %> <%= select(:reminder, :time_units, [['Hours', 1], ['Days', 24], ['Weeks', 168]]) %><br/>
+		<%= f.text_field :time_value, :style => "width: 50px" %> <%= select(:reminder, :time_units, [['Hours', 1], ['Days', 24], ['Weeks', 168]]) %>
 	<% else %>
-		<%= f.datetime_select :remind_time, :ampm => false, :order => [:month, :day, :year], :include_seconds => false %><br/>
+		<%= f.datetime_select :remind_time, :ampm => false, :order => [:month, :day, :year], :include_seconds => false %>
 	<% end %>
 
-	<%= f.label :List %><br/>
-	<%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name, :style => "width: 110px")%><br/>
+	<%= f.label :List %>
+	<%= collection_select(:reminder, :reminder_list_id, ReminderList.all, :id, :name)%><br/>
 
 	<% if @reminder.new_record? %>
-		<%= f.submit "Create Reminder", :class => "button small white" %>
+		<%= f.submit "Create Reminder", :class => "btn" %>
 	<% else %>
-		<%= f.submit "Edit Reminder", :class => "button small white" %>
+		<%= f.submit "Edit Reminder", :class => "btn" %>
 		<%= link_to "cancel", {:controller => "/reminders", :action => "cancel_edit", :id => @reminder.id }, :method => :get, :remote => true %>
 	<% end %>
 	

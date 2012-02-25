@@ -1,5 +1,6 @@
 <% unless @consult.valid? %>
 	$("#consult-form-errors").html("<%= escape_javascript(errors_for(@consult, 'Unable to udpate consult'))%>")
+	$("#consult-form-errors").removeClass("hidden")
 	$("#consult-form-errors").effect("highlight", {}, 3000)
 <% else %>
 	$("#consult-<%= @consult.id %>").html("<%= escape_javascript(render @consult) %>");
