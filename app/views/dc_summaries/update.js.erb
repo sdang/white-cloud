@@ -3,9 +3,9 @@
 <% else %>
 	$('#followContent').html("<%= escape_javascript(render :partial => 'edit_sidebar')%>")
 	<% if @dc_summary.errors.any? %>
-		$('#side-bar-notification').html("<div id='alert'><%= escape_javascript(errors_for(@dc_summary))%></div>");
+		$('#side-bar-notification').html("<div class='alert alert-error'><%= escape_javascript(errors_for(@dc_summary))%></div>");
 	<% else %>
-		$('#side-bar-notification').html("<div id='notice'>Last saved at <%= Time.now.strftime("%l:%M%P") %></div>");
+		$('#side-bar-notification').html("<div class='alert alert-success'>Last saved at <%= Time.now.strftime("%l:%M%P") %></div>");
 	<% end %>
 	$('#side-bar-notification').find("div:first").effect("highlight", {}, 3000)
 <% end %>

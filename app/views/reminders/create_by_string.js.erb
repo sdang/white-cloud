@@ -1,10 +1,12 @@
 <% unless @reminder %>
 	$("#reminder-quick-form-error").html("I'm sorry, I couldn't understand your reminder")
+	$("#reminder-quick-form-error").removeClass("hidden")
 	$("#reminder-quick-form-error").effect("highlight", {}, 3000)
 <% else %>
 	$("#reminder-quick-form-notice").html("Reminder Created")
+	$("#reminder-quick-form-notice").removeClass("hidden")
 	$("#reminder-quick-form-notice").effect("highlight", {}, 3000)
-	$("#reminder-quick-form-error").css("display", "none");
+	$("#reminder-quick-form-error").addClass("hidden")
 	$("#reminder-table").html("<%= escape_javascript(render :partial => '/reminders/table', :object => current_user.reminder_list) %>");
 	$("#reminder-<%= @reminder.id %>").effect("highlight", {}, 3000);
 	$("#quick-form-string")[0].reset();

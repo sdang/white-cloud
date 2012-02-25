@@ -1,31 +1,31 @@
-<div id="contentCard" class="x-large-form">
+<div class="page-header">
 
-<h1>Medications</h1>
-<table id="prescription-link">
-	<tr valign="middle"><td>
-	<%= link_to image_tag("pdficon_large.png", :border => 0), url_for(:action => "prescriptions", :id => @dc_summary.id, :format => "pdf"), :target => "_blank"%></td>
-	<td><%= link_to "Download / Print Prescription", url_for(:action => "prescriptions", :id => @dc_summary.id, :format => "pdf"), :target => "_blank" -%></td>
-</table>
-<br/>
-<table cellpadding="3" class="fullwidth">
-	<tr style="font-weight: bold">
-		<td width="175">Medication</td>
-		<td>Qty</td>
-		<td>Sig</td>
-		<td>Refills</td>
-		<td>Print on Rx?</td>
-	</tr>
+<h3>Medications</h3>
+<%= link_to "Download / Print Prescription", url_for(:action => "prescriptions", :id => @dc_summary.id, :format => "pdf"), :target => "_blank" -%>
+</h3>
+<div class="row">
+	<div class="span6">
+		<table class="table table-striped">
+			<tr>
+				<th>Medication</th>
+				<th>Qty</th>
+				<th>Sig</th>
+				<th>Refills</th>
+				<th>Print on Rx?</th>
+			</tr>
 	
-	<% @dc_summary.prescriptions.each do |rx| %>
-	<tr valign="top">
-		<td><%= rx.drug.decrypt(session[:group_password]) %></td>
-		<td><%= rx.quantity%></td>
-		<td><%= rx.sig.decrypt(session[:group_password]) %></td>
-		<td><%= rx.refills%></td>
-		<td><%= image_tag("checkmark-13.gif") if rx.print?%></td>
-	</tr>
-	<% end %>
-</table>
-<div id="grayText">Medications will be printed on prescription only if you provided a quantity and a sig</div>
+			<% @dc_summary.prescriptions.each do |rx| %>
+			<tr>
+				<td><%= rx.drug.decrypt(session[:group_password]) %></td>
+				<td><%= rx.quantity%></td>
+				<td><%= rx.sig.decrypt(session[:group_password]) %></td>
+				<td><%= rx.refills%></td>
+				<td><%= "<i class='i icon-ok'></i>".html_safe if rx.print?%></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+<p class="help-block">Medications will be printed on prescription only if you provided a quantity and a sig</p>
 
 </div>

@@ -1,10 +1,7 @@
-<div id="contentCard">
-
-<h1>Patient Instructions</h1>
-
-	<div class='x-large-form' style="margin-left: 15px; width: 545px">
-	<h3>Copy and paste version for Clinical Workstation</h3>
-<textarea class="fullwidth" rows="10">
+<div class="page-header">
+	<h3>Patient Instructions</h3>
+	<h5>Copy and paste version for Clinical Workstation</h5>
+<textarea class="span8" rows="10">
 <%= t(:patient_instructions, 
 :name =>  @dc_summary.patient_name(session[:group_password]),
 :mrun => @dc_summary.mrn,
@@ -32,9 +29,15 @@
 
 %>
 </textarea>
-			
-	<h3>Preview <button id="show-hide-patient-instructions" class="button small white">show</button></h3>
-	<div id="patient-instructions-content">
+	<br/><br/>
+	<div class="row">
+		<div class="span4">	
+			<button id="show-hide-patient-instructions" class="btn btn-mini">Show Preview</button>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div id="patient-instructions-content" class="span8">
 	<%= t(:patient_instructions, 
 		:name =>  @dc_summary.patient_name(session[:group_password]),
 		:mrun => @dc_summary.mrn,
@@ -61,6 +64,6 @@
 		).gsub(/\n/, "<br/>").html_safe
 
 	%>
-	</div>
+		</div>
 	</div>
 </div>

@@ -1,22 +1,14 @@
 <% unless session[:group_password] -%>
-<div id="contentCard">
-<h1>Unlock Protected Health Information</h1>
-<%= form_tag :action => "unlock_phi", :controller => "/phi" do %>
-	<table id="unlock-phi-table">
-		<tr>
-			<td width="125"><%= label_tag "Group Password" -%></td>
-			<td><%= password_field_tag "group_password", nil, :size => 30, :title => "*************" %></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td><%= submit_tag "Unlock PHI", :class => "button small white"%>
-			<%= link_to "Why do I have to do this?", "#", :id => "phi-explanation-link" -%></td>
-		</tr>
-	</table>
-		<div id="phi-explanation">
-			<div id="fade" class="button small white">hide</div>
-			<div id="help-content">
-				<h2>Group Passwords Secure Health Information</h2>
+	<div class="page-header">
+	<h3>Unlock Protected Health Information</h3>
+	<%= form_tag url_for(:action => "unlock_phi", :controller => "/phi"), :class => "form-horizontal" do %>
+		<%= password_field_tag "group_password", nil, :class => "span3", :placeholder => "Enter Group Password" %>
+		<%= button_tag "<i class='i icon-lock'></i> Unlock PHI".html_safe, :class => "btn"%> <%= link_to "Why do I have to do this?", "#", :id => "phi-explanation-link" -%>
+	<% end %>
+			
+			<div id="phi-explanation" class="alert alert-info hidden">
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				<h4 class="alert-heading">Group Passwords Secure Health Information</h4>
 				OV Tools contains a significant amount of protected health information (PHI). In order to maximally
 				protect PHI, it is encrypted on multiple levels using the group password as a key. Only users
 				with a login and the group password are able to view PHI.<br/>
@@ -24,8 +16,6 @@
 				In order to obtain the group password, please contact the department of medicine. Without the
 				group password you will be able to create d/c summaries and signouts, however you will not be
 				able to retrieve this information.
-			</div>
-		</div>	
-<% end %>
-</div>
+			</div>	
+	</div>
 <% end %>

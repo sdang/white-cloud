@@ -1,40 +1,16 @@
-<div id="prescription-form-errors" class="alert hidden"></div>
-<div class="small-form">
-<%= form_for @prescription, :remote => true, do |f|%>
+<div id="prescription-form-errors" class="alert alert-error hidden"></div>
+<div class="form-horizontal">
+<%= form_for @prescription, {:remote => true, :class => "form-horizontal"} do |f|%>
 	<%= f.hidden_field :dc_summary_id, :value => dc_summary_id -%>
-	<table>
-		<tr>
-			<td colspan="3">
-				<%= req_field %><%= f.label :drug %><br/>
-				<%= f.text_field :drug, :title => "Lasix 20mg", :size => 25, :value => f.object.drug.decrypt(session[:group_password]) -%>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<%= f.label :sig %></br>
-				<%= f.text_field :sig, :title => "1 tab PO BID", :size => 25, :value => f.object.sig.decrypt(session[:group_password]) %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= f.label :quantity %><br/>
-				<%= f.text_field :quantity, :title => "3 mo", :size => 3%>
-			</td>
-			<td width="5">&nbsp;</td>
-			<td>
-				<%= f.label :refills %><br/>
-				<%= f.text_field :refills, :title => "0", :size => 1%>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-			<% if @prescription.new_record? %>
-				<%= f.submit "+ Add Prescription", :class => "button green medium" %>
-			<% else %>
-				<%= f.submit "Update", :class => "button white small" %>
-			<% end %>
-			</td>
-		</tr>
-	</table>
+	<%= f.text_field :drug, :placeholder => "Lasix 20mg", :class => "span2", :value => f.object.drug.decrypt(session[:group_password]) -%>
+	<%= f.text_field :sig, :placeholder => "1 tab PO BID", :class => "span2", :value => f.object.sig.decrypt(session[:group_password]) %>
+	<%= f.text_field :quantity, :placeholder => "3 mo", :class => "span1" %>
+	<%= f.text_field :refills, :placeholder => "0", :class => "span1" %>		
+
+	<% if @prescription.new_record? %>
+		<%= button_tag raw("<i class='i icon-plus-sign'></i> Add Prescription"), :type => "submit", :class => "btn" %>
+	<% else %>
+		<%= button_tag raw("Update Prescription"), :type => "submit", :class => "btn" %>
+	<% end %>
 <% end %>
 </div>

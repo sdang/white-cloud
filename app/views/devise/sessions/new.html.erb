@@ -1,11 +1,12 @@
 
-
+<br/>
+<div style="text-align: center">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	<%= f.label :email, "Email Address" %><br/>
-	<%= f.email_field :email, :title => "name@domain.com", :autocomplete => "off", :id => "text-field-input" %><br/>
-	<%= f.label :password, "Password" %><br/>
-	<%= f.password_field :password, :title => "**********", :id => "text-field-input" %><br/>
-	<%= f.submit "Login", :class => "button white max_width medium" -%>
+	<%= f.email_field :email, :placeholder => "Email Address", :autocomplete => "off", :id => "text-field-input", :class => "span4" %>
+	
+	<%= f.password_field :password, :placeholder => "Password", :id => "text-field-input", :class => "span4" %><br/>
+	<%= f.submit "Login", :class => "btn btn-large span4" -%>
 <% end %>
 <br/>
 <%= render :partial => "devise/shared/links" %>
+</div>
