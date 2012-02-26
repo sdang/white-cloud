@@ -2,29 +2,31 @@
 <html>
 <head>
   <title>WhiteCloud</title>
-  <%= stylesheet_link_tag    "devise" %>
+  <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background-color: #011f54; background-image: url('/assets/bg.png'); background-repeat: repeat-x">
 
-
-<div id="login-window" class="vcenter">
-	<div id="logo">
-		<%= image_tag "Olive-View-Logo-Login.gif" %>
-	</div>
-	<% if flash[:notice]%>
-		<div id="notice"><%= flash[:notice] %></div>
-	<% end %>
-	<% if flash[:alert] %>
-		<div id="alert"><%= flash[:alert] %></div>
-	<% end %>
-	<%= yield %>
-	<div id="footer">
-		WhiteCloudApp : build <%= ENV["APP_VERSION"] -%>
-	</div>
+<div class="container">
+<div class="row">
+	<div id="login-window" class="span4 offset4">
+		<div id="logo">
+			<%= image_tag "Olive-View-Logo-Login.gif" %>
+		</div>
+		<br/>
+		<% if flash[:notice]%>
+			<br/><div class="alert alert-info"><%= flash[:notice] %></div>
+		<% end %>
+		<% if flash[:alert] %>
+			<br/><div class="alert alert-error"><%= flash[:alert] %></div>
+		<% end %>
+		<%= yield %>
+		<div id="footer">
+			WhiteCloud : build <%= ENV["APP_VERSION"] -%>
+		</div>
 </div>
-
+</div>
 
 </body>
 </html>

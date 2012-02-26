@@ -6,10 +6,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.hint.js
 //= require jquery-ui.min.js
-//= require jquery.idTabs.min.js
+//= require jquery.placeholder.min.js
 //= require common.js
+//= require bootstrap.min.js
 
 if($.browser.msie && $.browser.version=="6.0") {
 	window.location = "/unsupported_browser.html"
@@ -31,8 +31,11 @@ $(document).on('click', '#fade', function() {
 	$(this).parent().slideToggle("fast");
 });
 
-$(document).ready(function () {  
+
+$(document).ready(function () {
   var top = $('#followContent').offset().top - parseFloat($('#followContent').css('marginTop').replace(/auto/, 0));
+	$(".alert").alert();
+
   $(window).scroll(function (event) {
     // what the y position of the scroll is
     var y = $(this).scrollTop();

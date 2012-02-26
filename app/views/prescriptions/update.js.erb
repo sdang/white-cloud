@@ -1,5 +1,6 @@
 <% unless @prescription.valid? %>
 	$("#prescription-form-errors").html("<%= escape_javascript(errors_for(@prescription, 'Unable to udpate prescription'))%>")
+	$("#prescription-form-errors").removeClass("hidden")
 	$("#prescription-form-errors").effect("highlight", {}, 3000)
 <% else %>
 	$("#prescription-<%= @prescription.id %>").html("<%= escape_javascript(render @prescription) %>");

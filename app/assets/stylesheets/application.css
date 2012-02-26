@@ -3,9 +3,60 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require common
+ *= require bootstrap.min
 */
 
 
+body {
+  	padding-top: 50px;
+}
 
+#sidebar {
+	padding-top: 30px;
+}
 
+input, textarea { color: #000; }
+.placeholder { color: #aaa; }
+
+#followContent {
+  position: absolute;
+  top: 0;
+  /* just used to show how to include the margin in the effect */
+  padding-top: 60px;
+  width: 300px;
+}
+
+#followContent.fixed {
+  position: fixed;
+  top: 0;
+}
+
+#links {display: inline; text-align: right}
+#content {display: inline}
+#overdue {font-size: 10px; color: red}
+#due, #timestamp {font-size: 10px; color: green}
+.gray-text { color: gray; display: block; margin-bottom: 6px; }
+.reminder { margin-top: 5px;}
+.strikethru {text-decoration: line-through; color: #ddd}
+
+#dc-summary-content, #patient-instructions-content {
+	margin-top: 15px;
+	display: none;
+	font-size: 12px;
+	line-height: 14px;
+	font-family: monospace;
+}
+
+#login-window {
+	background-color: #ffffff; 
+	padding: 20px;
+}
+
+#logo, #footer {
+	text-align: center;
+	color: #bbbbbb;
+}
+
+.hidden {
+	display: none;
+}

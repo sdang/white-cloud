@@ -1,10 +1,12 @@
 <% unless @update_result %>
 	$('#<%= @prefix -%>-import-error').html("Could not find data to import")
+	$('#<%= @prefix -%>-import-error').removeClass('hidden')
 	$('#<%= @prefix -%>-import-error').effect("highlight", {}, 3000)
 <% else %>
 
 	<% if @prefix == "rx" %>
 		$('#<%= @prefix -%>-import-notice').html("<%= escape_javascript(@update_result)%>")
+		$('#<%= @prefix -%>-import-notice').removeClass('hidden')
 		$('#<%= @prefix -%>-import-notice').effect("highlight", {}, 3000)
 		$("#prescription-table").html("<%= escape_javascript(render :partial => '/prescriptions/table', :object => @dc_summary.prescriptions) %>");
 		$(".reminder").find('div:first').fadeTo(0,0.5);
@@ -12,6 +14,7 @@
 	
 	<% if @prefix == "one_liner" %>
 		$('#<%= @prefix -%>-import-notice').html("Added the following text: <%= escape_javascript(@update_result)%>");
+		$('#<%= @prefix -%>-import-notice').removeClass("hidden")
 		$('#<%= @prefix -%>-import-notice').effect("highlight", {}, 3000);
 
 		if ($('#dc_summary_one_liner').val() == $('#dc_summary_one_liner').attr('title')) {
@@ -24,6 +27,7 @@
 
 	<% if @prefix == "diagnoses" %>
 		$('#<%= @prefix -%>-import-notice').html("Added the following text: <%= escape_javascript(@update_result)%>")
+		$('#<%= @prefix -%>-import-notice').removeClass("hidden")
 		$('#<%= @prefix -%>-import-notice').effect("highlight", {}, 3000)
 		if ($('#dc_summary_diagnoses').val() == $('#dc_summary_diagnoses').attr('title')) {
 			$('#dc_summary_diagnoses').removeClass('blur');

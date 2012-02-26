@@ -1,6 +1,6 @@
-<div id="contentCard">
-<h1>Start a D/C Summary</h1>
-	<div class='x-large-form' style="margin-left: 25px; width: 530px">
+<div class="page-header">
+<h3>Start a D/C Summary</h3>
+	<div>
 	<% @dc_summary ||= DcSummary.new -%>
 	<%= render :partial => "form" %>
 	</div>

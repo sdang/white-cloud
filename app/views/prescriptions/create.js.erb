@@ -1,5 +1,6 @@
 <% if @prescription.new_record? %>
 	$('#prescription-form-errors').html("<%= escape_javascript(errors_for(@prescription, 'Cannot add prescription'))%>")
+	$('#prescription-form-errors').removeClass("hidden")
 	$('#prescription-form-errors').effect("highlight", {}, 3000)
 <% else %>
 	$("#prescription-form-errors").css("display", "none");

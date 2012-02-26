@@ -1,64 +1,71 @@
-<div id="contentCard">
-	<h1>My Profile</h1>
-
-	<div class="large-form">
+<div class="page-header">
+	<h3>My Profile</h3>
+	<br/>
 	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 	<% if devise_error_messages!.size > 0 %>
-		<div class="alert"><%= errors_for(resource, "Could not save user:") %></div>
+		<div class="row"><div class="span6">
+		<div class="alert alert-error"><%= errors_for(resource, "Could not save user:") %></div>
+		</div></div>
 	<% end %>
 
-	<%= req_field -%><%= f.label :email, "Email Address" %><br />
-	<%= f.email_field :email, :title => "name@domain.com" %>
+	<%= req_field -%><%= f.label :email, "Email Address" %>
+	<%= f.email_field :email, :placeholder => "name@domain.com", :class => "span6" %>
 	
-	<table>
-		<tr>
-			<td>
-				<%= req_field -%><%= f.label :first_name %><br/>
-				<%= f.text_field :first_name, :title => "John", :size => 15 %>
-			</td>
-			<td width="5">&nbsp;</td>
-			<td>
-				<%= req_field -%><%= f.label :last_name %><br/>
-				<%= f.text_field :last_name, :title => "Doe", :size => 15 %>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<%= req_field -%><%= f.label :pager_number %><br/>
-				<%= f.text_field :pager_number, :value =>  number_to_phone(f.object.pager_number, :area_code => true), :title => "(818) 313-1212", :size => 15 %>
-			</td>
-			<td width="5">&nbsp;</td>
-			<td>
-				<%= f.label :sms_number, "Cell Phone" %><br/>
-				<%= f.text_field :sms_number, :value =>  number_to_phone(f.object.sms_number, :area_code => true), :title => "(818) 313-1212", :size => 15 %>
-			</td>
-		</tr>
-	</table>
-	
-	<div id="grayText">Cell phone number is required if you would like to create and/or receive reminders via text messages</div>
-	
-	<div id="reminder-preferences">
-		<h3>Receive Reminders Via</h3>
-		<%= check_box_tag(:remind_by_page, 1, true, :disabled => true) %> <%= label_tag :pager %><br/>
-		<%= f.check_box(:remind_by_email, {}, "1", nil) %> <%= label_tag :email %><br/>
-		<%= f.check_box(:remind_by_sms, {}, "1", nil) %> <%= label_tag :text_message %><br/>
+	<div class="row">
+		<div class="span3">
+			<%= req_field -%><%= f.label :first_name %>
+			<%= f.text_field :first_name, :placeholder => "John", :class => "span3" %>
+			
+			<%= req_field -%><%= f.label :pager_number %>
+			<%= f.text_field :pager_number, :value =>  number_to_phone(f.object.pager_number, :area_code => true), :placeholder => "(818) 313-1212", :class => "span3" %>
+		</div>
+		<div class="span3">
+			<%= req_field -%><%= f.label :last_name %>
+			<%= f.text_field :last_name, :placeholder => "Doe", :class => "span3" %>
+			
+			<%= f.label :sms_number, "Cell Phone" %>
+			<%= f.text_field :sms_number, :value =>  number_to_phone(f.object.sms_number, :area_code => true), :placeholder => "(818) 313-1212", :class => "span3" %>
+			<p class="help-block">Required for creating and receiving reminders 
+				via text messaging</p>
+			
+		</div>
+		
+	</div>
+	<br/>
+	<div class="row">
+		<div class="span3">
+			<%= f.label "Default Reminder List" %>
+			<%= collection_select(:user, :default_reminder_list_id, ReminderList.all(:order => "Name ASC"), :id, :name ) %>
+
+			<%= f.label :current_password %> 
+			<%= f.password_field :current_password, :placeholder => "Required to update your profile" %>
+		</div>
+		
+		<div class="span5">
+			<%= f.label "Receive Reminders Via: "%>
+			<label class="checkbox">
+				<%= check_box_tag(:remind_by_page, 1, true, :disabled => true) %> Pager
+			</label>
+			<label class="checkbox">
+				<%= f.check_box(:remind_by_email, {}, "1", nil) %> Email
+			</label>
+			<label class="checkbox">
+				<%= f.check_box(:remind_by_sms, {}, "1", nil) %> Text Message
+			</label>
+		</div>
+	</div>
+
+	<%= link_to "Change Password", "#", :id => "hide-show-change-password" %>
+	<div id="change-password" style="display: none">
+		<br/>
+		<%= f.label :new_password %>
+		<%= f.password_field :password %>
+
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
 	</div>
 	
-	<%= f.label "Default Reminder List" %><br/>
-	<%= collection_select(:user, :default_reminder_list_id, ReminderList.all(:order => "Name ASC"), :id, :name ) %>
-
-	<div class="field"><%= f.label :current_password %> <%= link_to "Change Password", "#", :id => "hide-show-change-password" %> <br/><span id="grayText">(required to update your profile)</span><br />
-	<%= f.password_field :current_password, :title => "*************" %></div>
-	
-	<div id="change-password">
-		<div class="field"><%= f.label :password %><br/><span id="grayText">(leave blank if you don't want to change it)</span><br />
-		<%= f.password_field :password %></div>
-
-		<div class="field"><%= f.label :password_confirmation %><br />
-		<%= f.password_field :password_confirmation %></div>
-	</div>
-	
-	<div><%= f.submit "Update Profile", :class => "button white large" %></div>
+	<br/><br/>
+	<%= f.submit "Save Profile", :class => "btn btn-large" %>
 	<% end %>
-	</div>
 </div>

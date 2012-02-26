@@ -32,6 +32,8 @@ gem "newrelic_rpm"
 
 gem "ruby-prof"
 
+gem "haml"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

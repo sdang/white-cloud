@@ -1,29 +1,29 @@
-<div id="consult-form-errors" class="alert hidden"></div>
-<div class="small-form">
+<div id="consult-form-errors" class="alert alert-error hidden"></div>
 <%= form_for @consult, :remote => true, do |f|%>
-
 	<%= f.hidden_field :dc_summary_id, :value => dc_summary_id -%>
+	
+	<div class="row">
+		<div class="span3">
+			<%= req_field %><%= f.label :service %>
+			<%= f.text_field :service, :placeholder => "Cardiology", :size => 25, :value => f.object.service.decrypt(session[:group_password]) -%>
 
-	<%= req_field %><%= f.label :service %><br/>
-	<%= f.text_field :service, :title => "Cardiology", :size => 25, :value => f.object.service.decrypt(session[:group_password]) -%><br/>
-	
-	<%= req_field %><%= f.label :reason %></br>
-<% value = f.object.reason.decrypt(session[:group_password]) || f.object.dc_summary.one_liner.decrypt(session[:group_password]) %>
+			<%= f.label :priority %>
+			<%= f.text_field :priority, :title => "Routine" %>
 
-	<%= f.text_area :reason, :title => "Please add a one liner below and your consults will be pre-filled for you.", :rows => 5, :cols => 50, :value => value %><br/>
+			<% if @consult.new_record? %>
+				<%= button_tag "<i class='i icon-plus-sign'></i> Add consult".html_safe, :type => "submit", :class => "btn" %>
+			<% else %>
+			<%= button_tag "Update consult".html_safe, :type => "submit", :class => "btn" %>
+			<% end %>
+		
+		</div>
+		<div class="span5">
+			<%= req_field %><%= f.label :reason %>
+			<% value = f.object.reason.decrypt(session[:group_password]) || f.object.dc_summary.one_liner.decrypt(session[:group_password]) %>
+			<%= f.text_area :reason, :placeholder => "Please add a one liner below and your consults will be pre-filled for you.", :rows => 5, :class => "span5", :value => value %>
 	
-	<%= f.label :priority %><br/>
-	<%= f.text_field :priority, :title => "Routine" %><br/>
-	
-	<%= f.label :appointment_time %><br/>
-	<%= f.datetime_select :appointment_time, :order => [:month, :day, :year, :hour, :minute], :include_blank => true, :start_year => Time.now.year %><br/>
-
-	<% if @consult.new_record? %>
-		<%= f.submit "+ Add consult", :class => "button green medium" %>
-	<% else %>
-		<%= f.submit "Update", :class => "button white small" %>
-	<% end %>
-	
+			<%= f.label :appointment_time %>
+			<%= f.datetime_select :appointment_time, {:order => [:month, :day, :year, :hour, :minute], :include_blank => true, :start_year => Time.now.year}, {:class => "span1"} %>
+		</div>
+	</div>
 <% end %>
-<br/><br/>
-</div>
