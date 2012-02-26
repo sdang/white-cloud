@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.min.js
+//= require jquery.placeholder.min.js
 //= require common.js
 //= require bootstrap.min.js
 
@@ -31,7 +32,7 @@ $(document).on('click', '#fade', function() {
 });
 
 
-$(document).ready(function () {  
+$(document).ready(function () {
   var top = $('#followContent').offset().top - parseFloat($('#followContent').css('marginTop').replace(/auto/, 0));
 	$(".alert").alert();
 
