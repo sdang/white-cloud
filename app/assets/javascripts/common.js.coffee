@@ -1,12 +1,16 @@
 
 $ ->
+	# activate all place holders for legacy browsers
+	$('input, textarea').placeholder();
+	
+	# fade edit / delete icons on all lists
 	$(".reminder").find('div:first').fadeTo(0,0.5);
-	$("#dashboard").click =>
-		window.location = "/"
-	$(".navigation-tab").click -> 
-		window.location = $(this).find("a:first")[0].href
+	
+	# toggle visibility of change password fields
 	$('#hide-show-change-password').click =>
 		$('#change-password').slideToggle('fast')
+	
+	# toggle visibility of dc summary preview
 	$('#show-hide-dc-summary').click ->
 		$('#dc-summary-content').slideToggle('fast')
 		if $('#show-hide-dc-summary').html() == "Show Preview"
@@ -14,6 +18,8 @@ $ ->
 		else
 			$('#show-hide-dc-summary').html("Show Preview")
 		end
+		
+	# toggle visibility of patient instructions preview
 	$('#show-hide-patient-instructions').click ->
 		$('#patient-instructions-content').slideToggle('fast')
 		if $('#show-hide-patient-instructions').html() == "Show Preview"
@@ -21,8 +27,12 @@ $ ->
 		else
 			$('#show-hide-patient-instructions').html("Show Preview")
 		end
+		
+	# side bar save dc summary button
 	$(document).on('click','#save-discharge-summary', ->
 		$('.edit_dc_summary').submit())
+		
+	# side bar finalize dc summary button
 	$('#finalize-discharge-summary').click ->
 		ans = confirm("Finalize this discharge? This will prevent any further editing!")
 		if ans
@@ -31,7 +41,7 @@ $ ->
 			$('.edit_dc_summary').attr("data-remote", "false")
 			$('.edit_dc_summary').submit()
 		end
-	$('#add-button-consults').click ->
-		$('#add-form-consults').slideToggle('fast')
+		
+	# toggle visibility of phi explanation
 	$('#phi-explanation-link').click ->
-		$('#phi-explanation').removeClass('hidden');
+		$('#phi-explanation').toggle('fast');

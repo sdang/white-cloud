@@ -15,6 +15,9 @@ body {
 	padding-top: 30px;
 }
 
+input, textarea { color: #000; }
+.placeholder { color: #aaa; }
+
 #followContent {
   position: absolute;
   top: 0;
