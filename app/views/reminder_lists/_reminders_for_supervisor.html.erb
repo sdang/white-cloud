@@ -8,7 +8,8 @@
 <% current_user.reminder_lists.each do |rl| %>
 
 		<h4><%= rl.name %></h4>
-		<%= render :partial => '/reminders/table', :object => rl.reminders unless rl.reminders.empty? %>
+		<%= render :partial => '/reminders/table', :object => rl.open_reminders unless rl.open_reminders.empty? %>
+		<%= "<p class='help-block'>No pending reminders</p>".html_safe if rl.open_reminders.empty? %>
 		<br/>
 
 <% end%>
