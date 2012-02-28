@@ -1,7 +1,7 @@
 class DcSummariesController < ApplicationController
   before_filter :authenticate_user!, :authorized_user!
   before_filter :authenticate_admin!, :only => ["unfinalize"]
-  before_filter :set_last_uri, :only => ["index", "edit"]
+  before_filter :set_last_uri, :only => ["index", "edit", "show"]
   
   def index
   end
@@ -89,6 +89,10 @@ class DcSummariesController < ApplicationController
   
   def show
     @dc_summary = DcSummary.find_by_id(params[:id])
+    unless @dc_summary.finalized
+      flash[:notice] = "D/C summaries cannot be viewed until they are finalized"
+      redirect_to :action => "index"
+    end
   end
   
   def prescriptions

@@ -13,7 +13,7 @@
 	<% if @reminder.new_record? %>
 		<%= f.text_field :time_value, :style => "width: 50px" %> <%= select(:reminder, :time_units, [['Hours', 1], ['Days', 24], ['Weeks', 168]]) %>
 	<% else %>
-		<%= f.datetime_select :remind_time, :ampm => false, :order => [:month, :day, :year], :include_seconds => false %>
+		<%= f.datetime_select :remind_time, {:ampm => false, :order => [:month, :day, :year], :include_seconds => false}, {:class => "span1"} %>
 	<% end %>
 
 	<%= f.label :List %>
