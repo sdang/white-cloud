@@ -182,7 +182,7 @@
 		<div class="span8">
 			<%= f.hidden_field :finalized %>
 			<%= button_tag "Save Discharge Summary", :type => "submit", :class => "btn btn-info btn-large" %> 
-			<%= link_to "Cancel", url_for(:action => "show", :id => @dc_summary.id), :confirm => "Are you sure? You will lose any changes you've made" %>
+			<%= link_to "Cancel", url_for(:action => "index"), :confirm => "Are you sure? You will lose any changes you've made" %>
 		</div>
 	</div>
 </div>
