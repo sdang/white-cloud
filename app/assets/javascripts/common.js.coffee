@@ -33,15 +33,15 @@ $ ->
 		$('.edit_dc_summary').submit())
 		
 	# side bar finalize dc summary button
-	$('#finalize-discharge-summary').click ->
+	$(document).on('click', '#finalize-discharge-summary', ->
 		ans = confirm("Finalize this discharge? This will prevent any further editing!")
 		if ans
 			$('#finalize-discharge-summary').html("Please Wait ...")
 			$('#dc_summary_finalized').val("t")
 			$('.edit_dc_summary').attr("data-remote", "false")
 			$('.edit_dc_summary').submit()
-		end
-		
+		end)
+			
 	# toggle visibility of phi explanation
 	$('#phi-explanation-link').click ->
 		$('#phi-explanation').toggle('fast');

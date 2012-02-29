@@ -5,11 +5,11 @@ class ReminderList < ActiveRecord::Base
   validates_uniqueness_of :name
   
   def overdue_reminders
-    self.reminders.where(["remind_time < ? and completed = ?", Time.now, false], :order => "remind_time DESC")
+    self.reminders.find(:all, :conditions => ["remind_time < ? and completed = ?", Time.now, false], :order => "remind_time DESC")
   end
   
   def open_reminders
-    self.reminders.where(["completed = ?", false], :order => "remind_time DESC")
+    self.reminders.find(:all, :conditions => ["completed = ?", false], :order => "remind_time DESC")
   end
   
   def critical_overdue_reminders

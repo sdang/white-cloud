@@ -2,10 +2,10 @@
 <div class="form-horizontal">
 <%= form_for @prescription, {:remote => true, :class => "form-horizontal"} do |f|%>
 	<%= f.hidden_field :dc_summary_id, :value => dc_summary_id -%>
-	<%= f.text_field :drug, :placeholder => "Lasix 20mg", :class => "span2", :value => f.object.drug.decrypt(session[:group_password]) -%>
-	<%= f.text_field :sig, :placeholder => "1 tab PO BID", :class => "span2", :value => f.object.sig.decrypt(session[:group_password]) %>
-	<%= f.text_field :quantity, :placeholder => "3 mo", :class => "span1" %>
-	<%= f.text_field :refills, :placeholder => "0", :class => "span1" %>		
+	<%= f.text_field :drug, :placeholder => "Drug", :class => "span2", :value => f.object.drug.decrypt(session[:group_password]) -%>
+	<%= f.text_field :sig, :placeholder => "Sig", :class => "span2", :value => f.object.sig.decrypt(session[:group_password]) %>
+	<%= f.text_field :quantity, :placeholder => "Qty", :class => "span1" %>
+	<%= f.text_field :refills, :placeholder => "Refills", :class => "span1" %>		
 
 	<% if @prescription.new_record? %>
 		<%= button_tag raw("<i class='i icon-plus-sign'></i> Add Prescription"), :type => "submit", :class => "btn" %>
