@@ -34,6 +34,7 @@ OliveViewTools::Application.routes.draw do
   match 'sms' => 'sms#index'
 
   match 'search(/:mrn)' => 'dashboard#search'
-  
+  match 'user_logged_in' => 'dashboard#user_logged_in'
+    
   root :to => 'dashboard#index'
 end

@@ -1,0 +1,12 @@
+<% if user_signed_in? %>
+	// hide the existing message if visible
+	$('#auto-logout').css("display", "none");
+	
+	// reset the timeout message
+	setTimeout(displayTimeoutMsg, 3000);
+	clearTimeout(doTimeout);
+<% else %>
+	// user isn't logged in anymore, reload the browser
+	window.location.reload();
+<% end %>
+	
