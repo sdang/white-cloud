@@ -1,6 +1,6 @@
 MRN: <%= @reminder.mrn %>
 Reminder: <%= @reminder.reminder %>
-Due: <%= @reminder.remind_time.strftime('%m-%d-%Y @ %I:%M%P') %>
+Due: <%= @reminder.remind_time_as_string %>
 List: <%= @reminder.reminder_list.name rescue "Not on a list" %>
 See all your reminders here: <%= url_for(:controller => "reminders", :action => "index", :only_path => false) %>
 

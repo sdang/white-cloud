@@ -9,14 +9,16 @@
 	<span><%= @reminder.reminder %></span>
 	<% if @reminder.remind_time < Time.now %>
 		<span id="overdue">
-			due <%= time_ago_in_words(@reminder.remind_time) if @reminder.remind_time%> ago
+			due <%= @reminder.remind_time_as_string if @reminder.remind_time%>
 		</span>
 	<% else %>
-		<span id="due">in <%= time_ago_in_words(@reminder.remind_time) if @reminder.remind_time %></span>
+		<span id="due">
+			due <%= @reminder.remind_time_as_string if @reminder.remind_time %>
+		</span>
 	<% end %>
 </div>
 <br/><br/>
 <div id="gray" style="margin-bottom: 30px">
-	You are receiving this email because you selected to have reminder notices sent to your email address. If you want to change this selection please <%= link_to('edit your profile', edit_user_registration_path, :only_path => false)%>. Or view <%= link_to "all your reminders", url_for(:controller => "reminders", :action => "index", :only_path => false) %>.
+	You are receiving this email because you selected to have reminder notices sent to your email address. If you want to change this selection please <%= link_to 'edit your profile', url_for(:action=>"edit", :controller=>"devise/registrations", :only_path => false)%>. Or view <%= link_to "all your reminders", url_for(:controller => "reminders", :action => "index", :only_path => false) %>.
 </div>
 
