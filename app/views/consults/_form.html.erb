@@ -23,7 +23,7 @@
 			<%= f.text_area :reason, :placeholder => "Please add a one liner below and your consults will be pre-filled for you.", :rows => 5, :class => "span5", :value => value %>
 	
 			<%= f.label :appointment_time %>
-			<%= f.datetime_select :appointment_time, {:order => [:month, :day, :year, :hour, :minute], :include_blank => true, :start_year => Time.now.year}, {:class => "span1"} %>
+			<%= f.datetime_select :appointment_time, {:order => [:month, :day, :year, :hour, :minute], :include_blank => true, :start_year => Time.now.year, :use_short_month => true}, {:class => "span1"} %>
 		</div>
 	</div>
 <% end %>
