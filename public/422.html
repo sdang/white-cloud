@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+  <title>olive-view-tools</title>
+  <link href="/assets/devise.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+<style type="text/css">
+body {
+  background-image: url("/assets/bg.gif");
+  background-color: #011f54;
+  background-repeat: repeat-x;
+  font-family: arial;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+}
 
+#login-window {
+  -moz-box-shadow: 0 0 30px 5px #222;
+  -webkit-box-shadow: 0 0 30px 5px #222;
+  background-color: white;
+  border: 1px solid #777777;
+  width: 300px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+#logo {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+#links {
+  padding-top: 10px;
+  color: gray;
+  font-size: 14px;
+  text-align: center;
+}
+
+#links a, #links a:visited, #links a:hover {
+  color: navy;
+}
+
+#footer {
+  width: 300px;
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #222;
+  text-align: center;
+}
+
+#gray {
+  color: gray;
+  font-size: 13px;
+}
+
+</style>
+</head>
 <body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <h1>The change you wanted was rejected.</h1>
-    <p>Maybe you tried to change something you didn't have access to.</p>
-  </div>
+
+
+<div id="login-window" class="vcenter" style="width: 650px">
+	<div id="logo">
+		<img alt="Olive-view-logo-login" src="/assets/Olive-View-Logo-Login.gif" />
+	</div>
+	
+	<div style="font-size: 20px; text-align: center">An Unexpected Error Occurred</div>
+	<br/>
+	<div id="gray" style="margin-bottom: 30px">
+		WhiteCloud could not perform your requested action. Either an error occured, or WhiteCloud is currently
+		undergoing emergency maintenence. Please contact <a href="mailto:feedback@whitecloudapp.com">feedback@whitecloudapp.com</a> if you continue to receive this message.
+	</div>			
+
+</div>
+
+
 </body>
 </html>
