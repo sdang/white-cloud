@@ -1,34 +1,9 @@
 <div class="page-header">
 	<h3>Patient Instructions</h3>
 	<h5>Copy and paste version for Clinical Workstation</h5>
-	<% pt_instructions = t(:patient_instructions, 
-	:name =>  @dc_summary.patient_name(session[:group_password]),
-	:mrun => @dc_summary.mrn,
-	:service => @dc_summary.service,
-	:attending => @dc_summary.attending,
-	:resident => @dc_summary.resident,
-	:intern => @dc_summary.intern,
-	:medical_student => @dc_summary.medical_student,
-	:date_of_admission => @dc_summary.admit_date.strftime("%m-%d-%Y"),
-	:date_of_discharge => @dc_summary.discharge_date.strftime("%m-%d-%Y"),
-	:procedures => @dc_summary.procedures.decrypt(session[:group_password]),
-	:discharge_diagnoses => @dc_summary.diagnoses.decrypt(session[:group_password]),
-	:chief_complaint => @dc_summary.chief_complaint.decrypt(session[:group_password]),
-	:hpi => @dc_summary.hpi.decrypt(session[:group_password]),
-	:hospital_course => @dc_summary.hospital_course.decrypt(session[:group_password]),
-	:condition => @dc_summary.condition.decrypt(session[:group_password]),
-	:disposition => @dc_summary.disposition.decrypt(session[:group_password]),
-	:diet => @dc_summary.diet.decrypt(session[:group_password]),
-	:activity_level => @dc_summary.activity.decrypt(session[:group_password]),
-	:medications => @dc_summary.prescriptions_in_english(session[:group_password]),
-	:discharge_instructions => @dc_summary.dc_instructions.decrypt(session[:group_password]),
-	:follow_up => @dc_summary.follow_up.decrypt(session[:group_password]),
-	:discharge_orders => @dc_summary.discharge_orders.decrypt(session[:group_password])
-	)
-
-	%>
+	
 <textarea class="span8" rows="10">
-<%= pt_instructions %>
+<%= @dc_summary.instructions(session[:group_password]) %>
 </textarea>
 	<br/><br/>
 	<div class="row">
@@ -39,7 +14,7 @@
 	
 	<div class="row">
 		<div id="patient-instructions-content" class="span8">
-	<%= pt_instructions.gsub(/\n/, "<br/>").html_safe
+	<%= @dc_summary.instructions(session[:group_password]).gsub(/\n/, "<br/>").html_safe
 
 	%>
 		</div>
