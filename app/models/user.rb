@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   serialize :preferences  
   
   def name
-    return self.first_name + " " + self.last_name
+    return self.first_name.capitalize + " " + self.last_name.capitalize
   end
   
   def reminder_list

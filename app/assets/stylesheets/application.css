@@ -37,7 +37,7 @@ input, textarea { color: #000; }
 #due, #timestamp {font-size: 10px; color: green}
 .gray-text { color: gray; display: block; margin-bottom: 6px; }
 .reminder { margin-top: 5px;}
-.strikethru {text-decoration: line-through; color: #ddd}
+.strikethru {text-decoration: line-through; color: #999}
 
 #dc-summary-content, #patient-instructions-content {
 	margin-top: 15px;

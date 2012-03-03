@@ -58,5 +58,6 @@ OliveViewTools::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  
+  # Set Timezone
+  config.time_zone = "Pacific Time (US & Canada)"
 end

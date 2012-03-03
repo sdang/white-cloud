@@ -1,6 +1,8 @@
 <div id="prescription-table">
 	<% table.each do |prescription| %>
-		<%= render prescription %>
+			<div id="prescription-<%= prescription.id -%>" class="row reminder">
+			<%= render prescription %>
+			</div>
 	<% end %>
 	
 	<% if table.size == 0 %>

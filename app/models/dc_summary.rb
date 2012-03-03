@@ -1,7 +1,8 @@
 class DcSummary < ActiveRecord::Base
   encrypt_with_public_key :first_name, :last_name, :diagnoses, :condition, 
         :diet, :activity, :discharge_orders, :hospital_course, :hpi, :follow_up, :dc_instructions,
-        :chief_complaint, :one_liner, :procedures, :disposition,
+        :chief_complaint, :one_liner, :procedures, :disposition, 
+        :cached_summary, :cached_instructions,
         :key_pair => File.join(Rails.root, 'config', 'keypair.pem')
         
   validates_presence_of :first_name, :last_name, :dob
@@ -69,13 +70,79 @@ class DcSummary < ActiveRecord::Base
     end
   end
   
- def readonly?
+  def summary(password)
+    if self.cached_summary.decrypt(password).blank?
+      # create the cache
+      self.admin_override = true
+      self.cached_summary = I18n.translate(:dc_summary, 
+          :name =>  self.patient_name(password),
+          :mrun => self.mrn,
+          :service => self.service,
+          :attending => self.attending,
+          :resident => self.resident,
+          :intern => self.intern,
+          :medical_student => self.medical_student,
+          :date_of_admission => self.admit_date.strftime("%m-%d-%Y"),
+          :date_of_discharge => self.discharge_date.strftime("%m-%d-%Y"),
+          :procedures => self.procedures.decrypt(password),
+          :discharge_diagnoses => self.diagnoses.decrypt(password),
+          :chief_complaint => self.chief_complaint.decrypt(password),
+          :hpi => self.hpi.decrypt(password),
+          :hospital_course => self.hospital_course.decrypt(password),
+          :condition => self.condition.decrypt(password),
+          :disposition => self.disposition.decrypt(password),
+          :diet => self.diet.decrypt(password),
+          :activity_level => self.activity.decrypt(password),
+          :medications => self.prescriptions_in_medlish(password),
+          :discharge_instructions => self.dc_instructions.decrypt(password),
+          :follow_up => self.follow_up.decrypt(password))
+      self.save
+      self.admin_override = false
+    end
+    
+    return self.cached_summary.decrypt(password)
+  end
+  
+  def instructions(password)
+    if self.cached_instructions.decrypt(password).blank?
+      self.admin_override = true
+      self.cached_instructions = I18n.translate(:patient_instructions, 
+      	:name =>  self.patient_name(password),
+      	:mrun => self.mrn,
+      	:service => self.service,
+      	:attending => self.attending,
+      	:resident => self.resident,
+      	:intern => self.intern,
+      	:medical_student => self.medical_student,
+      	:date_of_admission => self.admit_date.strftime("%m-%d-%Y"),
+      	:date_of_discharge => self.discharge_date.strftime("%m-%d-%Y"),
+      	:procedures => self.procedures.decrypt(password),
+      	:discharge_diagnoses => self.diagnoses.decrypt(password),
+      	:chief_complaint => self.chief_complaint.decrypt(password),
+      	:hpi => self.hpi.decrypt(password),
+      	:hospital_course => self.hospital_course.decrypt(password),
+      	:condition => self.condition.decrypt(password),
+      	:disposition => self.disposition.decrypt(password),
+      	:diet => self.diet.decrypt(password),
+      	:activity_level => self.activity.decrypt(password),
+      	:medications => self.prescriptions_in_english(password),
+      	:discharge_instructions => self.dc_instructions.decrypt(password),
+      	:follow_up => self.follow_up.decrypt(password),
+      	:discharge_orders => self.discharge_orders.decrypt(password))
+      self.save
+      self.admin_override = false
+    end
+    
+    return self.cached_instructions.decrypt(password)
+  end
+  
+  def readonly?
    # we have to actually read from the db to see if this is finalized
    # and not just a newly finalized record we're trying to save
    return false if self.new_record? and self.finalized == false
    return false if self.admin_override
    return true if DcSummary.find(self.id).read_attribute(:finalized)
- end
+  end
   
   def import_rx(pw)
     summary_to_import = self.find_summary_for_import

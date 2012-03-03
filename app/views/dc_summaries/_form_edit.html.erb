@@ -116,10 +116,10 @@
 	<div class="row">
 		<div class="span4">			
 			<%= req_field %><%= f.label "Admission Date" %>
-			<%= f.date_select :admit_date, {:order => [:month, :day, :year], :include_blank => true}, {:class => "span1"} %>
+			<%= f.date_select :admit_date, {:order => [:month, :day, :year], :include_blank => true, :start_year => Time.now.year-1, :end_year => Time.now.year+3, :use_short_month => true}, {:class => "span1"} %>
 
 			<%= req_field %><%= f.label "Discharge Date" %>
-			<%= f.date_select :discharge_date, {:order => [:month, :day, :year], :include_blank => true}, {:class => "span1" } %>
+			<%= f.date_select :discharge_date, {:order => [:month, :day, :year], :include_blank => true, :start_year => Time.now.year-1, :end_year => Time.now.year+3, :use_short_month => true}, {:class => "span1" } %>
 						
 			<%= req_field %><%= f.label "Service"%>
 			<%= f.text_field :service, :size => 18 %>

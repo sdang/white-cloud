@@ -92,7 +92,7 @@ class DcSummariesController < ApplicationController
     unless @dc_summary.finalized
       flash[:notice] = "D/C summaries cannot be viewed until they are finalized"
       redirect_to :action => "index"
-    end
+    end    	
   end
   
   def prescriptions

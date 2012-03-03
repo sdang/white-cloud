@@ -1,6 +1,8 @@
 <div id="consult-table">
 	<% table.each do |consult| %>
-		<%= render consult %>
+		<div id="consult-<%= consult.id -%>" class="row reminder">
+			<%= render consult %>
+		</div>
 	<% end %>
 	
 	<% if table.size == 0 %>

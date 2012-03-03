@@ -113,6 +113,10 @@ class Reminder < ActiveRecord::Base
     
   end
   
+  def remind_time_as_string
+    return self.remind_time.strftime("%m/%d/%Y %l:%m%P") rescue nil
+  end
+  
   private
   def set_last_notification
     self.last_notification = Time.now - 1.year

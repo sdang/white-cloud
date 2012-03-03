@@ -16,7 +16,7 @@
 			<%= f.text_field :mrn, :class => "span3", :placeholder => "0000000" %>
 			
 			<%= req_field %><%= f.label "Date of Birth"%>
-			<%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true},  {:class => "span1"} %>
+			<%= f.date_select :dob, {:order => [:month, :day, :year], :start_year => 1900, :end_year => Time.now.year, :include_blank => true, :use_short_month => true},  {:class => "span1"} %>
 			<br/>
 			<%= button_tag "Start D/C Summary", :type => "submit", :class => "btn"%>
 

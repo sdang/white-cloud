@@ -30,3 +30,29 @@ $(document).on('mouseleave','.reminder', function() {
 $(document).on('click', '#fade', function() {
 	$(this).parent().slideToggle("fast");
 });
+
+// handle session time-in-out
+
+function logOut() {
+	request = $.ajax({
+	  type: "DELETE",
+	  url: "/users/sign_out",
+	  data: ""
+	}).done();
+	
+	request.done(function(msg) {
+		window.location.reload();
+	});
+
+	request.fail(function(jqXHR, textStatus) {
+		window.location.reload();
+	});
+}
+
+function displayTimeoutMsg() {
+    $('#auto-logout').html("You will be logged out in 5 minutes, <a href='/user_logged_in' data-remote='true'>click here</a> to continue working");
+	$('#auto-logout').effect("highlight", {}, 3000);
+	doTimeout = setTimeout(logOut, 300000)
+}
+
+displayTimeout = setTimeout(displayTimeoutMsg, 1500000);
