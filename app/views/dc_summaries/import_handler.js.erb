@@ -5,7 +5,7 @@
 <% else %>
 
 	<% if @prefix == "rx" %>
-		$('#<%= @prefix -%>-import-notice').html("<%= escape_javascript(@update_result)%>")
+		$('#<%= @prefix -%>-import-notice').html("Import Successful")
 		$('#<%= @prefix -%>-import-notice').removeClass('hidden')
 		$('#<%= @prefix -%>-import-notice').effect("highlight", {}, 3000)
 		$("#prescription-table").html("<%= escape_javascript(render :partial => '/prescriptions/table', :object => @dc_summary.prescriptions) %>");
@@ -13,7 +13,7 @@
 	<% end %>
 	
 	<% if @prefix == "one_liner" %>
-		$('#<%= @prefix -%>-import-notice').html("Added the following text: <%= escape_javascript(@update_result)%>");
+		$('#<%= @prefix -%>-import-notice').html("Import Successful");
 		$('#<%= @prefix -%>-import-notice').removeClass("hidden")
 		$('#<%= @prefix -%>-import-notice').effect("highlight", {}, 3000);
 
@@ -26,7 +26,7 @@
 	<% end %>
 
 	<% if @prefix == "diagnoses" %>
-		$('#<%= @prefix -%>-import-notice').html("Added the following text: <%= escape_javascript(@update_result)%>")
+		$('#<%= @prefix -%>-import-notice').html("Import Successful")
 		$('#<%= @prefix -%>-import-notice').removeClass("hidden")
 		$('#<%= @prefix -%>-import-notice').effect("highlight", {}, 3000)
 		if ($('#dc_summary_diagnoses').val() == $('#dc_summary_diagnoses').attr('title')) {
