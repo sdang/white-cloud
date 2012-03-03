@@ -1,6 +1,8 @@
 <div id="reminder-table">
 	<% table.each do |reminder| %>
-		<%= render :partial => "/reminders/reminder", :object => reminder %>
+		<div id="reminder-<%= reminder.id -%>" class="reminder">
+			<%= render :partial => "/reminders/reminder", :object => reminder %>
+		</div>
 	<% end %>
 
 	<% if table.size == 0 %>

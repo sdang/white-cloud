@@ -1,4 +1,4 @@
-<div id="prescription-<%= prescription.id -%>" class="row reminder">
+
 	<div id="links" class="span1">
 		<%= link_to raw("<i class='i icon-remove'></i>"), {:action => "destroy", :id => prescription.id, :controller => "prescriptions"}, :method => :delete, :remote => true, :confirm => "Delete this Rx?" %><span style="width: 10px">&nbsp;</span>
 		<%= link_to raw("<i class='i icon-edit'></i>"), {:action => "edit", :id => prescription.id, :controller => "prescriptions"}, :remote => true %>
@@ -9,4 +9,3 @@
 			<span class="gray-text">Please add sig and quantity to have this Rx printed</span>
 		<% end %>
 	</div>
-</div>

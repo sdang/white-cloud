@@ -1,4 +1,4 @@
-<div id="reminder-list-<%= reminder_list.id -%>" class="reminder">
+
 	<div id="links" class="span1">
 		<%= link_to raw("<i class='i icon-remove'></i>"), {:action => "destroy", :id => reminder_list.id, :controller => "/reminder_lists"}, :method => :delete, :remote => true, :confirm => "Delete this reminder list?" %>
 		<%= link_to raw("<i class='i icon-edit'></i>"), {:action => "edit", :id => reminder_list.id, :controller => "/reminder_lists"}, :remote => true %>
@@ -7,4 +7,3 @@
 		<%= reminder_list.name %>
 	</div>
 	<div style="clear: both"></div>
-</div>

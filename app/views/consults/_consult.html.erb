@@ -1,4 +1,4 @@
-<div id="consult-<%= consult.id -%>" class="row reminder">
+
 	<div id="links" class="span1">
 		<%= link_to raw("<i class='i icon-remove'></i>"), {:action => "destroy", :id => consult.id, :controller => "consults"}, :method => :delete, :remote => true, :confirm => "Delete this consult?" %><span style="width: 10px">&nbsp;</span>
 		<%= link_to raw("<i class='i icon-edit'></i>"), {:action => "edit", :id => consult.id, :controller => "consults"}, :remote => true %>
@@ -7,4 +7,3 @@
 		<%= consult.service.decrypt(session[:group_password]) %>
 	</div>
 	<div style="clear: both"></div>
-</div>
