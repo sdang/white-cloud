@@ -27,7 +27,9 @@
 		<% end -%>
 	
 
-	<%= render :partial => "form_edit" %>
+	<% benchmark("Showing dc summary form edit partial") do %>
+			<%= render :partial => "form_edit" %>
+	<% end %>
 
 	<% else %>
 		<div class="alert alert-info">
