@@ -1,5 +1,11 @@
 
 $ ->
+	# setup the timeago javascript helper
+	jQuery.timeago.settings.allowFuture = true;
+	$("time.timeago").livequery ->
+		$(this).timeago();
+
+	
 	# activate all place holders for legacy browsers
 	$('input, textarea').placeholder();
 	

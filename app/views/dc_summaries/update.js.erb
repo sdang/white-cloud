@@ -5,7 +5,7 @@
 	<% if @dc_summary.errors.any? %>
 		$('#side-bar-notification').html("<div class='alert alert-error'><%= escape_javascript(errors_for(@dc_summary))%></div>");
 	<% else %>
-		$('#side-bar-notification').html("<div class='alert alert-success'>Last saved at <%= Time.now.strftime("%l:%M%P") %></div>");
+		$('#side-bar-notification').html("<div class='alert alert-success'>Last saved <%= escape_javascript(timeago(Time.now)) %></div>");
 	<% end %>
 	$('#side-bar-notification').find("div:first").effect("highlight", {}, 3000)
 <% end %>

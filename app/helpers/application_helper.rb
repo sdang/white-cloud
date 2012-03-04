@@ -4,6 +4,11 @@ module ApplicationHelper
     return "".html_safe
   end
   
+  def timeago(time, options = {})
+    options[:class] ||= "timeago"
+    content_tag(:time, time_ago_in_words(time), options.merge(:datetime => time.getutc.iso8601)) if time
+  end
+  
   def errors_for(object, message=nil)
       html = ""
       unless object.errors.blank?

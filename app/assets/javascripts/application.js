@@ -8,6 +8,8 @@
 //= require jquery_ujs
 //= require jquery-ui.min.js
 //= require jquery.placeholder.min.js
+//= require jquery.timeago.js
+//= require jquery.livequery.js
 //= require common.js
 //= require bootstrap.min.js
 
